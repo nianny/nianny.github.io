@@ -1,4 +1,4 @@
-let a = [];
+//let a = [];
 let b = [];
 // class freehand {
 //   constructor()
@@ -7,7 +7,7 @@ let b = [];
 function setup() {
   createCanvas(400, 400);
   noFill();
-  b.push(a);
+  b.push([]);
 }
         
 
