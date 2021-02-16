@@ -15,7 +15,7 @@ function setup() {
   x2 = width - br-10;
   d1 = bspeed;
   d2 = -bspeed;
-  d = bspeed*2;
+  d = bspeed/2;
   
 }
 
