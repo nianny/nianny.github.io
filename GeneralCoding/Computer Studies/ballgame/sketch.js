@@ -5,6 +5,7 @@ let score = 0;
 let d1,d2,d;
 let ballvisi = false;
 let bspeed = 5;
+let sc = false;
 
 function setup() {
   createCanvas(400, 400);
@@ -53,13 +54,17 @@ function draw() {
       
     }
   }
-  
-  if (ballvisi == true && dist(x,y,x1,y1) <= (br+sr)/2 || dist(x,y,x2,y2) <= (br+sr)/2){
+  console.log(sc);
+  if ((ballvisi && dist(x,y,x1,y1) <= (br+sr)/2 || dist(x,y,x2,y2) <= (br+sr)/2) && !sc){
     score+=1;
+    sc = true;
   }
-  if (ballvisi == true){
+  if (ballvisi){
     ellipse(x, y, sr);
     x += d;
+  }
+  if (!ballvisi){
+    sc = false;
   }
   
   
