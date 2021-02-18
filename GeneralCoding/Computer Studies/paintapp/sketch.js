@@ -1,12 +1,15 @@
 //let a = [];
 let arr = [];
 let free = true;
+let mainc;
 class freehand {
   constructor(color, ){
     this.actions = [];
+    this.colour=mainc;
   }
 
   instruct(){
+    stroke(this.colour);
     beginShape();
     for (let p=0; p<this.actions.length; p++){
       vertex(this.actions[p][0], this.actions[p][1]);
@@ -16,13 +19,25 @@ class freehand {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  mainc= document.getElementById("colourpicka").value;
+  cnv=createCanvas(400, 400);
   noFill();
   if (free){
     current = new freehand();
   }
+  
+  //current.colour = mainc;
 }
-        
+
+
+function saveCall(){
+  save(cnv, 'img.jpg');
+}
+
+function updateColour(){
+  mainc=document.getElementById("colourpicka").value;
+}
+
 
 function draw() {
   background(250);
