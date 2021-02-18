@@ -2,14 +2,17 @@
 let arr = [];
 let free = true;
 let mainc;
+let strokew;
 class freehand {
   constructor(color, ){
     this.actions = [];
     this.colour=mainc;
+    this.thick=strokew;
   }
 
   instruct(){
     stroke(this.colour);
+    strokeWeight(this.thick);
     beginShape();
     for (let p=0; p<this.actions.length; p++){
       vertex(this.actions[p][0], this.actions[p][1]);
@@ -20,6 +23,7 @@ class freehand {
 
 function setup() {
   mainc= document.getElementById("colourpicka").value;
+  strokew = document.getElementById("strokewidth").value;
   cnv=createCanvas(400, 400);
   noFill();
   if (free){
@@ -36,6 +40,10 @@ function saveCall(){
 
 function updateColour(){
   mainc=document.getElementById("colourpicka").value;
+}
+
+function updateStrokeWidth(){
+  strokew = document.getElementById("strokewidth").value;
 }
 
 
