@@ -3,16 +3,21 @@ let arr = [];
 let free = true;
 let mainc;
 let strokew;
+let alpha;
 class freehand {
-  constructor(color, ){
+  constructor(){
     this.actions = [];
     this.colour=mainc;
     this.thick=strokew;
+    this.opacity = alpha;
+    
   }
 
   instruct(){
+    this.colour.setAlpha(this.opacity);
     stroke(this.colour);
     strokeWeight(this.thick);
+    
     beginShape();
     for (let p=0; p<this.actions.length; p++){
       vertex(this.actions[p][0], this.actions[p][1]);
@@ -22,9 +27,14 @@ class freehand {
 }
 
 function setup() {
+  document.querySelector("#setalpha").innerText="newValue";
+
   strokeJoin(ROUND);
-  mainc= document.getElementById("colourpicka").value;
+  mainc= color(document.getElementById("colourpicka").value);
   strokew = document.getElementById("strokewidth").value;
+  alpha = map(document.getElementById("setalpha").value,0,100,0,255);
+  //mainc.setAlpha(alpha);
+  console.log(mainc);
   cnv=createCanvas(400, 400);
   noFill();
   if (free){
@@ -40,15 +50,21 @@ function saveCall(){
 }
 
 function updateColour(){
-  mainc=document.getElementById("colourpicka").value;
+  mainc=color(document.getElementById("colourpicka").value);
 }
 
 function updateStrokeWidth(){
   strokew = document.getElementById("strokewidth").value;
 }
 
+function updateAlpha(){
+  alpha = map(document.getElementById("setalpha").value,0,100,0,255);
+  //mainc.setAlpha(alpha);
+}
+
 
 function draw() {
+  
   background(250);
   if (free){
     if (mouseIsPressed == true){
