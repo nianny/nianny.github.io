@@ -22,6 +22,7 @@ class freehand {
 }
 
 function setup() {
+  strokeJoin(ROUND);
   mainc= document.getElementById("colourpicka").value;
   strokew = document.getElementById("strokewidth").value;
   cnv=createCanvas(400, 400);
