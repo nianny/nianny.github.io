@@ -65,6 +65,10 @@ function updateAlpha(){
   //mainc.setAlpha(alpha);
 }
 
+function eraser(){
+  mainc = color(255)
+}
+
 
 function draw() {
   
