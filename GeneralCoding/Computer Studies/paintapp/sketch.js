@@ -44,6 +44,9 @@ function setup() {
   //current.colour = mainc;
 }
 
+function randomC(){
+  mainc = color(floor(random(0,255)),floor(random(0,255)),floor(random(0,255)))
+}
 
 function saveCall(){
   save(cnv, 'img.jpg');
