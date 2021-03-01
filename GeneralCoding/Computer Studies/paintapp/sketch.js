@@ -69,6 +69,11 @@ function eraser(){
   mainc = color(255)
 }
 
+function CLEARSCREEN(){
+  arr = [];
+  current = new freehand();
+}
+
 
 function draw() {
   
