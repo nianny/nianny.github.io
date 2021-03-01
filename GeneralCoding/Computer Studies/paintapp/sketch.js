@@ -120,3 +120,6 @@ function keyPressed(){
     }
   //}
 }
+
+
+//https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
