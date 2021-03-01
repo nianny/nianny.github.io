@@ -108,10 +108,10 @@ function draw() {
 }
 
 function keyPressed(){
-  if (keyIsDown(ControlLeft)){
+  //if (keyIsDown(ControlLeft)){
     if(keyIsDown(KeyH)){
       textAlign(CENTER);
       text("HALLO",width/2, height/2);
     }
-  }
+  //}
 }
