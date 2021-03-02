@@ -4,6 +4,6 @@ html, body {
 }
 canvas {
   display: block;
-  border: 5px solid black;
+  border: 5px solid #888;
 }
   

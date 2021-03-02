@@ -4,6 +4,25 @@ let free = true;
 let mainc;
 let strokew;
 let alpha;
+let backgroundcolour = 250;
+
+
+function updatecurrent(){
+  current = new freehand();
+}
+
+
+class clear {
+  constructor(){
+
+  }
+
+  instruct(){
+    background(backgroundcolour);
+  }
+}
+
+
 class freehand {
   constructor(){
     this.actions = [];
@@ -23,6 +42,10 @@ class freehand {
       vertex(this.actions[p][0], this.actions[p][1]);
     }
     endShape();
+    
+    // for (let p=1; i<this.actions.length; p++){
+    //   line(this.actions[p-1][0], this.actions[p-1][1]. this.actions[p][0], this.actions[p][1])
+    // }
   }
 }
 
@@ -38,9 +61,9 @@ function setup() {
   cnv=createCanvas(400, 400);
   noFill();
   if (free){
-    current = new freehand();
+    updatecurrent();
   }
-  
+  cursor(CROSS);
   //current.colour = mainc;
 }
 
@@ -65,19 +88,31 @@ function updateAlpha(){
   //mainc.setAlpha(alpha);
 }
 
+function changeInput(){
+  type = document.getElementById("chooseInput").value;
+  console.log(type)
+  mouseIsPressed = false;
+  if (type == "Normal"){
+    arr.push(current);
+    updatecurrent();
+    console.log("Changed");
+  }
+}
+
 function eraser(){
-  mainc = color(255)
+  mainc = color(backgroundcolour)
 }
 
 function CLEARSCREEN(){
-  arr = [];
-  current = new freehand();
+  arr.push(current);
+  current = new clear();
+  arr.push(current);
+  updatecurrent();
 }
-
 
 function draw() {
   
-  background(250);
+  background(backgroundcolour);
   if (free){
     if (mouseIsPressed == true){
       current.actions.push([mouseX, mouseY]);
@@ -85,7 +120,7 @@ function draw() {
 
     else{
       arr.push(current);
-      current = new freehand();
+      updatecurrent();
     }
 
     for (let i=0; i<arr.length; i++){
@@ -112,14 +147,14 @@ function draw() {
   // }
 }
 
-function keyPressed(){
-  //if (keyIsDown(ControlLeft)){
-    if(keyIsDown(KeyH)){
-      textAlign(CENTER);
-      text("HALLO",width/2, height/2);
-    }
-  //}
-}
+// function keyPressed(){
+//   //if (keyIsDown(ControlLeft)){
+//     if(keyIsDown(KeyH)){
+//       textAlign(CENTER);
+//       text("HALLO",width/2, height/2);
+//     }
+//   //}
+// }
 
 
 //https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/

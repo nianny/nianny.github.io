@@ -12,18 +12,34 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <p>Download screen</p>
-    <input type="button" value = "Download" onclick="saveCall()">
-    <p>Change Colour</p>
-    <input value = "#000000" type="color" id="colourpicka"  onchange = "updateColour()">
+    <label for = "Download">Download screen:</label>
+    <input type="button" name = "Download" value = "Download" onclick="saveCall()">
+    <br>
+
+
+
+
+
+    <label for="inputs">Choose a input method:</label>
+    <select name = "inputs" id = "chooseInput" onchange="changeInput()">
+      <optgroup label = "Strokes">
+        <option value = "Normal">Default</option>
+        <option value = "Eraser">Eraser</option>
+      </optgroup>
+    </select>
+    <br>
+    <label for = "colourpicka">Change Colour:</label>
+    <input name = "colourpicka" value = "#000000" type="color" id="colourpicka"  onchange = "updateColour()">
     <input type = "button" id = "randomcolour" onclick = "randomC()" value="Random Colour">
     <p>Change stroke/eraser width</p>
-    <input type="number" value=1 onchange = "updateStrokeWidth()" id = "strokewidth">
+    <input type="number" value=5 onchange = "updateStrokeWidth()" id = "strokewidth">
     <p>Opacity</p>
     <input type="range" value=100 onchange = "updateAlpha()" id="setalpha">
-    <p>Eraser</p>
+
+    <br>
+    <!-- <p>Eraser</p> -->
     <input type ="button" onclick = "eraser()" value = "Eraser">
-    <p>Clear</p>
+    <!-- <p>Clear</p> -->
     <input type="button" onclick = "CLEARSCREEN()" value = "Clear">
 
 
