@@ -12,9 +12,34 @@
     <meta charset="utf-8" />
   </head>
   <body>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <p>If you need help, press "Ctrl+h" shortcut</p>
+    
     <label for = "Download">Download screen:</label>
     <input type="button" name = "Download" value = "Download" onclick="saveCall()">
     <br>
+    
+<!--     <a download="hello.txt" href='#' id="link">Download</a> -->
+
+<!--     <script>
+//     let blob = new Blob(["welp"], {type: 'text/plain'});
+
+//     link.href = URL.createObjectURL(blob);
+      
+      let link = document.createElement('a');
+      link.download = 'hello.txt';
+
+      let blob = new Blob(['Hello, world!'], {type: 'text/plain'});
+
+      link.href = URL.createObjectURL(blob);
+
+      link.click();
+
+      URL.revokeObjectURL(link.href);
+    </script> -->
+<!--     <a href="help.txt" title = "Help File" download = "help.txt">Download</a> -->
 
 
 
@@ -26,21 +51,37 @@
         <option value = "Normal">Default</option>
         <option value = "Eraser">Eraser</option>
       </optgroup>
+      <optgroup label = "Special">
+        <option value = "rainbow">Rainbow pen</option>
+      </optgroup>
+      <optgroup label = "Shapes">
+        
+      </optgroup>
     </select>
     <br>
+    <br>
+    <br>
+    
+    
     <label for = "colourpicka">Change Colour:</label>
     <input name = "colourpicka" value = "#000000" type="color" id="colourpicka"  onchange = "updateColour()">
     <input type = "button" id = "randomcolour" onclick = "randomC()" value="Random Colour">
-    <p>Change stroke/eraser width</p>
+    <br>
+    <labe for = "strokewdith">Change width:</labe>
     <input type="number" value=5 onchange = "updateStrokeWidth()" id = "strokewidth">
-    <p>Opacity</p>
+    <br>
+    <label for ="setalpha">Change colour:</label>
     <input type="range" value=100 onchange = "updateAlpha()" id="setalpha">
 
     <br>
     <!-- <p>Eraser</p> -->
     <input type ="button" onclick = "eraser()" value = "Eraser">
     <!-- <p>Clear</p> -->
-    <input type="button" onclick = "CLEARSCREEN()" value = "Clear">
+    <input class = "sbutton" type="button" onclick = "CLEARSCREEN()" value = "Clear">
+    <input class = "sbutton" type="button" onclick = "UNDO()" value = "Undo">
+    <input class = "sbutton" type="button" onclick = "REDO()" value = "Redo">
+    
+    
 
 
 

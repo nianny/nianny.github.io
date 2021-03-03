@@ -1,0 +1,26 @@
+Help and Instructions
+
+Types of drawing tools: (choose from the dropdown list and adjust settings below)
+- pen
+  - colour
+  - width
+  - opacity
+  
+- eraser
+  - width
+
+
+Other functions:
+- Undo/Redo
+- Clear
+- Download
+
+
+Future possible implementations:
+- Temporarily saving drawing
+- See/unsee specific settings based on input method
+- improved UI
+
+Future drawing mathods:
+- shape drawers
+- rainbow pen

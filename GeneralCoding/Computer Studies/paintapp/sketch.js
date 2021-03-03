@@ -1,14 +1,42 @@
 //let a = [];
 let arr = [];
+let redo = [];
 let free = true;
 let mainc;
 let strokew;
 let alpha;
 let backgroundcolour = 250;
+let filled = false;
+let type;
 
 
 function updatecurrent(){
-  current = new freehand();
+  if (type == 'Normal'){
+    current = new freehand();
+  }
+  else if (type == 'rainbow'){
+    current = new rainbow();
+  }
+}
+
+class rainbow{
+  constructor(){
+    //super();
+    this.actions = [];
+    this.thick=strokew;
+    this.opacit5y=alpha;
+  }
+
+  instruct(){
+    
+    strokeWeight(this.thick);
+    
+    beginShape();
+    for (let p=0; p<this.actions.length; p++){
+      vertex(this.actions[p][0], this.actions[p][1]);
+    }
+    endShape();
+  }
 }
 
 
@@ -56,6 +84,7 @@ function setup() {
   mainc= color(document.getElementById("colourpicka").value);
   strokew = document.getElementById("strokewidth").value;
   alpha = map(document.getElementById("setalpha").value,0,100,0,255);
+  type = document.getElementById("chooseInput").value;
   //mainc.setAlpha(alpha);
   console.log(mainc);
   cnv=createCanvas(400, 400);
@@ -68,11 +97,13 @@ function setup() {
 }
 
 function randomC(){
-  mainc = color(floor(random(0,255)),floor(random(0,255)),floor(random(0,255)))
+  colorMode(HSB);
+  mainc = color(floor(random(0,255)), 150, 255)
+  colorMode(RGB);
 }
 
 function saveCall(){
-  save(cnv, 'img.jpg');
+  saveCanvas(cnv, 'img','jpg');
 }
 
 function updateColour(){
@@ -110,17 +141,36 @@ function CLEARSCREEN(){
   updatecurrent();
 }
 
+function UNDO(){
+  //console.log("undo");
+  redo.push(arr[arr.length-1]);
+  arr.pop();
+}
+
+function REDO(){
+  if (redo.length > 0){
+    arr.push(redo[redo.length-1]);
+    redo.pop();
+  }
+  else{
+    console.log("Nothing to redo");
+  }
+}
+
 function draw() {
-  
+  //arr.pop();
   background(backgroundcolour);
   if (free){
     if (mouseIsPressed == true){
+      filled = true;
       current.actions.push([mouseX, mouseY]);
     }
 
-    else{
+    else if (mouseY >= 0 && filled){
+      filled = false;
       arr.push(current);
       updatecurrent();
+      redo = [];
     }
 
     for (let i=0; i<arr.length; i++){
@@ -146,15 +196,16 @@ function draw() {
   //   endShape();
   // }
 }
-
-// function keyPressed(){
-//   //if (keyIsDown(ControlLeft)){
-//     if(keyIsDown(KeyH)){
-//       textAlign(CENTER);
-//       text("HALLO",width/2, height/2);
-//     }
-//   //}
-// }
+document.onkeydown = function (e) {
+        return false;
+} //blocks system 
+function keyPressed(){
+  //if (keyIsDown(ControlLeft)){
+  if (keyIsDown(17) && keyIsDown(72)){
+    console.log("Help requested")
+    window.open("help.txt")
+  }
+}
 
 
 //https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/
