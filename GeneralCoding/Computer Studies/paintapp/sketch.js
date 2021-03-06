@@ -203,6 +203,7 @@ function keyPressed(){
   //if (keyIsDown(ControlLeft)){
   if (keyIsDown(17) && keyIsDown(72)){
     console.log("Help requested")
+    window.open("help.html");
   }
 }
 
