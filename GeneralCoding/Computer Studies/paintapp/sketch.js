@@ -23,19 +23,47 @@ class rainbow{
   constructor(){
     //super();
     this.actions = [];
+    this.colours = [];
     this.thick=strokew;
-    this.opacit5y=alpha;
+    this.opacity=alpha;
+    colorMode(HSB);
+    this.value = random(255);
+    this.colour=color(this.value,150,200);
+    colorMode(RGB);
+    console.log("Create new node")
+    console.log(this.value);
+
+    
   }
 
   instruct(){
+    this.colours[0] = this.value;
+    for (let p=1; p<this.actions.length; p++){
+      this.colours[p] = (this.colours[p-1]+1)%255;
+    }
+
+
+    colorMode(HSB);
     
     strokeWeight(this.thick);
+    //console.log(this.value);
     
     beginShape();
     for (let p=0; p<this.actions.length; p++){
+      this.colour = color(this.colours[p], 150, 200, this.opacity);
+      stroke(this.colour);
+      // this.colour= color(this.value, 150,200);
+      // this.colour.setAlpha(this.opacity);
+      // stroke(this.colour);
       vertex(this.actions[p][0], this.actions[p][1]);
+      this.value += 1;
+      console.log(this.colours[p]);
+      // if (this.value >= 255){
+      //   this.value = 0;
+      // }
     }
     endShape();
+    colorMode(RGB);
   }
 }
 
@@ -116,6 +144,7 @@ function updateStrokeWidth(){
 
 function updateAlpha(){
   alpha = map(document.getElementById("setalpha").value,0,100,0,255);
+  console.log(alpha);
   //mainc.setAlpha(alpha);
 }
 

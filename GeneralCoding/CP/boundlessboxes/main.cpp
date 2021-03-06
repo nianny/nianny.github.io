@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-int dx[] = {0, 0, -1, 1};
-int dy[] = {1, -1, 0, 0};
+int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+
 
 int32_t main() {
     ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0); 
@@ -10,6 +11,8 @@ int32_t main() {
     int m,n,s;
     cin>>m>>n>>s;
     vector<pair<int,int>> points;
+
+    //cout<<'\n';
 
     for (int i=0; i<s; i++){
         int a,b;
@@ -23,13 +26,13 @@ int32_t main() {
     //cout<<"HI \n \n \n";
 
 
-    int visited[m][s];
-    int dist[m][s];
+    bool visited[m][n];
+    int dist[m][n];
     queue<pair<int,int>>q;
     memset(visited, 0, sizeof(visited));
     memset(dist,0,sizeof(dist));
     for (pair<int,int> p: points){
-        cout<<p.first<<' '<<p.second<<'\n';
+        //cout<<p.first<<' '<<p.second<<'\n';
         visited[p.first][p.second] = 1;
         dist[p.first][p.second] = 0;
         q.push(make_pair(p.first, p.second));
@@ -44,7 +47,7 @@ int32_t main() {
         //     if (visited[])
         // }
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
@@ -57,13 +60,16 @@ int32_t main() {
 
         }
     }
+
+    int ans = 0;
     for (int i=0; i<m; i++){
         for (int p=0; p<n; p++){
-            cout<<dist[i][p];
-            cout<<' ';
+            ans = max(ans, dist[i][p]);
         }
-        cout<<'\n';
+        
     }
+    ans++;
+    cout<<ans;
 
 
 
