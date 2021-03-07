@@ -68,14 +68,15 @@
     <input type = "button" id = "randomcolour" onclick = "randomC()" value="Random Colour">
     <br>
     <labe for = "strokewdith">Change width:</labe>
-    <input type="number" value=5 onchange = "updateStrokeWidth()" id = "strokewidth">
+    <input type="range" value=5 onchange = "updateStrokeWidth()" id = "strokewidth">
     <br>
     <label for ="setalpha">Change opacity:</label>
     <input type="range" value=100 onchange = "updateAlpha()" id="setalpha">
 
     <br>
+    <br>
     <!-- <p>Eraser</p> -->
-    <input type ="button" onclick = "eraser()" value = "Eraser">
+    <!-- <input type ="button" onclick = "eraser()" value = "Eraser"> -->
     <!-- <p>Clear</p> -->
     <input class = "sbutton" type="button" onclick = "CLEARSCREEN()" value = "Clear">
     <input class = "sbutton" type="button" onclick = "UNDO()" value = "Undo">

@@ -27,3 +27,7 @@
 **Future drawing mathods**:
 - shape drawers
 - rainbow pen
+
+**Keyboard shortcuts available**:
+- Ctrl+h: Help
+- Ctrl+r: Reset (Sets everything back to the default settings)

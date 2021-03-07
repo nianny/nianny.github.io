@@ -16,3 +16,13 @@ canvas {
   background-color: #008CBA;
   color: white;
 } */
+/* canvas {
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
+} */

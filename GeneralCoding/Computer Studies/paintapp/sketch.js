@@ -17,6 +17,10 @@ function updatecurrent(){
   else if (type == 'rainbow'){
     current = new rainbow();
   }
+  else if (type == 'Eraser'){
+    current = new freehand(true);
+  }
+  
 }
 
 class rainbow{
@@ -27,42 +31,51 @@ class rainbow{
     this.thick=strokew;
     this.opacity=alpha;
     colorMode(HSB);
-    this.value = random(255);
+    this.value = int(random(255));
     this.colour=color(this.value,150,200);
     colorMode(RGB);
     console.log("Create new node")
-    console.log(this.value);
-
-    
+    //console.log(this.value);
+    this.set = random([1,-1]) 
   }
 
   instruct(){
+    this.increase = this.set;
     this.colours[0] = this.value;
     for (let p=1; p<this.actions.length; p++){
-      this.colours[p] = (this.colours[p-1]+1)%255;
+      this.colours[p] = this.colours[p-1]+this.increase;
+      if (this.colours[p] >= 255 || this.colours[p] <= 0){
+        this.increase = (-1)*this.increase;
+      }
     }
-
-
     colorMode(HSB);
     
     strokeWeight(this.thick);
     //console.log(this.value);
     
-    beginShape();
-    for (let p=0; p<this.actions.length; p++){
-      this.colour = color(this.colours[p], 150, 200, this.opacity);
-      stroke(this.colour);
-      // this.colour= color(this.value, 150,200);
-      // this.colour.setAlpha(this.opacity);
-      // stroke(this.colour);
-      vertex(this.actions[p][0], this.actions[p][1]);
-      this.value += 1;
-      console.log(this.colours[p]);
-      // if (this.value >= 255){
-      //   this.value = 0;
-      // }
+    // beginShape();
+    // for (let p=0; p<this.actions.length; p++){
+    //   this.colour = color(this.colours[p], 150, 200, this.opacity);
+    //   stroke(this.colour);
+    //   // this.colour= color(this.value, 150,200);
+    //   // this.colour.setAlpha(this.opacity);
+    //   // stroke(this.colour);
+    //   vertex(this.actions[p][0], this.actions[p][1]);
+    //   this.value += 1;
+    //   console.log(this.colours[p]);
+    //   // if (this.value >= 255){
+    //   //   this.value = 0;
+    //   // }  
+    // }
+    // endShape();
+
+    for (let p=1; p<this.actions.length; p++){
+      this.colour = color(this.colours[p],100,150);
+      this.colour.setAlpha(this.opacity);
+      stroke(this.colour)
+      line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1])
     }
-    endShape();
+    
     colorMode(RGB);
   }
 }
@@ -80,27 +93,33 @@ class clear {
 
 
 class freehand {
-  constructor(){
+  constructor(eraser=false){
     this.actions = [];
     this.colour=mainc;
     this.thick=strokew;
     this.opacity = alpha;
+    this.eraser = eraser;
     
   }
 
   instruct(){
-    this.colour.setAlpha(this.opacity);
-    stroke(this.colour);
+    if (!this.eraser){
+      this.colour.setAlpha(this.opacity);
+      stroke(this.colour);
+    }
+    else{
+      stroke(backgroundcolour);
+    }
     strokeWeight(this.thick);
     
     beginShape();
     for (let p=0; p<this.actions.length; p++){
-      vertex(this.actions[p][0], this.actions[p][1]);
+      curveVertex(this.actions[p][0], this.actions[p][1]);
     }
     endShape();
     
-    // for (let p=1; i<this.actions.length; p++){
-    //   line(this.actions[p-1][0], this.actions[p-1][1]. this.actions[p][0], this.actions[p][1])
+    // for (let p=1; p<this.actions.length; p++){
+    //   line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1])
     // }
   }
 }
@@ -115,7 +134,12 @@ function setup() {
   type = document.getElementById("chooseInput").value;
   //mainc.setAlpha(alpha);
   console.log(mainc);
-  cnv=createCanvas(400, 400);
+  cnv=createCanvas(windowWidth/2, windowHeight);
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+
+  cnv.style('display', 'block');
   noFill();
   if (free){
     updatecurrent();
@@ -142,6 +166,19 @@ function updateStrokeWidth(){
   strokew = document.getElementById("strokewidth").value;
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth/2, windowHeight);
+  centerCanvas();
+}
+
+function centerCanvas() {
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+}
+
+
+
 function updateAlpha(){
   alpha = map(document.getElementById("setalpha").value,0,100,0,255);
   console.log(alpha);
@@ -152,7 +189,7 @@ function changeInput(){
   type = document.getElementById("chooseInput").value;
   console.log(type)
   mouseIsPressed = false;
-  if (type == "Normal"){
+  if (type == "Normal" || type == "Eraser"){
     arr.push(current);
     updatecurrent();
     console.log("Changed");
@@ -233,6 +270,17 @@ function keyPressed(){
   if (keyIsDown(17) && keyIsDown(72)){
     console.log("Help requested")
     window.open("help.html");
+  }
+  else if (keyIsDown(17) && keyIsDown(82)){
+    document.getElementById("setalpha").value = 100;
+    document.getElementById("strokewidth").value = 5;
+    document.getElementById("colourpicka").value = '#000000'
+    document.getElementById("chooseInput").value = "Normal";
+    alpha = 255;
+    strokew =5;
+    mainc=color('#000000')
+    type = "Normal"
+
   }
 }
 
