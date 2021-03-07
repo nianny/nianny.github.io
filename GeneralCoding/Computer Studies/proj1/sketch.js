@@ -75,10 +75,19 @@ function drawmountains() {
   line(width/3.2, height/1.3, width/10*0.3, height);
 
   noStroke();
-  fill(130,alpha);
-  triangle(width/20*0.7, height/20*19.7, width/20*4.5, height/20*15, width/20*4.5, height/20*16.3);
 
-  triangle(width/20*6.6, height/10*6.3, width/20*5.7, height/10*7.4, width/20*6.3, height/10*7.55);
+
+  fill(130,alpha);
+  triangle(width/20*0.7, height/20*19.7, width/20*4.5, height/20*15, width/20*4.5, height/20*16.4  );
+
+
+  beginShape();
+  vertex(width/20*6.6, height/10*6.3);
+  vertex(width/20*5.7, height/10*7.4);
+  vertex(width/20*6.2, height/10*7.55);
+  vertex(width/20*6.7, height/20*14.6);
+  endShape(CLOSE);
+  //triangle(width/20*6.6, height/10*6.3, width/20*5.7, height/10*7.4, width/20*6.3, height/10*7.55);
 
   beginShape();
   vertex(width/20*18.1, height/20*12.55);
@@ -90,9 +99,9 @@ function drawmountains() {
 
 
   fill(255,alpha);
-  triangle(width/20*4.7, height/20*15, width/20*4.75, height/20*16.25, width/20*5.75, height/20*15.5);
+  triangle(width/20*4.7, height/20*15, width/20*4.7, height/20*16.25, width/20*5.75, height/20*15.5);
 
-  triangle(width/20*6.8, height/20*12.6, width/20*6.55, height/20*14.8, width/20*7.9, height/20*13.5);
+  triangle(width/20*6.8, height/20*12.6, width/20*6.9, height/20*14.4, width/20*7.9, height/20*13.5);
 
   triangle(width/20*17.9, height/20*12.55, width/20*17.2, height/20*13.5, width/20*17.9, height/20*14.5)
 
