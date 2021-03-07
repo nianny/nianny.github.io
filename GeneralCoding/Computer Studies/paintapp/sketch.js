@@ -134,11 +134,10 @@ function setup() {
   type = document.getElementById("chooseInput").value;
   //mainc.setAlpha(alpha);
   console.log(mainc);
-  cnv=createCanvas(windowWidth/2, windowHeight);
-  var x = (windowWidth - width) / 2;
+  cnv=createCanvas(windowWidth/4*3, windowHeight);
+  var x = (windowWidth - width) / 4*3.9;
   var y = (windowHeight - height) / 2;
   cnv.position(x, y);
-
   cnv.style('display', 'block');
   noFill();
   if (free){
@@ -176,12 +175,12 @@ function updateStrokeWidth(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth/2, windowHeight);
+  resizeCanvas(windowWidth/4*3, windowHeight);
   centerCanvas();
 }
 
 function centerCanvas() {
-  var x = (windowWidth - width) / 2;
+  var x = (windowWidth - width) / 4*2.5;
   var y = (windowHeight - height) / 2;
   cnv.position(x, y);
 }
@@ -231,10 +230,17 @@ function REDO(){
     console.log("Nothing to redo");
   }
 }
-
+function drawLogo(){
+  textFont('Potta One');
+  textSize(20);
+  textAlign(CENTER);
+  textStyle(NORMAL);
+  text("Nianny Paint", width/2, height/2);
+}
 function draw() {
   //arr.pop();
   background(backgroundcolour);
+  drawLogo();
   if (free){
     if (mouseIsPressed == true){
       filled = true;
