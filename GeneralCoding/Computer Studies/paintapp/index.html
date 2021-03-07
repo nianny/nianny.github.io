@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Paint App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href = "IMG_2250.PNG" type="image/x-icon">
     <!--
       p5.js imports
     -->
@@ -16,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <h2><strong><u>Nianny Paint</u></strong></h2>
     <p>If you need assistance, press "Ctrl+h" shortcut</p>
     
     <label for = "Download">Download screen:</label>
@@ -82,6 +86,14 @@
     <input class = "sbutton" type="button" onclick = "CLEARSCREEN()" value = "Clear">
     <input class = "sbutton" type="button" onclick = "UNDO()" value = "Undo">
     <input class = "sbutton" type="button" onclick = "REDO()" value = "Redo">
+    <!-- <button onclick="myFunction()">Toggle dark mode</button> -->
+
+    <script>
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }
+    </script>
     
     
 

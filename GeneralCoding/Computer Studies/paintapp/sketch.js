@@ -240,7 +240,7 @@ function drawLogo(){
 function draw() {
   //arr.pop();
   background(backgroundcolour);
-  drawLogo();
+  //drawLogo();
   if (free){
     if (mouseIsPressed == true){
       filled = true;
