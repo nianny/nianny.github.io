@@ -114,7 +114,7 @@ class freehand {
     
     beginShape();
     for (let p=0; p<this.actions.length; p++){
-      curveVertex(this.actions[p][0], this.actions[p][1]);
+      vertex(this.actions[p][0], this.actions[p][1]);
     }
     endShape();
     
@@ -149,9 +149,18 @@ function setup() {
 }
 
 function randomC(){
+
+  let r = floor(random(0,255));
+  let g = 150;
+  let b = 255;
+  let c = color(r,g,b);
+  let hx = "#" + hex(r,2) + hex(g,2) + hex(b,2);
+
   colorMode(HSB);
   mainc = color(floor(random(0,255)), 150, 255)
   colorMode(RGB);
+  document.getElementById("colourpicka").value = '#FFFFFF';
+
 }
 
 function saveCall(){
