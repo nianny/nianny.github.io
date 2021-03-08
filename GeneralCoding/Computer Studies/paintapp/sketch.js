@@ -134,8 +134,8 @@ function setup() {
   type = document.getElementById("chooseInput").value;
   //mainc.setAlpha(alpha);
   console.log(mainc);
-  cnv=createCanvas(windowWidth/4*3, windowHeight);
-  var x = (windowWidth - width) / 4*3.9;
+  cnv=createCanvas(windowWidth/2, windowHeight);
+  var x = (windowWidth - width) / 2;
   var y = (windowHeight - height) / 2;
   cnv.position(x, y);
   cnv.style('display', 'block');
@@ -175,7 +175,7 @@ function updateStrokeWidth(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth/4*3, windowHeight);
+  resizeCanvas(windowWidth/2, windowHeight);
   centerCanvas();
 }
 
