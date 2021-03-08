@@ -5,7 +5,7 @@ html, body {
 }
 canvas {
   display: block;
-  border: 5px solid #888;
+  border: 5px solid #8080DD;
 }
 body {
   overflow: hidden; /* Hide scrollbars */
@@ -16,6 +16,10 @@ body {
 .dark-mode {
   background-color: black;
   color: white;
+}
+
+h2{
+  color: #6060DD;
 }
 
 /* .sbutton{

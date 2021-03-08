@@ -295,6 +295,7 @@ function keyPressed(){
     strokew =5;
     mainc=color('#000000')
     type = "Normal"
+    updatecurrent();
 
   }
 }
