@@ -36,7 +36,7 @@ class rainbow{
     colorMode(RGB);
     console.log("Create new node")
     //console.log(this.value);
-    this.set = random([1,-1]) 
+    this.set = random([2,-2]) 
   }
 
   instruct(){
@@ -71,12 +71,42 @@ class rainbow{
 
     for (let p=1; p<this.actions.length; p++){
       this.colour = color(this.colours[p],100,150);
-      this.colour.setAlpha(this.opacity);
+      
+      //this.colour.setAlpha(this.opacity);
       stroke(this.colour)
       line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1])
     }
+    //console.log(this.colour);
     
     colorMode(RGB);
+  }
+
+  detect(){
+    if (free){
+      if (mouseIsPressed == true){
+        filled = true;
+        this.actions.push([mouseX, mouseY]);
+      }
+  
+      else if (mouseY >= 0 && filled){
+        filled = false;
+        arr.push(current);
+        updatecurrent();
+        redo = [];
+      }
+  
+      for (let i=0; i<arr.length; i++){
+        arr[i].instruct();
+      }
+      this.instruct();
+    }
+  }
+
+  present(){
+    this.sample = createGraphics(width/20, height/20);
+    this.sample.point(this.sample.width/2, this.sample.height/2);
+
+    image(this.sample, 0,0);
   }
 }
 
@@ -122,6 +152,39 @@ class freehand {
     //   line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1])
     // }
   }
+
+  detect(){
+    if (free){
+      if (mouseIsPressed == true){
+        filled = true;
+        this.actions.push([mouseX, mouseY]);
+      }
+  
+      else if (mouseY >= 0 && filled){
+        filled = false;
+        arr.push(current);
+        updatecurrent();
+        redo = [];
+      }
+  
+      for (let i=0; i<arr.length; i++){
+        arr[i].instruct();
+      }
+      this.instruct();
+    }
+  }
+
+  present(){
+    this.sample = createGraphics(width/20, height/20);
+    this.sample.stroke(this.colour);
+    this.sample.strokeWeight(this.thick);
+    this.sample.fill(0);
+    this.sample.rect(0,0,this.sample.width, this.sample.height);
+    this.sample.point(this.sample.width/2, this.sample.height/2);
+
+    image(this.sample, 0,0);
+    //console.log("Hallo")
+  }
 }
 
 function setup() {
@@ -144,12 +207,18 @@ function setup() {
     updatecurrent();
   }
   cursor(CROSS);
+
+
+  pg = createGraphics(width/20, height/20);
+
+
+
   //current.colour = mainc;
 }
 
 function randomC(){
 
-  let r = floor(random(0,255));
+  let r = floor(random(50,200));
   let g = 150;
   let b = 255;
   let c = color(r,g,b);
@@ -240,25 +309,15 @@ function drawLogo(){
 function draw() {
   //arr.pop();
   background(backgroundcolour);
+  current.detect();
+
+  current.present();
+
+  pg.background(0);
+  image(pg,width/2,height/2);
+  
   //drawLogo();
-  if (free){
-    if (mouseIsPressed == true){
-      filled = true;
-      current.actions.push([mouseX, mouseY]);
-    }
 
-    else if (mouseY >= 0 && filled){
-      filled = false;
-      arr.push(current);
-      updatecurrent();
-      redo = [];
-    }
-
-    for (let i=0; i<arr.length; i++){
-      arr[i].instruct();
-    }
-    current.instruct();
-  }
   //let a = [];
 
 
