@@ -1,7 +1,12 @@
 /*
 Basically how does this code work. It might be a mess because I didn't reallty organise the functions and things.
 
-The entire "route" to get to the current stage in stored in an array and printed out every frane.   
+The entire "route" to get to the current stage in stored in an array and printed out every frane. 
+The form of the "actions" are stored in a class, which has an "instruct()" methods to print out its individual things. 
+THis is mainly because different types of pens and things have vastly different ways of drawing out the things, and I thought it would be easier to just iterate thorugh the entire array and call a method of that object.
+
+One of the most important functions in this code is the "updateCurrent()" function. This is called when any settings from html are changed or if a new object is required (e.g. the mouse is no longer pressed). 
+It will create an object called "current" based on the classes - it knows which one to choose from the html dropdown.
 */
 
 
@@ -152,10 +157,10 @@ class highlighter {
       endShape(CLOSE);
 
       beginShape();
-      vertex(this.actions[p].x+this.change.x-1, this.actions[p].y + this.change.y);
-      vertex(this.actions[p].x-1, this.actions[p].y);
-      vertex(this.actions[p].x+1, this.actions[p].y);
-      vertex(this.actions[p].x+this.change.x+1, this.actions[p].y+this.change.y);
+      vertex(this.actions[p].x+this.change.x-0.1, this.actions[p].y + this.change.y);
+      vertex(this.actions[p].x-0.1, this.actions[p].y);
+      vertex(this.actions[p].x+0.1, this.actions[p].y);
+      vertex(this.actions[p].x+this.change.x+0.1, this.actions[p].y+this.change.y);
       endShape(CLOSE);
     }
 
