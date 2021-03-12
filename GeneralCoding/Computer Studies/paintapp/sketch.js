@@ -27,6 +27,9 @@ function updatecurrent(){
   else if (type == 'Eraser'){
     current = new freehand(true);
   }
+  else if (type = 'highlighter'){
+    current = new highlighter();
+  }
   
 }
 
@@ -89,7 +92,7 @@ class rainbow{
   }
 
   detect(){
-    if (mouseIsPressed == true){
+    if (mouseIsPressed == true && mouseX >= -20){
       filled = true;
       this.actions.push([mouseX, mouseY]);
     }
@@ -126,6 +129,59 @@ class clear {
   }
 }
 
+class highlighter {
+  constructor(){
+    this.actions = [];
+    this.colour = mainc;
+    this.thick = strokew;
+    this.change = createVector(-(this.thick*tan(60  )), -(this.thick))
+  }
+
+  instruct(){
+    noStroke();
+    //stroke(this.colour);
+    fill(this.colour);
+    
+
+    for (let p=1; p<this.actions.length-1; p++){
+      beginShape();
+      vertex(this.actions[p].x+this.change.x, this.actions[p].y + this.change.y);
+      vertex(this.actions[p].x, this.actions[p].y);
+      vertex(this.actions[p+1].x, this.actions[p+1].y);
+      vertex(this.actions[p+1].x+this.change.x, this.actions[p+1].y+this.change.y);
+      endShape(CLOSE);
+
+      beginShape();
+      vertex(this.actions[p].x+this.change.x-1, this.actions[p].y + this.change.y);
+      vertex(this.actions[p].x-1, this.actions[p].y);
+      vertex(this.actions[p].x+1, this.actions[p].y);
+      vertex(this.actions[p].x+this.change.x+1, this.actions[p].y+this.change.y);
+      endShape(CLOSE);
+    }
+
+    noFill();
+  }
+
+  detect(){
+    if (mouseIsPressed == true && mouseX >= -20){
+      filled = true;
+      let currentpos = createVector(mouseX, mouseY)
+      this.actions.push(currentpos);
+    }
+
+    else if (mouseY >= 0 && filled){
+      filled = false;
+      arr.push(current);
+      updatecurrent();
+      redo = [];
+    }
+
+    for (let i=0; i<arr.length; i++){
+      arr[i].instruct();
+    }
+    this.instruct();
+  }
+}
 
 class freehand {
   constructor(eraser=false){
@@ -159,7 +215,7 @@ class freehand {
   }
 
   detect(){
-    if (mouseIsPressed == true){
+    if (mouseIsPressed == true && mouseX >= -20){
       filled = true;
       this.actions.push([mouseX, mouseY]);
     }
@@ -243,6 +299,7 @@ function updateColour(){
 
 function updateStrokeWidth(){
   strokew = document.getElementById("strokewidth").value;
+  updatecurrent();
 }
 
 function windowResized() {
@@ -268,11 +325,10 @@ function changeInput(){
   type = document.getElementById("chooseInput").value;
   console.log(type)
   mouseIsPressed = false;
-  if (type == "Normal" || type == "Eraser"){
-    arr.push(current);
-    updatecurrent();
-    console.log("Changed");
-  }
+  arr.push(current);
+  updatecurrent();
+  console.log("Changed");
+  
 }
 
 function eraser(){
@@ -313,7 +369,7 @@ function draw() {
   background(backgroundcolour);
   current.detect();
 
-  current.present();
+  //current.present();
 
   pg.background(0);
   image(pg,width/2,height/2);

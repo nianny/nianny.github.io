@@ -1,5 +1,7 @@
 Help and Instructions
 
+What is this: A lag friendly simple drawing tool based on Microsoft Paint. It is done using p5js.
+
 Types of drawing tools: (choose from the dropdown list and adjust settings below)
 - pen
   - colour
