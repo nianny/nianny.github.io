@@ -11,6 +11,7 @@ body {
   overflow: hidden; /* Hide scrollbars */
   background-color: white;
   color: black;
+  padding-left: 10px;
 }
 
 .dark-mode {

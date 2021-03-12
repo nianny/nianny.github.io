@@ -21,6 +21,9 @@ Future possible implementations:
 - See/unsee specific settings based on input method
 - improved UI
 
-Future drawing mathods:
+Future drawing methods:
 - shape drawers
-- rainbow pen
+
+Keyboard shortcuts available:
+- Ctrl+h: Help
+- Ctrl+r: Reset settings (sets everything back to default)

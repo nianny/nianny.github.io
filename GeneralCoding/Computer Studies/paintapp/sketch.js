@@ -1,7 +1,14 @@
+/*
+Basically how does this code work. It might be a mess because I didn't reallty organise the functions and things.
+
+The entire "route" to get to the current stage in stored in an array and printed out every frane.   
+*/
+
+
+
 //let a = [];
-let arr = [];
-let redo = [];
-let free = true;
+let arr = [];  //arr that stores all the things to be printed out when the sketch refreshes
+let redo = []; //used to stores things that have been undoed (not printed), pushed when undo button pressed, popped when redo button pressed, and cleared when any changes are made
 let mainc;
 let strokew;
 let alpha;
@@ -82,24 +89,22 @@ class rainbow{
   }
 
   detect(){
-    if (free){
-      if (mouseIsPressed == true){
-        filled = true;
-        this.actions.push([mouseX, mouseY]);
-      }
-  
-      else if (mouseY >= 0 && filled){
-        filled = false;
-        arr.push(current);
-        updatecurrent();
-        redo = [];
-      }
-  
-      for (let i=0; i<arr.length; i++){
-        arr[i].instruct();
-      }
-      this.instruct();
+    if (mouseIsPressed == true){
+      filled = true;
+      this.actions.push([mouseX, mouseY]);
     }
+
+    else if (mouseY >= 0 && filled){
+      filled = false;
+      arr.push(current);
+      updatecurrent();
+      redo = [];
+    }
+
+    for (let i=0; i<arr.length; i++){
+      arr[i].instruct();
+    }
+    this.instruct();
   }
 
   present(){
@@ -154,24 +159,22 @@ class freehand {
   }
 
   detect(){
-    if (free){
-      if (mouseIsPressed == true){
-        filled = true;
-        this.actions.push([mouseX, mouseY]);
-      }
-  
-      else if (mouseY >= 0 && filled){
-        filled = false;
-        arr.push(current);
-        updatecurrent();
-        redo = [];
-      }
-  
-      for (let i=0; i<arr.length; i++){
-        arr[i].instruct();
-      }
-      this.instruct();
+    if (mouseIsPressed == true){
+      filled = true;
+      this.actions.push([mouseX, mouseY]);
     }
+
+    else if (mouseY >= 0 && filled){
+      filled = false;
+      arr.push(current);
+      updatecurrent();
+      redo = [];
+    }
+
+    for (let i=0; i<arr.length; i++){
+      arr[i].instruct();
+    }
+    this.instruct();
   }
 
   present(){
@@ -203,9 +206,8 @@ function setup() {
   cnv.position(x, y);
   cnv.style('display', 'block');
   noFill();
-  if (free){
-    updatecurrent();
-  }
+  updatecurrent();
+  
   cursor(CROSS);
 
 
