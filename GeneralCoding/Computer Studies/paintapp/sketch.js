@@ -300,6 +300,7 @@ function saveCall(){
 
 function updateColour(){
   mainc=color(document.getElementById("colourpicka").value);
+  updatecurrent();
 }
 
 function updateStrokeWidth(){
