@@ -4,10 +4,7 @@ html, body {
   font-family: 'Akaya Telivigala';
   font-size: small
 }
-canvas {
-  display: block;
-  border: 5px solid #8080DD;
-}
+
 body {
   overflow: hidden; /* Hide scrollbars */
   background-color: white;

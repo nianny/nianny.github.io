@@ -5,8 +5,15 @@ The entire "route" to get to the current stage in stored in an array and printed
 The form of the "actions" are stored in a class, which has an "instruct()" methods to print out its individual things. 
 THis is mainly because different types of pens and things have vastly different ways of drawing out the things, and I thought it would be easier to just iterate thorugh the entire array and call a method of that object.
 
-One of the most important functions in this code is the "updateCurrent()" function. This is called when any settings from html are changed or if a new object is required (e.g. the mouse is no longer pressed). 
+One of the most important functions in this code is the "updateCurrent()" function. 
+This is called when any settings from html are changed or if a new object is required (e.g. the mouse is no longer pressed). 
 It will create an object called "current" based on the classes - it knows which one to choose from the html dropdown.
+
+The last thing is that every "draw" function, a checker is made to check if the current position and things should be stored or even if a new node should be created.
+This was implemented because there was the possibility of having things with differect detection types, such as shapes which is planned to require two mouse clicks/mouse dragged.
+
+Note: 
+- all other testing comments (e.g. alternative testing, console.log) were removed
 */
 
 
@@ -14,86 +21,65 @@ It will create an object called "current" based on the classes - it knows which 
 //let a = [];
 let arr = [];  //arr that stores all the things to be printed out when the sketch refreshes
 let redo = []; //used to stores things that have been undoed (not printed), pushed when undo button pressed, popped when redo button pressed, and cleared when any changes are made
-let mainc;
-let strokew;
-let alpha;
-let backgroundcolour = 250;
-let filled = false;
-let type;
+let mainc; //colour
+let strokew; //stroke weight
+let alpha; //opacity
+let backgroundcolour = 250; //background colour (to make it easily modifiable, used in the eraser class)
+let filled = false; //to make sure that no empty nodes are added to the arr[] (so that the redo works properly instead of removing empty nodes)
+let type; //collected from the dropdown menu
 
 
 function updatecurrent(){
-  if (type == 'Normal'){
+  if (type == 'Normal'){ //normal strokes
     current = new freehand();
   }
   else if (type == 'rainbow'){
-    current = new rainbow();
+    current = new rainbow(); //rainbow colour
   }
   else if (type == 'Eraser'){
-    current = new freehand(true);
+    current = new freehand(true); //eraser (used this way because the only difference it has with normal strokes is the colour)
   }
   else if (type = 'highlighter'){
-    current = new highlighter();
+    current = new highlighter(); //highlighter
   }
   
 }
 
 class rainbow{
-  constructor(){
+  constructor(){ //collects all the parameters to be stored -> always remain the same and stored even if the global variable changed
     //super();
-    this.actions = [];
-    this.colours = [];
+    this.actions = []; //the positions of all the points (also found in "freehand")
+    this.colours = []; //colours of each point
     this.thick=strokew;
     this.opacity=alpha;
-    colorMode(HSB);
-    this.value = int(random(255));
-    this.colour=color(this.value,150,200);
+    colorMode(HSB); //sets the colourmode to HSB temporarily -> much easier to change the colour only
+    this.value = int(random(255)); //chooses the starting colour, a random hue
     colorMode(RGB);
-    console.log("Create new node")
-    //console.log(this.value);
-    this.set = random([2,-2]) 
+    this.set = random([2,-2]) //randomises whether the hue increases or decrases at the start
   }
 
   instruct(){
-    this.increase = this.set;
-    this.colours[0] = this.value;
-    for (let p=1; p<this.actions.length; p++){
-      this.colours[p] = this.colours[p-1]+this.increase;
-      if (this.colours[p] >= 255 || this.colours[p] <= 0){
+    this.increase = this.set; //allows for multiple runs of instruct() -> the starting valye and starting change always remains the same
+    this.colours[0] = this.value; //colour of each point is stored in an array -> this will be fixed throughout the entire thing
+    for (let p=1; p<this.actions.length; p++){//for loops through the array of positions
+      this.colours[p] = this.colours[p-1]+this.increase; //sets the colour of the current position -> the sum of the increase and the previous point
+      if (this.colours[p] >= 255 || this.colours[p] <= 0){ //if the colour hits any edges, it reverses
         this.increase = (-1)*this.increase;
       }
     }
-    colorMode(HSB);
+
+    colorMode(HSB); //sets to HSB temporarily to facilitate the drawing
     
     strokeWeight(this.thick);
-    //console.log(this.value);
-    
-    // beginShape();
-    // for (let p=0; p<this.actions.length; p++){
-    //   this.colour = color(this.colours[p], 150, 200, this.opacity);
-    //   stroke(this.colour);
-    //   // this.colour= color(this.value, 150,200);
-    //   // this.colour.setAlpha(this.opacity);
-    //   // stroke(this.colour);
-    //   vertex(this.actions[p][0], this.actions[p][1]);
-    //   this.value += 1;
-    //   console.log(this.colours[p]);
-    //   // if (this.value >= 255){
-    //   //   this.value = 0;
-    //   // }  
-    // }
-    // endShape();
 
-    for (let p=1; p<this.actions.length; p++){
-      this.colour = color(this.colours[p],100,150);
+    for (let p=1; p<this.actions.length-1; p++){
+      this.colour = color(this.colours[p],100,150); //sets the colour for the current point and line
       
-      //this.colour.setAlpha(this.opacity);
-      stroke(this.colour)
-      line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1])
+      stroke(this.colour) //sets the stroke colour to the assigned colour
+      line(this.actions[p-1][0], this.actions[p-1][1], this.actions[p][0], this.actions[p][1]) //draws a line between the previous point and the current point
     }
-    //console.log(this.colour);
     
-    colorMode(RGB);
+    colorMode(RGB); //sets it back to RGB in case it disrupts any other colour functions
   }
 
   detect(){
