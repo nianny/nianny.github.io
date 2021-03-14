@@ -1,0 +1,41 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Akaya Telivigala';
+  font-size: small
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+  background-color: white;
+  color: black;
+  padding-left: 10px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+h2{
+  color: #6060DD;
+}
+
+/* .sbutton{
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.sbutton:hover {
+  background-color: #008CBA;
+  color: white;
+} */
+/* canvas {
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  /* justify-content: center; */
+
+  /* This centers our sketch vertically. */
+  /* align-items: center;
+} */ 

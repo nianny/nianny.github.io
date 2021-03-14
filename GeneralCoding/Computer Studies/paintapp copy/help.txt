@@ -1,0 +1,38 @@
+Help and Instructions
+
+What is this: A lag friendly simple drawing tool based on Microsoft Paint. It is done using p5js.
+Feel free to draw what you like to express yourself, and I wish you a good time experimenting :D
+
+Types of drawing tools: (choose from the dropdown list and adjust settings below)
+- pen
+  - colour
+  - width
+  - opacity
+  - rainbow
+  
+- eraser
+  - width
+
+- highlighter
+  - colour
+  - thickness
+
+
+
+Other functions:
+- Undo/Redo
+- Clear
+- Download
+
+
+Future possible implementations:
+- Temporarily saving drawing
+- See/unsee specific settings based on input method
+- improved UI
+
+Future drawing methods:
+- shape drawers
+
+Keyboard shortcuts available:
+- Ctrl+h: Help
+- Ctrl+r: Reset settings (sets everything back to default)

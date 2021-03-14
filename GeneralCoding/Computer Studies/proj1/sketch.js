@@ -80,7 +80,7 @@ function drawmountains() {
   fill(130,alpha);
   triangle(width/20*0.7, height/20*19.7, width/20*4.5, height/20*15, width/20*4.5, height/20*16.4  );
 
-
+  fill(140,alpha);
   beginShape();
   vertex(width/20*6.6, height/10*6.3);
   vertex(width/20*5.7, height/10*7.4);
@@ -89,6 +89,7 @@ function drawmountains() {
   endShape(CLOSE);
   //triangle(width/20*6.6, height/10*6.3, width/20*5.7, height/10*7.4, width/20*6.3, height/10*7.55);
 
+  fill(150,alpha);
   beginShape();
   vertex(width/20*18.1, height/20*12.55);
   vertex(width/20*18.1, height/20*14.7);
@@ -98,14 +99,21 @@ function drawmountains() {
 
 
 
-  fill(255,alpha);
+  fill(230,alpha);
   triangle(width/20*4.7, height/20*15, width/20*4.7, height/20*16.25, width/20*5.75, height/20*15.5);
 
   triangle(width/20*6.8, height/20*12.6, width/20*6.9, height/20*14.4, width/20*7.9, height/20*13.5);
 
   triangle(width/20*17.9, height/20*12.55, width/20*17.2, height/20*13.5, width/20*17.9, height/20*14.5)
 
+  fill(120,alpha);
+  beginShape();
+  vertex(width/20*13, height/20*10.6);
   
+  vertex(width/20*8, height);
+  vertex(width/20*2, height);
+  vertex(width/2, height/20*12.2);
+  endShape(CLOSE);
 
 
 
