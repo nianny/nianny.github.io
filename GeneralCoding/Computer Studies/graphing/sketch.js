@@ -4,10 +4,11 @@ function setup() {
   sel = createSelect();
   sel.position(10,10);
   sel.option('Mandelbrot Set')
-  sel.option('Lenoz')
+  sel.option('Lorenz Attractor')
   sel.changed(changeChoice)
   sel.selected('Mandelbrot Set')
-  createMandelbrot();
+  drawEverything();
+  drawMandelbrot();
 }
 
 function createMandelbrot(){
@@ -19,7 +20,7 @@ function createMandelbrot(){
     for (let y=0; y<mande.height; y++){
 
       //mapping
-      let a = map(x,0,mande.width, -2,2); 
+      let a = map(x,0,mande.width, -2.5,1.5); 
       let b = map(y,0,mande.height,-2,2)
 
       let ka = a;
@@ -68,6 +69,9 @@ function createMandelbrot(){
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight)
   size = min(width, height);
+  drawEverything();
+  
+  changeChoice();
 }
   
 function draw() {
@@ -80,9 +84,17 @@ function changeChoice(){
     console.log('yay')
     drawMandelbrot();
   }
+  else if (sel.value() == 'Lorenz Attractor'){
+
+  }
 }
 
 function drawMandelbrot(){
   image(mande, 0, height-min(width, height))
 
+}
+
+
+function drawEverything(){
+  createMandelbrot();
 }
