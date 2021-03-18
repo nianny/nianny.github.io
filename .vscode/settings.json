@@ -2,5 +2,6 @@
     "files.associations": {
         "iostream": "cpp",
         "vector": "cpp"
-    }
+    },
+    "python.pythonPath": "/Users/nianny/.pyenv/versions/3.10-dev/bin/python"
 }
