@@ -12,7 +12,7 @@ function setup() {
 }
 
 function createMandelbrot(){
-  mande = createGraphics(size,size);
+  mande = createGraphics(width,height);
   mande.pixelDensity(1);
   mande.loadPixels();
   let it = 100;
@@ -20,8 +20,8 @@ function createMandelbrot(){
     for (let y=0; y<mande.height; y++){
 
       //mapping
-      let a = map(x,0,mande.width, -2.5,1.5); 
-      let b = map(y,0,mande.height,-2,2)
+      let a = map(x,0,mande.width, -1.25*width/height,0.75*width/height); 
+      let b = map(y,0,mande.height,-1,1)
 
       let ka = a;
       let kb = b;
