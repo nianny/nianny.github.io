@@ -13,7 +13,28 @@ function setup() {
   //drawMandelbrot();
 }
 
-class 
+class lorenzClass{
+  constructor(hue, posx, posy){
+    this.hue = hue;
+    this.posx = posx;
+    this.posy = posy;
+  }
+
+  createLorenz(){
+    this.lorenz = createGraphics(width, height);
+    lorenz.background(0);
+    x = 0.01;
+    y = 0.0;
+    z = 0.0;
+  
+    a = 10;
+    b = 28;
+    c = 10/3;
+  
+    arr = [];
+    lorenz.colorMode(HSB);
+  }
+}
 
 
 function windowResized() {
@@ -62,7 +83,7 @@ function drawEverything(){
 
 
 function createLorenz(){
-  lorenz = createGraphics(width, height), WEBGL;
+  lorenz = createGraphics(width, height, WEBGL);
   lorenz.background(0);
   x = 0.01;
   y = 0.0;
@@ -103,7 +124,7 @@ function drawLorenz(){
   // lorenz.beginShape();
   for (let i = 1; i<arr.length; i++){
     lorenz.stroke(hue,150,150);
-    lorenz.line(lorenz.width/2+arr[i-1].x*8,  lorenz.height/2+arr[i-1].y*8, lorenz.width/2+arr[i].x*8,  lorenz.height/2+arr[i].y*8); //,   arr[i].z);
+    lorenz.line(lorenz.width/2+arr[i-1].x*8,  lorenz.height/2+arr[i-1].y*8, lorenz.width/2+arr[i].x*8,  lorenz.height/2+arr[i].y*8);//,   arr[i].z);
     hue+=0.05;
 
     if (hue > 255){
