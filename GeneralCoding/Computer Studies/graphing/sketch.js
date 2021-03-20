@@ -8,62 +8,12 @@ function setup() {
   sel.changed(changeChoice)
   sel.selected('Mandelbrot Set')
   drawEverything();
-  drawMandelbrot();
+
+  drawImages();
+  //drawMandelbrot();
 }
 
-function createMandelbrot(){
-  mande = createGraphics(width,height);
-  mande.pixelDensity(1);
-  mande.loadPixels();
-  let it = 100;
-  for (let x=0; x<mande.width; x++){
-    for (let y=0; y<mande.height; y++){
-
-      //mapping
-      let a = map(x,0,mande.width, -1.25*width/height,0.75*width/height); 
-      let b = map(y,0,mande.height,-1,1)
-
-      let ka = a;
-      let kb = b;
-
-      let n = 0;
-
-      for (let i=0; i<it; i++){
-        let aa = a*a - b*b;
-        let bb = 2*a*b;
-
-        a = aa + ka;
-        b = bb + kb;
-
-        if (a+b > 16){
-          break;
-        }
-
-        n++;
-      }
-
-      // let brightness = 0;
-      // if (n == 100){
-      //   brightness = 255;
-      // }
-
-      let brightness = map(n,0,100,0,255);
-      if (n == it){
-        brightness = 0;
-      }
-
-
-      //update individual pixels
-      let pix = (y*mande.width + x)*4 ; // + mande.width/10*1
-      mande.pixels[pix] = brightness;
-      mande.pixels[pix+1] = brightness;
-      mande.pixels[pix+2] = brightness;
-      mande.pixels[pix+3] = 255;
-    }
-  }
-  mande.updatePixels();
-  //mande.background(0);
-}
+class 
 
 
 function windowResized() {
@@ -75,26 +25,100 @@ function windowResized() {
 }
   
 function draw() {
-  background(0);
-  image(mande, width-mande.width, height-mande.height)
+  //background(0);
+  drawImages()
+  
+}
+
+function drawImages(){
+  if (sel.value() == 'Mandelbrot Set'){
+    drawMandelbrot();
+  }
+  else if (sel.value() == 'Lorenz Attractor'){
+    drawLorenz();
+  }
+  
 }
 
 function changeChoice(){
   if (sel.value() == 'Mandelbrot Set'){
     console.log('yay')
-    drawMandelbrot();
+    createMandelbrot();
   }
   else if (sel.value() == 'Lorenz Attractor'){
-
+    createLorenz();
+    
   }
 }
 
-function drawMandelbrot(){
-  image(mande, 0, height-min(width, height))
 
-}
 
 
 function drawEverything(){
   createMandelbrot();
+  createLorenz();
+}
+
+
+
+function createLorenz(){
+  lorenz = createGraphics(width, height), WEBGL;
+  lorenz.background(0);
+  x = 0.01;
+  y = 0.0;
+  z = 0.0;
+
+  a = 10;
+  b = 28;
+  c = 10/3;
+
+  arr = [];
+  lorenz.colorMode(HSB);
+
+  
+
+}
+
+function drawLorenz(){
+  // lorenz.background(0);
+  let dt = 0.01;
+
+  let dx = dt*(a*(y-x));
+  let dy = dt*(x*(b-z)-y);
+  let dz = dt*(x*y - c*z);
+
+  x += dx;
+  y += dy;
+  z += dz;
+
+  arr.push(createVector(x,y,z))
+
+
+  let hue = 0;
+  //point(x,y,z);
+  //print(x,y,z);
+  
+
+  lorenz.noFill();
+  // lorenz.beginShape();
+  for (let i = 1; i<arr.length; i++){
+    lorenz.stroke(hue,150,150);
+    lorenz.line(lorenz.width/2+arr[i-1].x*8,  lorenz.height/2+arr[i-1].y*8, lorenz.width/2+arr[i].x*8,  lorenz.height/2+arr[i].y*8); //,   arr[i].z);
+    hue+=0.05;
+
+    if (hue > 255){
+      hus = 0;
+    }
+  }
+  // lorenz.endShape();
+  //lorenz.scale(5);
+  // lorenz.point(lorenz.width/2+x*8,lorenz.height/2+y*8, z);
+
+  
+  
+
+
+
+  image(lorenz, 0,0);
+
 }

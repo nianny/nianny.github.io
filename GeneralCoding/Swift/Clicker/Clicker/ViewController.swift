@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var gu: UIView!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var clickbutton: UIButton!
     @IBOutlet weak var restart: UIButton!

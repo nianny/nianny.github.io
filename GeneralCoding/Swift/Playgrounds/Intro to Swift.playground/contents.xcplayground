@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' executeOnSourceChanges='true'>
+    <pages>
+        <page name='Exercise 2_Operators'/>
+        <page name='Exercise 1'/>
+        <page name='Exercise 3_Printing'/>
+        <page name='Exercise 4_Functions'/>
+    </pages>
+</playground>

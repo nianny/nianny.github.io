@@ -66,6 +66,7 @@
                     <connections>
                         <outlet property="clickbutton" destination="rXT-Z2-bQg" id="tb4-hg-M0M"/>
                         <outlet property="control" destination="KHb-d5-k7V" id="4A6-PU-aMb"/>
+                        <outlet property="gu" destination="8bC-Xf-vdC" id="aT1-Ca-ifY"/>
                         <outlet property="number" destination="SD5-4M-WIY" id="urv-CY-PDE"/>
                         <outlet property="restart" destination="I5Z-Kg-4bV" id="r6k-hc-udt"/>
                     </connections>
