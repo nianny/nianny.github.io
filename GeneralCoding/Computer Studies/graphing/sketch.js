@@ -1,16 +1,20 @@
+let lorenza;
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  lorenza = new lorenzClass(200, 0, 0, 10, 28, 10/3)
   size = min(width, height);
   sel = createSelect();
   sel.position(10,10);
   sel.option('Mandelbrot Set')
   sel.option('Lorenz Attractor')
   sel.changed(changeChoice)
-  sel.selected('Mandelbrot Set')
+  sel.selected('Lorenz Attractor')
   drawEverything();
 
   drawImages();
   //drawMandelbrot();
+
+  
 }
 
 class lorenzClass{
@@ -21,6 +25,14 @@ class lorenzClass{
     this.a = a;
     this.b = b;
     this.c = c;
+    this.arr = [];
+    this.lorenz = createGraphics(width, height);
+    this.dx;
+    this.dy;
+    this.dx;
+    this.x;
+    this.y;
+    this.z;
   }
 
   createLorenz(){
@@ -47,11 +59,15 @@ class lorenzClass{
     this.y += this.dy;
     this.z += this.dz;
 
-    this.arr.push(createVector(x,y,z))
-    for (let i = 1; i<arr.length; i++){
-      this.lorenz.stroke(0,150,150);
-      this.lorenz.line(this.lorenz.width/2+this.arr[i-1].x*8, this.lorenz.height/2+this.arr[i-1].y*8, this.lorenz.width/2+this.arr[i].x*8,  this.lorenz.height/2+this.arr[i].y*8);//,   arr[i].z);
+    this.arr.push(createVector(this.x,this.y,this.z))
+    this.lorenz.noFill();
+    this.lorenz.stroke(this.hue,150,150);
+  
+    this.lorenz.beginShape();
+    for (let i = 0; i<this.arr.length; i++){
+      this.lorenz.vertex(this.arr[i].x*5, this.arr[i].y*5, this.arr[i].z*5);
     }
+    this.lorenz.endShape();
 
     image(this.lorenz, 0,0);
   }
@@ -77,7 +93,8 @@ function drawImages(){
     drawMandelbrot();
   }
   else if (sel.value() == 'Lorenz Attractor'){
-    lorenz.drawLorenz();
+    //drawLorenz();
+    lorenza.drawLorenz();
   }
   
 }
@@ -88,7 +105,8 @@ function changeChoice(){
     createMandelbrot();
   }
   else if (sel.value() == 'Lorenz Attractor'){
-    createLorenz();
+    lorenza.createLorenz();
+    //createLorenz();
     
   }
 }
@@ -98,7 +116,7 @@ function changeChoice(){
 
 function drawEverything(){
   createMandelbrot();
-  createLorenz();
+  //createLorenz();
 }
 
 
@@ -143,16 +161,22 @@ function drawLorenz(){
 
   lorenz.noFill();
   // lorenz.beginShape();
-  for (let i = 1; i<arr.length; i++){
-    lorenz.stroke(hue,150,150);
-    lorenz.line(lorenz.width/2+arr[i-1].x*8,  lorenz.height/2+arr[i-1].y*8, lorenz.width/2+arr[i].x*8,  lorenz.height/2+arr[i].y*8);//,   arr[i].z);
-    hue+=0.05;
+  // for (let i = 1; i<arr.length; i++){
+  //   lorenz.stroke(hue,150,150);
+  //   lorenz.line(arr[i-1].x*8, arr[i-1].y*8, arr[i].x*8, arr[i].y*8);//,   arr[i].z);
+  //   hue+=0.05;
 
-    if (hue > 255){
-      hus = 0;
-    }
+  //   if (hue > 255){
+  //     hus = 0;
+  //   }
+  // }
+  lorenz.stroke(0,150,150);
+
+  lorenz.beginShape();
+  for (let i = 0; i<arr.length; i++){
+    lorenz.vertex(arr[i].x*5, arr[i].y*5, arr[i].z*5);
   }
-  // lorenz.endShape();
+  lorenz.endShape();
   //lorenz.scale(5);
   // lorenz.point(lorenz.width/2+x*8,lorenz.height/2+y*8, z);
 
