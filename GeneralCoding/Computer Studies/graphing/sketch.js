@@ -14,25 +14,46 @@ function setup() {
 }
 
 class lorenzClass{
-  constructor(hue, posx, posy){
+  constructor(hue, posx, posy,a,b,c){
     this.hue = hue;
     this.posx = posx;
     this.posy = posy;
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
   createLorenz(){
     this.lorenz = createGraphics(width, height);
-    lorenz.background(0);
-    x = 0.01;
-    y = 0.0;
-    z = 0.0;
+    this.lorenz.background(0);
+    this.x = 0.01;
+    this.y = 0.0;
+    this.z = 0.0;
   
-    a = 10;
-    b = 28;
-    c = 10/3;
-  
-    arr = [];
-    lorenz.colorMode(HSB);
+    this.arr = [];
+    this.lorenz.colorMode(HSB);
+  }
+
+
+  drawLorenz(){
+    // lorenz.background(0);
+    this.dt = 0.01;
+
+    this.dx = this.dt*(this.a*(this.y-this.x));
+    this.dy = this.dt*(this.x*(this.b-this.z)-this.y);
+    this.dz = this.dt*(this.x*this.y - this.c*this.z);
+
+    this.x += this.dx;
+    this.y += this.dy;
+    this.z += this.dz;
+
+    this.arr.push(createVector(x,y,z))
+    for (let i = 1; i<arr.length; i++){
+      this.lorenz.stroke(0,150,150);
+      this.lorenz.line(this.lorenz.width/2+this.arr[i-1].x*8, this.lorenz.height/2+this.arr[i-1].y*8, this.lorenz.width/2+this.arr[i].x*8,  this.lorenz.height/2+this.arr[i].y*8);//,   arr[i].z);
+    }
+
+    image(this.lorenz, 0,0);
   }
 }
 
@@ -56,7 +77,7 @@ function drawImages(){
     drawMandelbrot();
   }
   else if (sel.value() == 'Lorenz Attractor'){
-    drawLorenz();
+    lorenz.drawLorenz();
   }
   
 }
