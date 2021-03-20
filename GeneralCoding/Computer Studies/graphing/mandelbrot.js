@@ -72,7 +72,7 @@ function createMandelbrot(){
     text("The Mandelbrot Set is one of the most famous of fractals, named after Benoit Mandelbrot.", width/100, height/10*1.5);
     text("It is a set based on the equation of Zn = Z^2 + c, where c is a complex number.", width/100, height/10*1.8)
     text("The dark areas at the centre are those at which the variable Z remains stable,", width/100, height/10*2.1)
-    text("with the Z starting at 0, with the real part of c being the y-axis", width/100, height/10*2.4)
+    text("with the Z starting at 0, the real part of c being the y-axis", width/100, height/10*2.4)
     text("and the imaginary part of c being the y-axis.", width/100, height/10*2.7)
   
   }
