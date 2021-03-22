@@ -271,7 +271,7 @@ function setup() {
   cursor(CROSS);
 
 
-  pg = createGraphics(width/20, height/20);
+  //pg = createGraphics(width/20, height/20);
 
 
 
@@ -377,8 +377,8 @@ function draw() {
 
   //current.present();
 
-  pg.background(0);
-  image(pg,width/2,height/2);
+  //pg.background(0);
+  //image(pg,width/2,height/2);
   
   //drawLogo();
 
