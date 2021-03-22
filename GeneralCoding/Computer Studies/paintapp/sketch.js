@@ -29,8 +29,10 @@ let filled = false; //to make sure that no empty nodes are added to the arr[] (s
 let type; //collected from the dropdown menu
 
 
-function updatecurrent(){
+function updatecurrent(){ // chooses the correct type of 
   if (type == 'Normal'){ //normal strokes
+    
+    // ignore attempts to make dynamic html
     // // let t = document.createElement('button');
     // // t.name = "HI"
     // // t.id = "randomcolour"
@@ -44,6 +46,8 @@ function updatecurrent(){
 
 
     //document.getElementById('Settings').appendChild(t);
+    
+    
     current = new freehand();
   }
   else if (type == 'rainbow'){
@@ -77,11 +81,13 @@ class rainbow{
     for (let p=1; p<this.actions.length; p++){//for loops through the array of positions
       this.colours[p] = this.colours[p-1]+this.increase; //sets the colour of the current position -> the sum of the increase and the previous point
       if (this.colours[p] >= 255 || this.colours[p] <= 0){ //if the colour hits any edges, it reverses
-        this.increase = (-1)*this.increase;
+        this.increase = (-1)*this.increase; //changes whether the hue increases or decreases
       }
     }
-
+    
     colorMode(HSB); //sets to HSB temporarily to facilitate the drawing
+    
+    
     
     strokeWeight(this.thick);
 
@@ -95,26 +101,26 @@ class rainbow{
     colorMode(RGB); //sets it back to RGB in case it disrupts any other colour functions
   }
 
-  detect(){
-    if (mouseIsPressed == true && mouseX >= -20){
+  detect(){ //individual code here
+    if (mouseIsPressed == true && mouseX >= -20){ //if the mouse is in the "working" area, add the position to the array actions
       filled = true;
       this.actions.push([mouseX, mouseY]);
     }
 
-    else if (mouseY >= 0 && filled){
-      filled = false;
+    else if (mouseY >= 0 && filled){ //otherwise, if the mouse is let go, the current class is pushed to the global array, and a new one is created.
+      filled = false; //ensures that empty "current" classes are not pushed to the actions array (allows the undo function to work properly)
       arr.push(current);
       updatecurrent();
-      redo = [];
+      redo = []; //since a change is made, the redo array is cleared
     }
 
     for (let i=0; i<arr.length; i++){
-      arr[i].instruct();
+      arr[i].instruct(); //draw everything in the actions array by iterating through them
     }
-    this.instruct();
+    this.instruct(); //draw the actions in the current (allows lines and things to show up even if the mouse is not released
   }
 
-  present(){
+  present(){ //work in progress (sample thing)
     this.sample = createGraphics(width/20, height/20);
     this.sample.point(this.sample.width/2, this.sample.height/2);
 
@@ -123,7 +129,7 @@ class rainbow{
 }
 
 
-class clear {
+class clear { //clear class which basically sets the background colour to default
   constructor(){
 
   }
@@ -133,8 +139,13 @@ class clear {
   }
 }
 
-class highlighter {
-  constructor(){
+class highlighter { //highliter/side pen thing
+  /* concept:
+  Draw slanted rectangles that goes at the same angle
+  this means that moving in some directions will cause thinner lines, while other directions might cause significantly thicker lines
+  */
+  
+  constructor(){ //standard constructor
     this.actions = [];
     this.colour = mainc;
     this.thick = strokew;
@@ -142,25 +153,25 @@ class highlighter {
   }
 
   instruct(){
-    noStroke();
+    noStroke(); //this only uses the fill rectangle, and having a stroke will made it not nice...
     //stroke(this.colour);
     fill(this.colour);
     
 
     for (let p=1; p<this.actions.length-1; p++){
-      beginShape();
+      beginShape(); //main rectangle
       vertex(this.actions[p].x+this.change.x, this.actions[p].y + this.change.y);
       vertex(this.actions[p].x, this.actions[p].y);
       vertex(this.actions[p+1].x, this.actions[p+1].y);
       vertex(this.actions[p+1].x+this.change.x, this.actions[p+1].y+this.change.y);
       endShape(CLOSE);
 
-      beginShape();
+      beginShape(); //tiny rectangle, because 
       vertex(this.actions[p].x+this.change.x-0.1, this.actions[p].y + this.change.y);
       vertex(this.actions[p].x-0.1, this.actions[p].y);
       vertex(this.actions[p].x+0.1, this.actions[p].y);
       vertex(this.actions[p].x+this.change.x+0.1, this.actions[p].y+this.change.y);
-      endShape(CLOSE);
+      endShape(CLOSE); 
     }
 
     noFill();
