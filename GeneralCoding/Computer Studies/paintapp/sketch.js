@@ -242,7 +242,7 @@ class freehand {
     this.sample.stroke(this.colour);
     this.sample.strokeWeight(this.thick);
     this.sample.fill(0);
-    this.sample.rect(0,0,this.sample.width, this.sample.height);
+    this.sample.ellipse(0,0,this.sample.width, this.sample.height);
     this.sample.point(this.sample.width/2, this.sample.height/2);
 
     image(this.sample, 0,0);
