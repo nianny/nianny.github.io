@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ios": "cpp",
+        "string": "cpp",
+        "queue": "cpp"
     },
     "python.pythonPath": "/Users/nianny/.pyenv/versions/3.10-dev/bin/python"
 }
