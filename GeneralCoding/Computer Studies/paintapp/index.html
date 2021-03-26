@@ -22,7 +22,8 @@
 
     
     <h2><strong><u>Nianny Paint</u></strong></h2>
-    <p>If you need assistance, press "Ctrl+h" shortcut</p>
+    <p>If you need assistance or this is the first time using this,</p>
+    <p>press "Ctrl+h" shortcut</p>
     
     <label for = "Download">Download screen:</label>
     <input type="button" name = "Download" value = "Download" onclick="saveCall()">
@@ -55,7 +56,7 @@
       
       <br>
       <labe for = "strokewdith">Change width:</labe>
-      <input type="range" value=5 onchange = "updateStrokeWidth()" id = "strokewidth">
+      <input type="range" value=5 min = 3 onchange = "updateStrokeWidth()" id = "strokewidth">
       <br>
       <label for ="setalpha">Change opacity:</label>
       <input type="range" value=100 onchange = "updateAlpha()" id="setalpha">

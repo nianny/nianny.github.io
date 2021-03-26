@@ -13,7 +13,7 @@ Types of drawing tools: (choose from the dropdown list and adjust settings below
 - eraser
   - width
 
-- highlighter
+- highlighter / slanted pen
   - colour
   - thickness
 
