@@ -5,5 +5,8 @@
         <page name='Exercise 1'/>
         <page name='Exercise 3_Printing'/>
         <page name='Exercise 4_Functions'/>
+        <page name='Exercise 5_Conditionals'/>
+        <page name='Exercise A'/>
+        <page name='Exercise B'/>
     </pages>
 </playground>
