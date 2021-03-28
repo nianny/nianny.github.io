@@ -10,7 +10,7 @@ int32_t main() {
         int n,c;
         cin>>n>>c;
         if (n-1>c or n*2-2 < c){
-            cout<<"Case #"<<i+1<<": IMPOSSIBLE \n";
+            cout<<"Case #"<<i+1<<": IMPOSSIBLE\n";
             continue;
         }
 
