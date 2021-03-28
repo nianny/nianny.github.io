@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         maximumScore = max(maximumScore, Int(counter))
         maxScore.text = "Max: \(maximumScore)"
         counter = 0
-        number.text = "You pressed \(counter) times"
+        number.text = "You pressed \(Int(counter)) times"
         maximum = 0
         checkValue()
         
@@ -110,6 +110,7 @@ class ViewController: UIViewController {
         end = false
         timer.isHidden = false
         speedLabel.isHidden = true
+        self.congratsLabel.transform = .identity
     }
     @IBAction func buttonPressed(_ sender: Any) {
         if pauseBool{
@@ -181,11 +182,16 @@ class ViewController: UIViewController {
             clickbutton.isEnabled = false
             clickbutton.setTitle("Finished", for: .disabled)
             
-            congratsLabel.text = "Woah! You're a legend :o"
+            congratsLabel.text = "Wow! You're a legend :o"
+            UIView.animate(withDuration: 2) {
+                self.congratsLabel.transform = self.congratsLabel.transform.scaledBy(x: 1.5, y: 1.5)
+            }
             end = true
             counter = Double(maxNum)
-            number.text = "You pressed \(counter) times"
+            number.text = "You pressed \(maxNum) times"
             timer.isHidden = true
+            maximumScore = max(maximumScore, Int(counter))
+            maxScore.text = "Max: \(maximumScore)"
         }
         else {
             congratsLabel.isHidden = true

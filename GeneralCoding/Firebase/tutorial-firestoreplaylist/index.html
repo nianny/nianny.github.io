@@ -37,8 +37,10 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        const db = firebase.firestore() //reference to database and stored in constant
-        db.settings({ timestampInSnapshots: true })
+        let db = firebase.firestore() //reference to database and stored in constant
+        db.settings({ timestampsInSnapshots: true })
+
+
         </script>
 
         <script src="app.js"></script>
