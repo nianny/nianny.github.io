@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     var pauseBool = false
     
     override func viewDidLoad() {
+        print(maximumScore)
         
         super.viewDidLoad()
         pause.layer.cornerRadius = 10
@@ -53,6 +54,10 @@ class ViewController: UIViewController {
 //        timer.isHidden = true;
         timer.text = "\(timeElapsed)"
         
+        maxScore.text = "Max: \(maximumScore)"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         maxScore.text = "Max: \(maximumScore)"
     }
     
