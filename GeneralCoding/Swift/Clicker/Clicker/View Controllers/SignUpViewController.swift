@@ -17,11 +17,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var returnHome: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        self.title = "Sign Up"
         signUpButton.layer.cornerRadius = 10
+        returnHome.layer.cornerRadius = 10
+        returnHome.layer.borderColor = CGColor(gray: 0.7, alpha: 1)
+        returnHome.layer.borderWidth = 2
 
         // Do any additional setup after loading the view.
     }
@@ -120,5 +125,11 @@ class SignUpViewController: UIViewController {
         signUpLabel.isHidden = false
     }
     
-
+    @IBAction func returnHome(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let secondVC = sb.instantiateViewController(identifier: "choosingVC") as? HomeViewController {
+            self.present(secondVC, animated: true, completion: nil)
+        }
+    }
+    
 }

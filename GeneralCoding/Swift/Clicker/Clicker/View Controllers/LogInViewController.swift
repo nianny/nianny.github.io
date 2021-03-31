@@ -14,6 +14,8 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logInLabel: UILabel!
+    @IBOutlet weak var returnHome: UIButton!
+    
     var maximum = 0
     var uid = ""
     
@@ -32,7 +34,11 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 20
         logInLabel.isHidden = true
+        returnHome.layer.cornerRadius = 10
+        returnHome.layer.borderColor = CGColor(gray: 0.7, alpha: 1)
+        returnHome.layer.borderWidth = 2
         
+        self.title = "Log in"
         
         
 
@@ -96,6 +102,12 @@ class LogInViewController: UIViewController {
         }
         
         
+    }
+    @IBAction func backHome(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let secondVC = sb.instantiateViewController(identifier: "choosingVC") as? HomeViewController {
+            self.present(secondVC, animated: true, completion: nil)
+        }
     }
     func signIn(){
         
