@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     var pauseBool = false
     
     override func viewDidLoad() {
+        maximumScore = LogInViewController.currentScore
         super.viewDidLoad()
         pause.layer.cornerRadius = 10
 //        pause.setTitle("", for: .disabled)

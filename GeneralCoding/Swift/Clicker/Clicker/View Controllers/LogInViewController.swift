@@ -14,11 +14,13 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logInLabel: UILabel!
+    var maximum: Any
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 20
+        
         
 
         // Do any additional setup after loading the view.
@@ -54,8 +56,10 @@ class LogInViewController: UIViewController {
 
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
-                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        let currentScore = dataDescription["high"]
+                        let dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
+                        let currentScore = dataDescription["high"] ?? 0
+                        self.maximum = currentScore
+//                        print(type(of: dataDescription))
                         print(currentScore)
                         print("Document data: \(dataDescription)")
                     } else {
