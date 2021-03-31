@@ -14,12 +14,22 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logInLabel: UILabel!
-    var maximum: Int!
+    var maximum = 0
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? ViewController {
+            destination.maximumScore = maximum
+        }
+    }
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 20
+        
         
         
 
