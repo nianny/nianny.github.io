@@ -3,19 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2532358292C20A938F274D28 /* libPods-Clicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F201337036166D770BB3589C /* libPods-Clicker.a */; };
 		6A0821A026019B450079285D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08219F26019B450079285D /* AppDelegate.swift */; };
 		6A0821A226019B450079285D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0821A126019B450079285D /* SceneDelegate.swift */; };
 		6A0821A426019B450079285D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0821A326019B450079285D /* ViewController.swift */; };
 		6A0821A726019B450079285D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A0821A526019B450079285D /* Main.storyboard */; };
 		6A0821A926019B470079285D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A0821A826019B470079285D /* Assets.xcassets */; };
 		6A0821AC26019B470079285D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A0821AA26019B470079285D /* LaunchScreen.storyboard */; };
+		6A765893261376FE00790F29 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A765892261376FE00790F29 /* Utilities.swift */; };
+		6AB334F126136751006698D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AB334F026136751006698D8 /* GoogleService-Info.plist */; };
+		6AB334F426136900006698D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB334F326136900006698D8 /* SignUpViewController.swift */; };
+		6AB334F726136916006698D8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB334F626136916006698D8 /* LogInViewController.swift */; };
+		6AB334FA26136925006698D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB334F926136925006698D8 /* HomeViewController.swift */; };
+		6AC303FE26147A890056C468 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC303FD26147A890056C468 /* Constants.swift */; };
+		6AC30404261486380056C468 /* swiftimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6AC30403261486380056C468 /* swiftimage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18FE24A3DF95F84F3FEDC26C /* Pods-Clicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clicker.debug.xcconfig"; path = "Target Support Files/Pods-Clicker/Pods-Clicker.debug.xcconfig"; sourceTree = "<group>"; };
 		6A08219C26019B450079285D /* Clicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A08219F26019B450079285D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A0821A126019B450079285D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,15 @@
 		6A0821A826019B470079285D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A0821AB26019B470079285D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A0821AD26019B470079285D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A765892261376FE00790F29 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = ../../../../../../../Downloads/CustomLoginDemo/CustomLoginDemo/Helpers/Utilities.swift; sourceTree = "<group>"; };
+		6AB334F026136751006698D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AB334F326136900006698D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		6AB334F626136916006698D8 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6AB334F926136925006698D8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6AC303FD26147A890056C468 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6AC30403261486380056C468 /* swiftimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = swiftimage.jpg; sourceTree = "<group>"; };
+		B13D33DAD3BD0D03949B1884 /* Pods-Clicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clicker.release.xcconfig"; path = "Target Support Files/Pods-Clicker/Pods-Clicker.release.xcconfig"; sourceTree = "<group>"; };
+		F201337036166D770BB3589C /* libPods-Clicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Clicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2532358292C20A938F274D28 /* libPods-Clicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15DCAE7B767936360AE63F0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F201337036166D770BB3589C /* libPods-Clicker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6A08219326019B450079285D = {
 			isa = PBXGroup;
 			children = (
 				6A08219E26019B450079285D /* Clicker */,
 				6A08219D26019B450079285D /* Products */,
+				C1AF0464F3D17CC29E2AE81A /* Pods */,
+				15DCAE7B767936360AE63F0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +85,47 @@
 		6A08219E26019B450079285D /* Clicker */ = {
 			isa = PBXGroup;
 			children = (
+				6AC304022614862E0056C468 /* Media */,
+				6A765892261376FE00790F29 /* Utilities.swift */,
+				6AC303FD26147A890056C468 /* Constants.swift */,
+				6AB334FC26136958006698D8 /* View Controllers */,
 				6A08219F26019B450079285D /* AppDelegate.swift */,
 				6A0821A126019B450079285D /* SceneDelegate.swift */,
-				6A0821A326019B450079285D /* ViewController.swift */,
 				6A0821A526019B450079285D /* Main.storyboard */,
 				6A0821A826019B470079285D /* Assets.xcassets */,
 				6A0821AA26019B470079285D /* LaunchScreen.storyboard */,
 				6A0821AD26019B470079285D /* Info.plist */,
+				6AB334F026136751006698D8 /* GoogleService-Info.plist */,
 			);
 			path = Clicker;
+			sourceTree = "<group>";
+		};
+		6AB334FC26136958006698D8 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A0821A326019B450079285D /* ViewController.swift */,
+				6AB334F326136900006698D8 /* SignUpViewController.swift */,
+				6AB334F626136916006698D8 /* LogInViewController.swift */,
+				6AB334F926136925006698D8 /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		6AC304022614862E0056C468 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				6AC30403261486380056C468 /* swiftimage.jpg */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		C1AF0464F3D17CC29E2AE81A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18FE24A3DF95F84F3FEDC26C /* Pods-Clicker.debug.xcconfig */,
+				B13D33DAD3BD0D03949B1884 /* Pods-Clicker.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A0821B026019B470079285D /* Build configuration list for PBXNativeTarget "Clicker" */;
 			buildPhases = (
+				6D60F8AD0905F85CBB3DFDA8 /* [CP] Check Pods Manifest.lock */,
 				6A08219826019B450079285D /* Sources */,
 				6A08219926019B450079285D /* Frameworks */,
 				6A08219A26019B450079285D /* Resources */,
+				64E3DB423EEF1C6D3E1C81D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,13 +187,57 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AC30404261486380056C468 /* swiftimage.jpg in Resources */,
 				6A0821AC26019B470079285D /* LaunchScreen.storyboard in Resources */,
+				6AB334F126136751006698D8 /* GoogleService-Info.plist in Resources */,
 				6A0821A926019B470079285D /* Assets.xcassets in Resources */,
 				6A0821A726019B450079285D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64E3DB423EEF1C6D3E1C81D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clicker/Pods-Clicker-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clicker/Pods-Clicker-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Clicker/Pods-Clicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D60F8AD0905F85CBB3DFDA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Clicker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A08219826019B450079285D /* Sources */ = {
@@ -139,7 +246,12 @@
 			files = (
 				6A0821A426019B450079285D /* ViewController.swift in Sources */,
 				6A0821A026019B450079285D /* AppDelegate.swift in Sources */,
+				6A765893261376FE00790F29 /* Utilities.swift in Sources */,
+				6AC303FE26147A890056C468 /* Constants.swift in Sources */,
+				6AB334F426136900006698D8 /* SignUpViewController.swift in Sources */,
+				6AB334F726136916006698D8 /* LogInViewController.swift in Sources */,
 				6A0821A226019B450079285D /* SceneDelegate.swift in Sources */,
+				6AB334FA26136925006698D8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +395,7 @@
 		};
 		6A0821B126019B470079285D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18FE24A3DF95F84F3FEDC26C /* Pods-Clicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +414,7 @@
 		};
 		6A0821B226019B470079285D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13D33DAD3BD0D03949B1884 /* Pods-Clicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
