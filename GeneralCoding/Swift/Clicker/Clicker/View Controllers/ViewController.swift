@@ -57,6 +57,7 @@ class ViewController: UIViewController {
     }
     
     @objc func updateCounter() {
+        maxScore.text = "Max: \(maximumScore)"
         if pauseBool {
             pause.setTitle("Continue", for: .normal)
         }
