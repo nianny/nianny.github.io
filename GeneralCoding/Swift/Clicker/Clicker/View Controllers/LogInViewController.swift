@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logInLabel: UILabel!
     var maximum = 0
+    var uid = ""
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -30,6 +31,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 20
+        logInLabel.isHidden = true
         
         
         
@@ -69,14 +71,23 @@ class LogInViewController: UIViewController {
                     if let document = document, document.exists {
                         let dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
                         let currentScore = dataDescription["high"] ?? 0
+                        let UserID = dataDescription["uid"] ?? "0"
                         self.maximum = (currentScore as! Int)
-                        print(type(of: dataDescription))
-                        print(self.maximum)
-                        print("Document data: \(dataDescription)")
-                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? ViewController
-                //
-                        self.view.window?.rootViewController = homeViewController
-                        self.view.window?.makeKeyAndVisible()
+                        self.uid = UserID as! String
+//                        print(type(of: dataDescription))
+//                        print(self.maximum)
+//                        print("Document data: \(dataDescription)")
+//                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? ViewController
+//                //
+//                        self.view.window?.rootViewController = homeViewController
+//                        self.view.window?.makeKeyAndVisible()
+                        
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        if let secondVC = sb.instantiateViewController(identifier: "HomeVC") as? ViewController {
+                            self.present(secondVC, animated: true, completion: nil)
+                            secondVC.maximumScore = self.maximum
+                            secondVC.uid = self.uid
+                        }
                     } else {
                         print("Document does not exist")
                     }

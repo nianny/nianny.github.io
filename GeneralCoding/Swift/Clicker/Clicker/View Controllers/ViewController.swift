@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timer: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var pause: UIButton!
+    @IBOutlet weak var quitButton: UIButton!
     var counter = 0.0
     var choice = 0
     var maximum = 0
@@ -32,13 +33,15 @@ class ViewController: UIViewController {
     var maximumScore = 0
     var speed = 0.0
     var pauseBool = false
+    var uid = ""
     
     override func viewDidLoad() {
+        let db = Firestore.firestore()
 //        while readinMax == nil {
 //
 //        }
 //        maximumScore = readinMax
-        print(maximumScore)
+//        print(maximumScore)
         
         super.viewDidLoad()
         pause.layer.cornerRadius = 10
@@ -48,6 +51,7 @@ class ViewController: UIViewController {
         restart.layer.cornerRadius = 10
         maxScore.clipsToBounds = true
         maxScore.layer.cornerRadius = 10
+        quitButton.layer.cornerRadius = 10
         choice = control.selectedSegmentIndex
         congratsLabel.isHidden = true
         checkValue()
@@ -62,14 +66,14 @@ class ViewController: UIViewController {
         maxScore.text = "Max: \(maximumScore)"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        maximumScore = 50
-        maxScore.text = "Max: \(maximumScore)"
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        maximumScore = 50
+//        maxScore.text = "Max: \(maximumScore)"
+//    }
     
     @objc func updateCounter() {
         maxScore.text = "Max: \(maximumScore)"
-        print(maximumScore)
+//        print(maximumScore)
         if pauseBool {
             pause.setTitle("Continue", for: .normal)
         }
@@ -111,7 +115,11 @@ class ViewController: UIViewController {
         choice = control.selectedSegmentIndex
     }
     @IBAction func restart(_ sender: Any) {
+        if (Int(counter) > maximumScore){
+            updateMaximum(with: Int(counter))
+        }
         maximumScore = max(maximumScore, Int(counter))
+        
         maxScore.text = "Max: \(maximumScore)"
         counter = 0
         number.text = "You pressed \(Int(counter)) times"
@@ -214,11 +222,58 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func pauseClicked(_ sender: Any) {
+        if (Int(counter) > maximumScore){
+            updateMaximum(with: Int(counter))
+        }
         maximumScore = max(maximumScore, Int(counter))
+        
         maxScore.text = "Max: \(maximumScore)"
         pauseBool = !pauseBool
         
     }
+    @IBAction func Logout(_ sender: Any) {
+        let num = max(Int(counter), maximumScore)
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(self.uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var dataDescription = document.data()!
+                dataDescription["high"] = num
+                db.collection("users").document(self.uid).setData(dataDescription) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        if let secondVC = sb.instantiateViewController(identifier: "choosingVC") as? HomeViewController {
+                            self.present(secondVC, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
     
+    
+    func updateMaximum (with num: Int) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(self.uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
+                dataDescription["high"] = num
+                db.collection("users").document(self.uid).setData(dataDescription) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+            }
+        }
+    }
 }
 

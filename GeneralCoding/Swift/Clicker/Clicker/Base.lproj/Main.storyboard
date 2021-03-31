@@ -45,7 +45,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="xt0-2U-JrF"/>
                                         </constraints>
-                                        <state key="normal" title="Sign Up"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="signUpTapped:" destination="Vz6-eq-LSo" eventType="touchUpInside" id="yMn-fp-1Bi"/>
                                         </connections>
@@ -90,7 +92,7 @@
         <!--Home View Controller-->
         <scene sceneID="fKS-Q1-ggi">
             <objects>
-                <viewController id="lPh-jg-56e" customClass="HomeViewController" customModule="Clicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="choosingVC" id="lPh-jg-56e" customClass="HomeViewController" customModule="Clicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cv-5V-0RK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,7 +179,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="2rA-EN-3CA"/>
                                         </constraints>
-                                        <state key="normal" title="Log In"/>
+                                        <state key="normal" title="Log In">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginTapped:" destination="ieI-Qg-NLq" eventType="touchUpInside" id="7lE-a6-jOP"/>
                                         </connections>
@@ -298,7 +302,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-Dd-z7D">
-                                <rect key="frame" x="20" y="91" width="103" height="39"/>
+                                <rect key="frame" x="20" y="144" width="103" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
@@ -309,10 +313,24 @@
                                     <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6BL-UR-WZv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vx3-ST-gFV">
+                                <rect key="frame" x="20" y="91" width="103" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="Quit">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="Logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nIg-ai-arf"/>
+                                    <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NRG-ag-6cw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="425-mL-8uv"/>
                     <connections>
                         <outlet property="clickbutton" destination="rXT-Z2-bQg" id="tb4-hg-M0M"/>
                         <outlet property="congratsLabel" destination="sPO-mM-9MP" id="qwt-Lc-oXt"/>
@@ -321,6 +339,7 @@
                         <outlet property="maxScore" destination="qjW-yG-N5b" id="kQq-aw-sIJ"/>
                         <outlet property="number" destination="SD5-4M-WIY" id="urv-CY-PDE"/>
                         <outlet property="pause" destination="dxC-Dd-z7D" id="KuI-qj-qrZ"/>
+                        <outlet property="quitButton" destination="Vx3-ST-gFV" id="edE-XU-4kv"/>
                         <outlet property="restart" destination="I5Z-Kg-4bV" id="r6k-hc-udt"/>
                         <outlet property="speedLabel" destination="SxC-k7-uxQ" id="Ydr-g2-PRj"/>
                         <outlet property="timer" destination="2CU-BF-YQS" id="rlF-uj-x95"/>
@@ -328,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="90"/>
+            <point key="canvasLocation" x="1805.7971014492755" y="89.732142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xND-kk-bjm">
@@ -346,6 +365,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yq5-cB-jSG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1284.0579710144928" y="89.732142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IwW-0W-ddW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="S0R-kS-MSM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5qU-6L-3q5">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dyV-0N-o7x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCj-v0-dYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="90"/>
         </scene>
     </scenes>
     <resources>
