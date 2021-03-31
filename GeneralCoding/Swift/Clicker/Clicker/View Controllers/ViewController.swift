@@ -28,11 +28,16 @@ class ViewController: UIViewController {
     var timeElapsed = 0.0
     var end = false
     let maxNum = 500
+//    var readinMax: Int!
     var maximumScore = 0
     var speed = 0.0
     var pauseBool = false
     
     override func viewDidLoad() {
+//        while readinMax == nil {
+//
+//        }
+//        maximumScore = readinMax
         print(maximumScore)
         
         super.viewDidLoad()
@@ -58,11 +63,13 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        maximumScore = 50
         maxScore.text = "Max: \(maximumScore)"
     }
     
     @objc func updateCounter() {
         maxScore.text = "Max: \(maximumScore)"
+        print(maximumScore)
         if pauseBool {
             pause.setTitle("Continue", for: .normal)
         }

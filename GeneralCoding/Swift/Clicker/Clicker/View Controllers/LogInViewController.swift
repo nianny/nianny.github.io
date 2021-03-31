@@ -21,6 +21,7 @@ class LogInViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if let destination = segue.destination as? ViewController {
             destination.maximumScore = maximum
+            print("YAY")
         }
     }
 
@@ -72,15 +73,14 @@ class LogInViewController: UIViewController {
                         print(type(of: dataDescription))
                         print(self.maximum)
                         print("Document data: \(dataDescription)")
+                        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? ViewController
+                //
+                        self.view.window?.rootViewController = homeViewController
+                        self.view.window?.makeKeyAndVisible()
                     } else {
                         print("Document does not exist")
                     }
                 }
-                
-                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? ViewController
-        //
-                self.view.window?.rootViewController = homeViewController
-                self.view.window?.makeKeyAndVisible()
             }
         }
         
