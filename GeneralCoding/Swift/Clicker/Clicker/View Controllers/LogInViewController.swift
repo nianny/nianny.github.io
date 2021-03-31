@@ -14,7 +14,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var passwordLogin: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var logInLabel: UILabel!
-    var maximum: Any
+    var maximum: Int!
     
     
     override func viewDidLoad() {
@@ -58,9 +58,9 @@ class LogInViewController: UIViewController {
                     if let document = document, document.exists {
                         let dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
                         let currentScore = dataDescription["high"] ?? 0
-                        self.maximum = currentScore
-//                        print(type(of: dataDescription))
-                        print(currentScore)
+                        self.maximum = (currentScore as! Int)
+                        print(type(of: dataDescription))
+                        print(self.maximum)
                         print("Document data: \(dataDescription)")
                     } else {
                         print("Document does not exist")
