@@ -10,6 +10,9 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameShow: UILabel!
+    @IBOutlet weak var dateShow: UILabel!
+    @IBOutlet weak var scoreShow: UILabel!
     var selectedUser: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,7 @@ class ProfileViewController: UIViewController {
                     let uid = UserID as! String
                     let firstName = firstname as! String
                     let lastName = lastname as! String
-                    
+                    self.title = "Profile (\(firstName))"
                     self.nameLabel.text = "Name: \(firstName) \nScore: \(score) \nDay Registered: \(date)"
                     
                 }
