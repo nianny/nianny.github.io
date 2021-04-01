@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pause: UIButton!
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var leaderboard: UIButton!
+    @IBOutlet weak var shopButton: UIButton!
     
     var counter = 0.0
     var choice = 0
@@ -239,6 +240,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func Logout(_ sender: Any) {
+        
         let num = max(Int(counter), maximumScore)
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(self.uid)
@@ -252,6 +254,11 @@ class ViewController: UIViewController {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
+                        do {
+                            try Auth.auth().signOut()
+                        } catch {
+                            print("Error logging out!!!")
+                        }
                         let sb = UIStoryboard(name: "Main", bundle: nil)
                         if let secondVC = sb.instantiateViewController(identifier: "choosingVC") as? HomeViewController {
                             self.present(secondVC, animated: true, completion: nil)
@@ -277,10 +284,6 @@ class ViewController: UIViewController {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
-//                        let sb = UIStoryboard(name: "Main", bundle: nil)
-//                        if let secondVC = sb.instantiateViewController(identifier: "leaderboard") as? LeaderboardTableViewController {
-//                            self.present(secondVC, animated: true, completion: nil)
-//                        }
                     }
                 }
             }
@@ -307,10 +310,24 @@ class ViewController: UIViewController {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
+    @IBAction func openShop(_ sender: Any) {
+        let num = max(Int(counter), maximumScore)
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(self.uid)
 
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var dataDescription = document.data()!
+                dataDescription["high"] = num
+                db.collection("users").document(self.uid).setData(dataDescription) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+            }
+        }
+    }
 }
 

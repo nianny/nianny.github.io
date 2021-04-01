@@ -356,6 +356,18 @@
                                     <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NRG-ag-6cw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-Dd-z7D">
+                                <rect key="frame" x="20" y="138" width="103" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6BL-UR-WZv"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-mg-s7a">
                                 <rect key="frame" x="258" y="91" width="136" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -370,16 +382,18 @@
                                     <segue destination="W2d-VI-weN" kind="show" id="IPA-Ra-93N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-Dd-z7D">
-                                <rect key="frame" x="20" y="138" width="103" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fc-0E-EXO">
+                                <rect key="frame" x="258" y="138" width="136" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
-                                <state key="normal" title="Pause">
+                                <state key="normal" title="Shop">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6BL-UR-WZv"/>
+                                    <action selector="openShop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fj3-W6-hC9"/>
+                                    <action selector="restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbL-sa-lIK"/>
+                                    <action selector="showLeaderboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BD5-EN-2wg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -398,6 +412,7 @@
                         <outlet property="pause" destination="dxC-Dd-z7D" id="KuI-qj-qrZ"/>
                         <outlet property="quitButton" destination="Vx3-ST-gFV" id="edE-XU-4kv"/>
                         <outlet property="restart" destination="I5Z-Kg-4bV" id="r6k-hc-udt"/>
+                        <outlet property="shopButton" destination="5fc-0E-EXO" id="utY-Vm-eky"/>
                         <outlet property="speedLabel" destination="SxC-k7-uxQ" id="Ydr-g2-PRj"/>
                         <outlet property="timer" destination="2CU-BF-YQS" id="rlF-uj-x95"/>
                     </connections>

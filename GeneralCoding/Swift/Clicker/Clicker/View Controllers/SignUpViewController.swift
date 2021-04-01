@@ -88,7 +88,7 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     let db = Firestore.firestore()
-                    db.collection("users").document(result!.user.uid).setData(["firstname": firstName, "lastname": lastName, "high": 0, "uid": result!.user.uid, "time": time ]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["firstname": firstName, "lastname": lastName, "high": 0, "uid": result!.user.uid, "time": time, "gems": 0 ]) { (error) in
                         if error != nil {
                             self.showError("Name unable to be saved")
                             print("Name unable to be saved")
