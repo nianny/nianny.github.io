@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var hi: UIButton!
+    @IBOutlet weak var leaderboardButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController {
     }
     
     func setUp(){
+        leaderboardButton.layer.cornerRadius = 10
         signUpButton.layer.cornerRadius = 20
         logInButton.layer.cornerRadius = 20
         logInButton.layer.borderWidth = 2
