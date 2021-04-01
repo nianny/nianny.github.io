@@ -254,7 +254,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func Logout(_ sender: Any) {
-        
+        pauseBool = true
         let num = max(Int(counter), maximumScore)
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(self.uid)
@@ -263,6 +263,8 @@ class ViewController: UIViewController {
             if let document = document, document.exists {
                 var dataDescription = document.data()!
                 dataDescription["high"] = num
+                let maxSpeed = (dataDescription["speed"] ?? 0) as! Double
+                dataDescription["speed"] = max(maxSpeed, self.speed)
                 db.collection("users").document(self.uid).setData(dataDescription) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
@@ -293,6 +295,8 @@ class ViewController: UIViewController {
             if let document = document, document.exists {
                 var dataDescription = document.data()!
                 dataDescription["high"] = num
+                let maxSpeed = (dataDescription["speed"] ?? 0) as! Double
+                dataDescription["speed"] = max(maxSpeed, self.speed)
                 db.collection("users").document(self.uid).setData(dataDescription) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
@@ -313,6 +317,8 @@ class ViewController: UIViewController {
             if let document = document, document.exists {
                 var dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
                 dataDescription["high"] = num
+                let maxSpeed = (dataDescription["speed"] ?? 0) as! Double
+                dataDescription["speed"] = max(maxSpeed, self.speed)
                 db.collection("users").document(self.uid).setData(dataDescription) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
@@ -326,12 +332,17 @@ class ViewController: UIViewController {
     
     @IBAction func openShop(_ sender: Any) {
         let num = max(Int(counter), maximumScore)
+        
         let db = Firestore.firestore()
         let docRef = db.collection("users").document(self.uid)
 
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 var dataDescription = document.data()!
+                let maxSpeed = (dataDescription["speed"] ?? 0) as! Double
+                dataDescription["speed"] = max(maxSpeed, self.speed)
+                
+                
                 dataDescription["high"] = num
                 db.collection("users").document(self.uid).setData(dataDescription) { err in
                     if let err = err {
