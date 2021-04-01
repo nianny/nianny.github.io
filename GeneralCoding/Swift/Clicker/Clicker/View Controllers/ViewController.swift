@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var leaderboard: UIButton!
     @IBOutlet weak var shopButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     var counter = 0.0
     var choice = 0
@@ -68,6 +69,7 @@ class ViewController: UIViewController {
         restart.layer.cornerRadius = 10
         maxScore.clipsToBounds = true
         maxScore.layer.cornerRadius = 10
+        settingsButton.layer.cornerRadius = 10
         quitButton.layer.cornerRadius = 10
         leaderboard.layer.cornerRadius = 10
         choice = control.selectedSegmentIndex
