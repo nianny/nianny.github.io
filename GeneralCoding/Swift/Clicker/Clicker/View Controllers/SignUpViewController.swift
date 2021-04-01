@@ -89,6 +89,14 @@ class SignUpViewController: UIViewController {
                             self.showError("Name unable to be saved")
                             print("Name unable to be saved")
                         }
+                        else {
+                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                            if let secondVC = sb.instantiateViewController(identifier: "HomeVC") as? ViewController {
+                                self.present(secondVC, animated: true, completion: nil)
+                                secondVC.maximumScore = 0
+                                secondVC.uid = result!.user.uid
+                            }
+                        }
                     }
                     
 //                    (data: ["firstname": firstName, "lastname": lastName, "high": 0, "uid": result!.user.uid ]) { (error) in
@@ -97,7 +105,7 @@ class SignUpViewController: UIViewController {
 //                            print("Name unable to be saved")
 //                        }
 //                    }
-                    self.transitionToHome()
+                    
                     //user create succcessfully
                     //now store things
                 }
@@ -111,14 +119,7 @@ class SignUpViewController: UIViewController {
 
     }
     
-    func transitionToHome () {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? ViewController
-//
-        view.window?.rootViewController = homeViewController
-        view.window?.makeKeyAndVisible()
-        
-//        showError("Done")
-    }
+
     
     func showError (_ message: String) {
         signUpLabel.text = message

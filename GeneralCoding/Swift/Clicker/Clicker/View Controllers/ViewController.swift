@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var pause: UIButton!
     @IBOutlet weak var quitButton: UIButton!
+    @IBOutlet weak var leaderboard: UIButton!
+    
     var counter = 0.0
     var choice = 0
     var maximum = 0
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
         maxScore.clipsToBounds = true
         maxScore.layer.cornerRadius = 10
         quitButton.layer.cornerRadius = 10
+        leaderboard.layer.cornerRadius = 10
         choice = control.selectedSegmentIndex
         congratsLabel.isHidden = true
         checkValue()
@@ -254,6 +257,30 @@ class ViewController: UIViewController {
             }
         }
         
+    }
+    
+    @IBAction func showLeaderboard(_ sender: Any) {
+        let num = max(Int(counter), maximumScore)
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(self.uid)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var dataDescription = document.data()!
+                dataDescription["high"] = num
+                db.collection("users").document(self.uid).setData(dataDescription) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        if let secondVC = sb.instantiateViewController(identifier: "leaderboard") as? LeaderboardTableViewController {
+                            self.present(secondVC, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
