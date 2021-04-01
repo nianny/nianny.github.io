@@ -40,6 +40,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         let db = Firestore.firestore()
+//        print(uid)
+//        print(type(of: uid))
+        let docRef = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
+        
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data()!
+                let gems = dataDescription["gems"] ?? 0
+                let gem = gems as! Int
+                self.shopButton.setTitle("Gems: \(gem)", for: .normal)
+            }
+        }
 //        while readinMax == nil {
 //
 //        }
@@ -47,7 +60,7 @@ class ViewController: UIViewController {
 //        print(maximumScore)
         
         super.viewDidLoad()
-        
+        shopButton.layer.cornerRadius = 10
         pause.layer.cornerRadius = 10
 //        pause.setTitle("", for: .disabled)
         pause.isHidden = true
@@ -75,6 +88,7 @@ class ViewController: UIViewController {
 //        maximumScore = 50
 //        maxScore.text = "Max: \(maximumScore)"
 //    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 //        navigationController?.setNavigationBarHidden(true, animated: animated)
