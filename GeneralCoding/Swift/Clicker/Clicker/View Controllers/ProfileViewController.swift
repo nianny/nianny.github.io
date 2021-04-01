@@ -37,7 +37,10 @@ class ProfileViewController: UIViewController {
                     let firstName = firstname as! String
                     let lastName = lastname as! String
                     self.title = "Profile (\(firstName))"
-                    self.nameLabel.text = "Name: \(firstName) \nScore: \(score) \nDay Registered: \(date)"
+                    self.nameLabel.text = "\(firstName)'s Profile"
+                    self.nameShow.text = firstName
+                    self.dateShow.text = date
+                    self.scoreShow.text = "\(score)"
                     
                 }
             }
