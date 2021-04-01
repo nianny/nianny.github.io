@@ -11,12 +11,12 @@ import Firebase
 class HomeViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logInButton: UIButton!
-//    @IBOutlet weak var hi: UIButton!
+    @IBOutlet weak var hi: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        hi.isHidden = true
+//        hi.isHidden = true
         
         
        
