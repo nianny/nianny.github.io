@@ -46,6 +46,7 @@ class ViewController: UIViewController {
 //        print(maximumScore)
         
         super.viewDidLoad()
+        
         pause.layer.cornerRadius = 10
 //        pause.setTitle("", for: .disabled)
         pause.isHidden = true
@@ -73,7 +74,10 @@ class ViewController: UIViewController {
 //        maximumScore = 50
 //        maxScore.text = "Max: \(maximumScore)"
 //    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     @objc func updateCounter() {
         maxScore.text = "Max: \(maximumScore)"
 //        print(maximumScore)
@@ -273,10 +277,10 @@ class ViewController: UIViewController {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        if let secondVC = sb.instantiateViewController(identifier: "leaderboard") as? LeaderboardTableViewController {
-                            self.present(secondVC, animated: true, completion: nil)
-                        }
+//                        let sb = UIStoryboard(name: "Main", bundle: nil)
+//                        if let secondVC = sb.instantiateViewController(identifier: "leaderboard") as? LeaderboardTableViewController {
+//                            self.present(secondVC, animated: true, completion: nil)
+//                        }
                     }
                 }
             }
@@ -302,5 +306,11 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
+
 }
 
