@@ -72,6 +72,10 @@ class SignUpViewController: UIViewController {
             let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let today = Date()
+            let formatter1 = DateFormatter()
+            formatter1.dateStyle = .short
+            let time = formatter1.string(from: today)
             
             Auth.auth().createUser(withEmail: email, password: password) { [self] (result, err) in
                 
@@ -84,7 +88,7 @@ class SignUpViewController: UIViewController {
                 }
                 else {
                     let db = Firestore.firestore()
-                    db.collection("users").document(result!.user.uid).setData(["firstname": firstName, "lastname": lastName, "high": 0, "uid": result!.user.uid ]) { (error) in
+                    db.collection("users").document(result!.user.uid).setData(["firstname": firstName, "lastname": lastName, "high": 0, "uid": result!.user.uid, "time": time ]) { (error) in
                         if error != nil {
                             self.showError("Name unable to be saved")
                             print("Name unable to be saved")
@@ -130,6 +134,8 @@ class SignUpViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         if let secondVC = sb.instantiateViewController(identifier: "choosingVC") as? HomeViewController {
             self.present(secondVC, animated: true, completion: nil)
+            
+            
         }
     }
     

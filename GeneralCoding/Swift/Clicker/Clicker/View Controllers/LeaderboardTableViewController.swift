@@ -12,6 +12,7 @@ class LeaderboardTableViewController: UITableViewController {
     @IBOutlet weak var `return`: UIBarButtonItem!
     @IBOutlet var tableview: UITableView!
     var arr = [String]()
+    var uid = [String]()
     override func viewDidLoad() {
         self.title = "Leaderboard"
         
@@ -29,9 +30,11 @@ class LeaderboardTableViewController: UITableViewController {
                     let daMap = documents.data()
                     let score = daMap["high"] as! Int
                     let name = daMap["firstname"] as! String
+                    let UserID = daMap["uid"] as! String
                     
                     self.arr.append("\(count). \(name) (\(score))")
                     print("\(name) is \(score)!")
+                    self.uid.append(UserID)
                     
                     count += 1
                 }
@@ -113,6 +116,14 @@ class LeaderboardTableViewController: UITableViewController {
     */
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(identifier: "Profile") as? ProfileViewController {
+            vc.selectedUser = uid[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }
