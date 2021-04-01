@@ -9,8 +9,11 @@ import UIKit
 import Firebase
 
 class LeaderboardTableViewController: UITableViewController {
+    @IBOutlet var tableview: UITableView!
     var arr = [String]()
     override func viewDidLoad() {
+        self.title = "Leaderboard"
+        
         super.viewDidLoad()
         let db = Firestore.firestore()
         let score = db.collection("users")
@@ -29,6 +32,7 @@ class LeaderboardTableViewController: UITableViewController {
                     print("\(name) is \(score)!")
                 }
                 print(self.arr)
+                self.tableView.reloadData()
             }
         }
 
@@ -53,7 +57,7 @@ class LeaderboardTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "scores", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Scores", for: indexPath)
         cell.textLabel?.text = arr[indexPath.row]
         return cell
     }
