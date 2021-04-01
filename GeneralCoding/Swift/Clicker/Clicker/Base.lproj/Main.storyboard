@@ -158,7 +158,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="printData:" destination="lPh-jg-56e" eventType="touchUpInside" id="Hpv-pU-2o2"/>
-                                    <segue destination="QDR-xr-oFv" kind="show" id="joN-bb-veT"/>
+                                    <segue destination="W2d-VI-weN" kind="show" id="A3F-Xi-7w5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -291,7 +291,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-Kg-4bV">
-                                <rect key="frame" x="20" y="128" width="103" height="39"/>
+                                <rect key="frame" x="20" y="91" width="103" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
@@ -356,18 +356,6 @@
                                     <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NRG-ag-6cw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-Dd-z7D">
-                                <rect key="frame" x="20" y="175" width="103" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
-                                <state key="normal" title="Pause">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6BL-UR-WZv"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15l-mg-s7a">
                                 <rect key="frame" x="258" y="91" width="136" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -379,7 +367,19 @@
                                 <connections>
                                     <action selector="restart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YCU-hL-eEG"/>
                                     <action selector="showLeaderboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KVg-eT-dMC"/>
-                                    <segue destination="QDR-xr-oFv" kind="show" id="IPA-Ra-93N"/>
+                                    <segue destination="W2d-VI-weN" kind="show" id="IPA-Ra-93N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-Dd-z7D">
+                                <rect key="frame" x="20" y="138" width="103" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="GillSans-BoldItalic" family="Gill Sans" pointSize="17"/>
+                                <state key="normal" title="Pause">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pauseClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6BL-UR-WZv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -438,14 +438,21 @@
                             <outlet property="delegate" destination="QDR-xr-oFv" id="Aof-3x-mO1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="QDo-fH-pL1"/>
+                    <navigationItem key="navigationItem" id="QDo-fH-pL1">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="zQZ-eu-hL6">
+                            <connections>
+                                <action selector="goBack:" destination="QDR-xr-oFv" id="mBz-Wf-Yf9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="return" destination="zQZ-eu-hL6" id="7Sg-iR-eoA"/>
                         <outlet property="tableview" destination="A7n-To-Vwx" id="Jtg-tq-yf7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAW-lW-H1g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3849" y="90"/>
+            <point key="canvasLocation" x="4757.971014492754" y="89.732142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xND-kk-bjm">
@@ -508,10 +515,10 @@
         <!--Navigation Controller-->
         <scene sceneID="Sky-Dj-cmh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZWa-U7-cMq" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePa-0n-lvg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ZWa-U7-cMq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M2x-9N-YNB">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -522,9 +529,27 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2Xn-eN-J44"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ePa-0n-lvg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2228.985507246377" y="89.732142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="09o-BI-JbO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="W2d-VI-weN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="YRa-TM-o7D"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xy6-7V-vnO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QDR-xr-oFv" kind="relationship" relationship="rootViewController" id="zdk-xv-gVh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8x-EC-auo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3847.826086956522" y="89.732142857142847"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-//        hi.isHidden = true
+        hi.isHidden = true
         
         
        
@@ -41,8 +41,8 @@ class HomeViewController: UIViewController {
 //                print("Error: \(err)")
 //            }
 //            else {
-////                print(type(of: scores))
-////                print(type(of: data))
+//                print(type(of: scores))
+//                print(type(of: data))
 //                for documents in  data!.documents {
 //                    print(documents.data())
 //                    print(type(of: documents.data()))
@@ -52,8 +52,8 @@ class HomeViewController: UIViewController {
 //
 //                    print("Score of \(name) is \(score).")
 //                }
-////                print(documents)
-////                print(type(of: documents))
+//                print(documents)
+//                print(type(of: documents))
 //            }
 //        }
         

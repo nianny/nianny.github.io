@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 class LeaderboardTableViewController: UITableViewController {
+    @IBOutlet weak var `return`: UIBarButtonItem!
     @IBOutlet var tableview: UITableView!
     var arr = [String]()
     override func viewDidLoad() {
@@ -23,13 +24,16 @@ class LeaderboardTableViewController: UITableViewController {
                 print("Error: \(err)")
             }
             else {
+                var count = 1
                 for documents in  data!.documents {
                     let daMap = documents.data()
                     let score = daMap["high"] as! Int
                     let name = daMap["firstname"] as! String
                     
-                    self.arr.append("\(name) is \(score)!")
+                    self.arr.append("\(count). \(name) (\(score))")
                     print("\(name) is \(score)!")
+                    
+                    count += 1
                 }
                 print(self.arr)
                 self.tableView.reloadData()
@@ -107,5 +111,8 @@ class LeaderboardTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
