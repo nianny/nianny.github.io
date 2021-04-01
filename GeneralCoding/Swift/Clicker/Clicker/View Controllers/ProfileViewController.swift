@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameShow: UILabel!
     @IBOutlet weak var dateShow: UILabel!
     @IBOutlet weak var scoreShow: UILabel!
+    @IBOutlet weak var speedShow: UILabel!
     var selectedUser: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,14 @@ class ProfileViewController: UIViewController {
                     let uid = UserID as! String
                     let firstName = firstname as! String
                     let lastName = lastname as! String
+                    let speeda = dataDescription["speed"] ?? 0
+                    let speed = speeda as! Double
                     self.title = "Profile (\(firstName))"
                     self.nameLabel.text = "\(firstName)'s Profile"
                     self.nameShow.text = firstName
                     self.dateShow.text = date
-                    self.scoreShow.text = "\(score)"
+                    self.scoreShow.text = "\(score) clicks"
+                    self.speedShow.text = "\(round(speed*100)/100) clicks/sec"
                     
                 }
             }

@@ -11,6 +11,7 @@ import Firebase
 class LeaderboardTableViewController: UITableViewController {
     @IBOutlet weak var `return`: UIBarButtonItem!
     @IBOutlet var tableview: UITableView!
+    @IBOutlet weak var selector: UISegmentedControl!
     var arr = [String]()
     var uid = [String]()
     override func viewDidLoad() {
@@ -32,7 +33,7 @@ class LeaderboardTableViewController: UITableViewController {
                     let name = daMap["firstname"] as! String
                     let UserID = daMap["uid"] as! String
                     
-                    self.arr.append("\(count). \(name) (\(score))")
+                    self.arr.append("\(count). \(name) (\(score) clicks)")
                     print("\(name) is \(score)!")
                     self.uid.append(UserID)
                     
@@ -126,4 +127,49 @@ class LeaderboardTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func changeChoice(_ sender: Any) {
+        self.arr = [String]()
+        let db = Firestore.firestore()
+        let score = db.collection("users")
+        var scores = score.order(by: "high", descending: true)
+        if selector.selectedSegmentIndex == 0{
+            scores = score.order(by: "high", descending: true)
+        }
+        else if selector.selectedSegmentIndex == 1{
+            scores = score.order(by: "speed", descending: true)
+        }
+        
+        scores.getDocuments { (data, err) in
+            if err != nil{
+                print("Error: \(err)")
+            }
+            else {
+                var count = 1
+                for documents in  data!.documents {
+                    let daMap = documents.data()
+                    let score = daMap["high"] as! Int
+                    let speeda = daMap["speed"] ?? 0
+                    var speed = speeda as! Double
+                    speed = round(speed*100)/100
+                    let name = daMap["firstname"] as! String
+                    let UserID = daMap["uid"] as! String
+                    if self.selector.selectedSegmentIndex == 0{
+                        self.arr.append("\(count). \(name) (\(score) clicks)")
+                    }
+                    else if self.selector.selectedSegmentIndex == 1{
+                        self.arr.append("\(count). \(name) (\(speed) clicks/s)")
+                    }
+                    
+                    print("\(name) is \(score)!")
+                    self.uid.append(UserID)
+                    
+                    count += 1
+                }
+                print(self.arr)
+                self.tableView.reloadData()
+            }
+        }
+        
+        
+    }
 }
