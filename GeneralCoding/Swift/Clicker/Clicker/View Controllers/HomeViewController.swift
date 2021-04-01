@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        hi.isHidden = true
+//        hi.isHidden = true
         
         
        
@@ -33,29 +33,29 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func printData(_ sender: Any) {
-        let db = Firestore.firestore()
-        let score = db.collection("users")
-        let scores = score.order(by: "high", descending: true)
-        scores.getDocuments { (data, err) in
-            if err != nil{
-                print("Error: \(err)")
-            }
-            else {
-//                print(type(of: scores))
-//                print(type(of: data))
-                for documents in  data!.documents {
-                    print(documents.data())
-                    print(type(of: documents.data()))
-                    let daMap = documents.data()
-                    let score = daMap["high"] as! Int
-                    let name = daMap["firstname"] as! String
-                    
-                    print("Score of \(name) is \(score).")
-                }
-//                print(documents)
-//                print(type(of: documents))
-            }
-        }
+//        let db = Firestore.firestore()
+//        let score = db.collection("users")
+//        let scores = score.order(by: "high", descending: true)
+//        scores.getDocuments { (data, err) in
+//            if err != nil{
+//                print("Error: \(err)")
+//            }
+//            else {
+////                print(type(of: scores))
+////                print(type(of: data))
+//                for documents in  data!.documents {
+//                    print(documents.data())
+//                    print(type(of: documents.data()))
+//                    let daMap = documents.data()
+//                    let score = daMap["high"] as! Int
+//                    let name = daMap["firstname"] as! String
+//
+//                    print("Score of \(name) is \(score).")
+//                }
+////                print(documents)
+////                print(type(of: documents))
+//            }
+//        }
         
     }
     

@@ -28,6 +28,7 @@ class LeaderboardTableViewController: UITableViewController {
                     self.arr.append("\(name) is \(score)!")
                     print("\(name) is \(score)!")
                 }
+                print(self.arr)
             }
         }
 
