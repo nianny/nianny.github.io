@@ -34,6 +34,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 20
         logInLabel.isHidden = true
+        logInButton.setTitleColor(.systemBackground, for: .normal)
         returnHome.layer.cornerRadius = 10
         returnHome.layer.borderColor = CGColor(gray: 0.7, alpha: 1)
         returnHome.layer.borderWidth = 2

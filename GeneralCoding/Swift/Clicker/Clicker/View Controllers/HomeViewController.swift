@@ -13,9 +13,23 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var hi: UIButton!
     @IBOutlet weak var leaderboardButton: UIButton!
+    @IBOutlet weak var shopButton: UIButton!
+    @IBOutlet weak var swiftLogo: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        overrideUserInterfaceStyle = .dark
+        if self.traitCollection.userInterfaceStyle == .dark {
+            swiftLogo.tintColor = UIColor.white
+            // User Interface is Dark
+            
+        } else {
+            swiftLogo.tintColor = UIColor.black
+        }
+
+        
+        
+        
         setUp()
 //        hi.isHidden = true
         
@@ -26,10 +40,17 @@ class HomeViewController: UIViewController {
     
     func setUp(){
         leaderboardButton.layer.cornerRadius = 10
+        shopButton.layer.cornerRadius = 10
         signUpButton.layer.cornerRadius = 20
         logInButton.layer.cornerRadius = 20
         logInButton.layer.borderWidth = 2
-        logInButton.layer.borderColor = CGColor(gray: 0, alpha: 1)
+//        signUpButton.layer.borderWidth = 2
+        logInButton.layer.borderColor = UIColor.systemGray.cgColor
+//        signUpButton.layer.borderColor = CGColor(gray: 1, alpha: 1)
+//        signUpButton.layer.backgroundColor = CGColor(gray: 0.2, alpha: 1)
+//        signUpButton.setTitleColor(<#T##color: UIColor?##UIColor?#>, for: <#T##UIControl.State#>)
+//        signUpButton.setTitleColor(.white, for: .normal)
+//        logInButton.setTitleColor(.white, for: .normal)
 
     }
     

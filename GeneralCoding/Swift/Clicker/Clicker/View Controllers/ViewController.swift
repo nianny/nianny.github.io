@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         speedLabel.text = "Speed: \(speed)"
         speedLabel.isHidden = true
         time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        gu.backgroundColor = UIColor.systemBackground
         
         // Do any additional setup after loading the view.
 //        timer.isHidden = true;

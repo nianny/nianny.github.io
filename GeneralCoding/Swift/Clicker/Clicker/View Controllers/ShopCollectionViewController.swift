@@ -12,6 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class ShopCollectionViewController: UICollectionViewController {
 
+    @IBOutlet weak var backButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -87,5 +88,8 @@ class ShopCollectionViewController: UICollectionViewController {
     
     }
     */
-
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
