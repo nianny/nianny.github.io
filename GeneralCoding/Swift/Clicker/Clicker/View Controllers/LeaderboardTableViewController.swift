@@ -129,6 +129,7 @@ class LeaderboardTableViewController: UITableViewController {
     
     @IBAction func changeChoice(_ sender: Any) {
         self.arr = [String]()
+        self.uid = [String]()
         let db = Firestore.firestore()
         let score = db.collection("users")
         var scores = score.order(by: "high", descending: true)
@@ -153,6 +154,7 @@ class LeaderboardTableViewController: UITableViewController {
                     speed = round(speed*100)/100
                     let name = daMap["firstname"] as! String
                     let UserID = daMap["uid"] as! String
+                    self.uid.append(UserID)
                     if self.selector.selectedSegmentIndex == 0{
                         self.arr.append("\(count). \(name) (\(score) clicks)")
                     }
@@ -161,7 +163,7 @@ class LeaderboardTableViewController: UITableViewController {
                     }
                     
                     print("\(name) is \(score)!")
-                    self.uid.append(UserID)
+//                    self.uid.append(UserID)
                     
                     count += 1
                 }

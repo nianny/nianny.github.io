@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     var speed = 0.0
     var pauseBool = false
     var uid = ""
+    var timy: Timer!
     
     override func viewDidLoad() {
         let db = Firestore.firestore()
@@ -85,6 +86,9 @@ class ViewController: UIViewController {
         timer.text = "\(timeElapsed)"
         
         maxScore.text = "Max: \(maximumScore)"
+        timy = Timer.init(timeInterval: 0.1, repeats: true) { (_) in
+//            self.timeElapsed += 0.1
+        }
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
