@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         speedLabel.text = "Speed: \(speed)"
         speedLabel.isHidden = true
         time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        gu.backgroundColor = UIColor.systemBackground
+//        gu.backgroundColor = UIColor.systemBackground
         
         // Do any additional setup after loading the view.
 //        timer.isHidden = true;
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
 //            self.clickbutton.transform = self.clickbutton.transform.scaledBy(x: 1.01,y: 1.01)
         } completion: { (_) in
             UIView.animate(withDuration: 0.1){
-                self.view.backgroundColor = .white
+                self.view.backgroundColor = .systemBackground
                 self.number.transform = .identity
                 self.clickbutton.transform = .identity
             }
@@ -225,6 +225,14 @@ class ViewController: UIViewController {
         else if maximum >= 100 && maximum <= 150{
             congratsLabel.isHidden = false
             congratsLabel.text = "Yay! You did it :D"
+        }
+        else if maximum > 150 && maximum <= 170 {
+            congratsLabel.isHidden = false
+            congratsLabel.text = "Didn't think it would continue did you :D"
+        }
+        else if maximum > 200 && maximum <= 210 {
+            congratsLabel.isHidden = false
+            congratsLabel.text = "Well, you have a long way to go"
         }
         else if maximum >= maxNum{
             congratsLabel.isHidden = false
