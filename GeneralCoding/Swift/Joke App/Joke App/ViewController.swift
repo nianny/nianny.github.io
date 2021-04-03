@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         noIdea.layer.cornerRadius = 10
+        questionLabel.text = setups[0]
+        answerLabel.text = punchlines[0]
         // Do any additional setup after loading the view.
     }
 
