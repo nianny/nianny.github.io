@@ -41,7 +41,9 @@ class ViewController: UIViewController {
     var timy: Timer!
     
     override func viewDidLoad() {
+//        clickbutton.center.x = self.view.center.x
         let db = Firestore.firestore()
+        settingsButton.isHidden = true
 //        print(uid)
 //        print(type(of: uid))
         let docRef = db.collection("users").document(Auth.auth().currentUser?.uid ?? "")
@@ -79,6 +81,7 @@ class ViewController: UIViewController {
         speedLabel.text = "Speed: \(speed)"
         speedLabel.isHidden = true
         time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+//        clickbutton.center.x = self.view.center.x
 //        gu.backgroundColor = UIColor.systemBackground
         
         // Do any additional setup after loading the view.
@@ -88,16 +91,22 @@ class ViewController: UIViewController {
         maxScore.text = "Max: \(maximumScore)"
         timy = Timer.init(timeInterval: 0.1, repeats: true) { (_) in
 //            self.timeElapsed += 0.1
+            
         }
+//        clickbutton.center.x = self.view.center.x
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
 //        maximumScore = 50
 //        maxScore.text = "Max: \(maximumScore)"
-//    }
+//        clickbutton.center.x = self.view.center.x
+    }
     
     override func viewWillAppear(_ animated: Bool) {
+        clickbutton.center.x = self.view.center.x
         super.viewWillAppear(true)
+//        clickbutton.center.x = self.view.center.x
+        
 //        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     @objc func updateCounter() {
