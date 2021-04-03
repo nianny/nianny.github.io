@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
+//        overrideUserInterfaceStyle = .light
 //        overrideUserInterfaceStyle = .dark
         if self.traitCollection.userInterfaceStyle == .dark {
 //            swiftLogo.tintColor = UIColor.white
