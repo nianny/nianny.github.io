@@ -20,11 +20,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 //        overrideUserInterfaceStyle = .dark
         if self.traitCollection.userInterfaceStyle == .dark {
-            swiftLogo.tintColor = UIColor.white
+//            swiftLogo.tintColor = UIColor.white
             // User Interface is Dark
             
         } else {
-            swiftLogo.tintColor = UIColor.black
+//            swiftLogo.tintColor = UIColor.black
         }
 
         
@@ -44,6 +44,9 @@ class HomeViewController: UIViewController {
         signUpButton.layer.cornerRadius = 20
         logInButton.layer.cornerRadius = 20
         logInButton.layer.borderWidth = 2
+            
+        
+            
 //        signUpButton.layer.borderWidth = 2
         logInButton.layer.borderColor = UIColor.systemGray.cgColor
 //        signUpButton.layer.borderColor = CGColor(gray: 1, alpha: 1)

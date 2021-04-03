@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
         self.title = "Sign Up"
         signUpButton.layer.cornerRadius = 10
         returnHome.layer.cornerRadius = 10
-        returnHome.layer.borderColor = CGColor(gray: 0.7, alpha: 1)
+        returnHome.layer.borderColor = UIColor.quaternaryLabel.cgColor
         returnHome.layer.borderWidth = 2
 
         // Do any additional setup after loading the view.
