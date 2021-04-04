@@ -31,16 +31,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMe-b5-Dzq">
-                                <rect key="frame" x="115" y="392" width="184" height="112"/>
+                                <rect key="frame" x="78" y="359" width="259" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="quaternaryLabelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="23"/>
                                 <state key="normal" title="No idea :o">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="answerRequested:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7na-gg-hg4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PUNCHLINE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQH-Di-yJi">
-                                <rect key="frame" x="0.0" y="556" width="414" height="32"/>
+                                <rect key="frame" x="0.0" y="586" width="414" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
                                 <nil key="textColor"/>
@@ -49,14 +52,25 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="dNp-aO-vV8" appends="YES" id="ACe-xy-1Hl"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="bQH-Di-yJi" id="hv8-Xi-Tpk"/>
+                        <outlet property="continueLabel" destination="RmH-2p-RHj" id="z9O-OF-GKE"/>
                         <outlet property="noIdea" destination="lMe-b5-Dzq" id="gqH-Qj-7R2"/>
                         <outlet property="questionLabel" destination="9zf-8f-BfD" id="hLT-01-Qbi"/>
+                        <outlet property="tapButton" destination="dNp-aO-vV8" id="D8c-zz-Z2m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dNp-aO-vV8">
+                    <connections>
+                        <action selector="screenTapped:" destination="BYZ-38-t0r" id="fUR-86-Qbo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-13.043478260869566" y="55.580357142857139"/>
         </scene>
