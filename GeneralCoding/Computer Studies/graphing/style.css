@@ -20,4 +20,17 @@ canvas {
   color: black;
 
 }
+/* 
+.example::-webkit-scrollbar {
+  display: none;
+} */
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.checkBox {
+  color: white;
+  font-size: small;
+}
   
