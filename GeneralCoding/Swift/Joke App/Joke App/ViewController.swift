@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         if choice {
             answerLabel.isHidden = false
     //        continueLabel.isHidden = false
-            noIdea.setTitle("Tap for new", for: .disabled)
+            noIdea.setTitle("Tap for new", for: .normal)
             choice = false
         }
         else {
@@ -44,23 +44,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func screenTapped(_ sender: Any) {
-        currentJoke += 1
-        if currentJoke == setups.count{
-            currentJoke = 0
-        }
         getData()
-//        let data = getData()
-//        if data.count == 0{
-//            print("Error")
-//        }
-//        else if data.count == 1{
-//            print(data[0])
-//        }
-//        else if data.count == 2{
-//            print(data[0])
-//            print(data[1])
-//        }
-//        setJoke()
     }
     
     func setJoke(){
@@ -68,8 +52,6 @@ class ViewController: UIViewController {
         noIdea.isEnabled = true
         answerLabel.isHidden = true
         continueLabel.isHidden = true
-        questionLabel.text = setups[currentJoke]
-        answerLabel.text = punchlines[currentJoke]
     }
     
     func newJoke(){
@@ -93,6 +75,12 @@ class ViewController: UIViewController {
             }
             if let joke = result {
                 var joky = joke.joke
+                if joky.count > 100 {
+                    DispatchQueue.main.async {
+                        self.getData()
+                    }
+                    return
+                }
                 joky = joky.trimmingCharacters(in: .whitespacesAndNewlines)
 //                print(joky)
                 if joky.contains("?"){
@@ -124,7 +112,7 @@ class ViewController: UIViewController {
                         self.noIdea.isEnabled = true
 //                        self.tapButton.isEnabled = true
                         self.answerLabel.isHidden = true
-                        self.noIdea.setTitle("Tap for new", for: .disabled)
+                        self.noIdea.setTitle("Tap for new", for: .normal)
                         self.choice = false
                     }
                     
