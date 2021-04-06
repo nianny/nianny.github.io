@@ -9,8 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var currentJoke = 0
-    var setups = ["Why did the chicken cross the road?", "Why couldn't the bicycle stand up?", "Is this pool safe for diving?"]
-    var punchlines = ["To get to the other side!", "It was two tired!", "It deep ends"]
+    var choice = true
     
     
 
@@ -24,15 +23,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         noIdea.layer.cornerRadius = 10
-        setJoke()
+        tapButton.isEnabled = false
+        answerLabel.isHidden = true
+        continueLabel.isHidden = true
         getData()
     }
     @IBAction func answerRequested(_ sender: Any) {
-//        answerLabel.isHidden = false
-//        continueLabel.isHidden = false
-//        tapButton.isEnabled = true
-//        noIdea.isEnabled = false
-        getData()
+        if choice {
+            answerLabel.isHidden = false
+    //        continueLabel.isHidden = false
+            noIdea.setTitle("Tap for new", for: .disabled)
+            choice = false
+        }
+        else {
+            getData()
+        }
+        
+        
+//        getData()
     }
     
     @IBAction func screenTapped(_ sender: Any) {
@@ -41,8 +49,18 @@ class ViewController: UIViewController {
             currentJoke = 0
         }
         getData()
-
-        setJoke()
+//        let data = getData()
+//        if data.count == 0{
+//            print("Error")
+//        }
+//        else if data.count == 1{
+//            print(data[0])
+//        }
+//        else if data.count == 2{
+//            print(data[0])
+//            print(data[1])
+//        }
+//        setJoke()
     }
     
     func setJoke(){
@@ -59,6 +77,7 @@ class ViewController: UIViewController {
     }
     
     func getData (){
+        var value = [String]()
         let url = URL(string: "https://icanhazdadjoke.com/")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -73,13 +92,55 @@ class ViewController: UIViewController {
                 print("Fail")
             }
             if let joke = result {
-                print(joke.joke)
-            } else{
-                print("Fail")
+                var joky = joke.joke
+                joky = joky.trimmingCharacters(in: .whitespacesAndNewlines)
+//                print(joky)
+                if joky.contains("?"){
+                    var arr = joky.split(separator: "?")
+                    arr[0] = arr[0]+"?"
+                    arr[1] = Substring(arr[1].trimmingCharacters(in: .whitespaces))
+                    value.append(String(arr[0]))
+                    value.append(String(arr[1]))
+                    print(arr)
+                    DispatchQueue.main.async {
+                        self.questionLabel.text = String(arr[0])
+                        self.answerLabel.text = String(arr[1])
+                        self.tapButton.isEnabled = false
+                        self.noIdea.isEnabled = true
+                        self.answerLabel.isHidden = true
+                        self.noIdea.setTitle("No idea :o", for: .normal)
+                        self.choice = true
+                    }
+                    
+                }
+                else {
+//                    joky += "."
+                    print(joky)
+//                    self.setQuestion(label: joky)
+//                    self.tapButton.isEnabled = true
+                    value.append(joky)
+                    DispatchQueue.main.async {
+                        self.questionLabel.text = joky
+                        self.noIdea.isEnabled = true
+//                        self.tapButton.isEnabled = true
+                        self.answerLabel.isHidden = true
+                        self.noIdea.setTitle("Tap for new", for: .disabled)
+                        self.choice = false
+                    }
+                    
+//                    return value
+//                    return value
+                }
             }
         }
 
         task.resume()
+//        return value
+//        return value
+    }
+    
+    func setQuestion(label: String){
+        questionLabel.text = label
     }
 }
     
