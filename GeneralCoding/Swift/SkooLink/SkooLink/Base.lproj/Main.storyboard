@@ -44,8 +44,12 @@
                         <viewLayoutGuide key="safeArea" id="S1b-lq-mKf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1jE-c9-boP"/>
+                    <navigationItem key="navigationItem" id="1jE-c9-boP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Dhx-YR-7bs"/>
+                        <barButtonItem key="rightBarButtonItem" image="pencil.circle.fill" catalog="system" springLoaded="YES" id="vJf-h1-JIv"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="newPost" destination="Dhx-YR-7bs" id="Vyu-Db-1Xe"/>
                         <outlet property="table" destination="mSs-Y0-uYt" id="k8P-MN-UZ0"/>
                     </connections>
                 </viewController>
@@ -73,6 +77,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
