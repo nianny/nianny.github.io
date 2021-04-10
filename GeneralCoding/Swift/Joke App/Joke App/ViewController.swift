@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     var currentJoke = 0
     var choice = true
+    var nextJoke: String = ""
+    var nextPunch: String? = nil
     
     
 
@@ -22,34 +24,49 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData(first: true)
+//        questionLabel.text = nextJoke;
+//        if let punch = nextPunch{
+//            answerLabel.text = punch
+//        }
+        getData(first: false)
         noIdea.layer.cornerRadius = 10
         tapButton.isEnabled = false
         answerLabel.alpha = 0
         continueLabel.isHidden = true
-        getData()
+        
     }
     @IBAction func answerRequested(_ sender: Any) {
-        if choice {
+        if noIdea.currentTitle == "No idea :o" {
 //            answerLabel.isHidden = false
     //        continueLabel.isHidden = false
             UIView.animate(withDuration: 0.2) {
                 self.answerLabel.alpha = 1
             }
-
             noIdea.setTitle("Tap for new", for: .normal)
-            choice = false
         }
-        else {
-            getData()
+        
+        else if noIdea.currentTitle == "Tap for new"{
+            answerLabel.alpha = 0
+            questionLabel.text = nextJoke;
+            if let punch = nextPunch{
+                answerLabel.text = punch
+                noIdea.setTitle("No idea :o", for: .normal)
+            }
+            else {
+                self.noIdea.setTitle("Tap for new", for: .normal)
+            }
+            getData(first: false)
         }
+        
         
         
 //        getData()
     }
     
-    @IBAction func screenTapped(_ sender: Any) {
-        getData()
-    }
+//    @IBAction func screenTapped(_ sender: Any) {
+//        getData(first: false)
+//    }
     
     func setJoke(){
         tapButton.isEnabled = false
@@ -62,7 +79,7 @@ class ViewController: UIViewController {
         
     }
     
-    func getData (){
+    func getData (first: Bool){
         var value = [String]()
         let url = URL(string: "https://icanhazdadjoke.com/")!
         var request = URLRequest(url: url)
@@ -81,7 +98,7 @@ class ViewController: UIViewController {
                 var joky = joke.joke
                 if joky.count > 100 {
                     DispatchQueue.main.async {
-                        self.getData()
+                        self.getData(first: first)
                     }
                     return
                 }
@@ -95,13 +112,25 @@ class ViewController: UIViewController {
                     value.append(String(arr[1]))
                     print(arr)
                     DispatchQueue.main.async {
-                        self.questionLabel.text = String(arr[0])
-                        self.answerLabel.text = String(arr[1])
-                        self.tapButton.isEnabled = false
-                        self.noIdea.isEnabled = true
-                        self.answerLabel.alpha = 0
-                        self.noIdea.setTitle("No idea :o", for: .normal)
-                        self.choice = true
+//                        self.questionLabel.text = String(arr[0])
+//                        self.answerLabel.text = String(arr[1])
+                        self.nextJoke = String(arr[0])
+                        self.nextPunch = String(arr[1])
+//                        self.tapButton.isEnabled = false
+//                        self.noIdea.isEnabled = true
+//                        self.answerLabel.alpha = 0
+//                        self.noIdea.setTitle("No idea :o", for: .normal)
+//                        self.choice = true
+                        if first{
+                            self.questionLabel.text = self.nextJoke;
+                            if let punch = self.nextPunch{
+                                self.answerLabel.text = punch
+                                self.noIdea.setTitle("No idea :o", for: .normal)
+                            }
+                            else {
+                                self.noIdea.setTitle("Tap for new", for: .normal)
+                            }
+                        }
                     }
                     
                 }
@@ -112,12 +141,24 @@ class ViewController: UIViewController {
 //                    self.tapButton.isEnabled = true
                     value.append(joky)
                     DispatchQueue.main.async {
-                        self.questionLabel.text = joky
-                        self.noIdea.isEnabled = true
-//                        self.tapButton.isEnabled = true
-                        self.answerLabel.alpha = 0
-                        self.noIdea.setTitle("Tap for new", for: .normal)
-                        self.choice = false
+                        self.nextJoke = joky
+                        self.nextPunch = nil
+//                        self.questionLabel.text = joky
+//                        self.noIdea.isEnabled = true
+////                        self.tapButton.isEnabled = true
+//                        self.answerLabel.alpha = 0
+//                        self.noIdea.setTitle("Tap for new", for: .normal)
+//                        self.choice = false
+                        if first {
+                            self.questionLabel.text = self.nextJoke;
+                            if let punch = self.nextPunch{
+                                self.answerLabel.text = punch
+                                self.noIdea.setTitle("No idea :o", for: .normal)
+                            }
+                            else {
+                                self.noIdea.setTitle("Tap for new", for: .normal)
+                            }
+                        }
                     }
                     
 //                    return value

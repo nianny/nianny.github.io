@@ -27,13 +27,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let customCell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.identifier, for: indexPath) as! MyTableViewCell
-        customCell.configure(with: "Nianny", imageName: "")
+        customCell.configure(with: "Nianny", imageName: "pencil")
         return customCell
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath)
 //
 //
 //        cell.textLabel?.text = "Hello world"
 //        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 
