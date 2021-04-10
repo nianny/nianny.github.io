@@ -7,101 +7,131 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6AA5438926214B140057861B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA5438826214B140057861B /* AppDelegate.swift */; };
-		6AA5438B26214B140057861B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA5438A26214B140057861B /* SceneDelegate.swift */; };
-		6AA5438D26214B140057861B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA5438C26214B140057861B /* ViewController.swift */; };
-		6AA5439026214B140057861B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5438E26214B140057861B /* Main.storyboard */; };
-		6AA5439226214B150057861B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5439126214B150057861B /* Assets.xcassets */; };
-		6AA5439526214B150057861B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA5439326214B150057861B /* LaunchScreen.storyboard */; };
+		2DAB9D371FE4660163318A5F /* Pods_SkooLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0773479065DFB976F16264E6 /* Pods_SkooLink.framework */; };
+		6AA543AD2621679A0057861B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543AC2621679A0057861B /* AppDelegate.swift */; };
+		6AA543AF2621679A0057861B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543AE2621679A0057861B /* SceneDelegate.swift */; };
+		6AA543B12621679A0057861B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543B02621679A0057861B /* ViewController.swift */; };
+		6AA543B42621679A0057861B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA543B22621679A0057861B /* Main.storyboard */; };
+		6AA543B62621679C0057861B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AA543B52621679C0057861B /* Assets.xcassets */; };
+		6AA543B92621679C0057861B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA543B72621679C0057861B /* LaunchScreen.storyboard */; };
+		6AA543C226216CDE0057861B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AA543C126216CDD0057861B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6AA5438526214B140057861B /* SkooLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkooLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AA5438826214B140057861B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6AA5438A26214B140057861B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6AA5438C26214B140057861B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6AA5438F26214B140057861B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6AA5439126214B150057861B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6AA5439426214B150057861B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6AA5439626214B150057861B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0773479065DFB976F16264E6 /* Pods_SkooLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkooLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		209844B7BBA2D99278F2C6C6 /* Pods-SkooLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkooLink.release.xcconfig"; path = "Target Support Files/Pods-SkooLink/Pods-SkooLink.release.xcconfig"; sourceTree = "<group>"; };
+		6AA543A92621679A0057861B /* SkooLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkooLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AA543AC2621679A0057861B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6AA543AE2621679A0057861B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		6AA543B02621679A0057861B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6AA543B32621679A0057861B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6AA543B52621679C0057861B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AA543B82621679C0057861B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6AA543BA2621679C0057861B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AA543C126216CDD0057861B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E090C37797F2B2F15342D539 /* Pods-SkooLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkooLink.debug.xcconfig"; path = "Target Support Files/Pods-SkooLink/Pods-SkooLink.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6AA5438226214B140057861B /* Frameworks */ = {
+		6AA543A62621679A0057861B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DAB9D371FE4660163318A5F /* Pods_SkooLink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6AA5437C26214B130057861B = {
+		0E42AF31655EA149295A8343 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6AA5438726214B140057861B /* SkooLink */,
-				6AA5438626214B140057861B /* Products */,
+				E090C37797F2B2F15342D539 /* Pods-SkooLink.debug.xcconfig */,
+				209844B7BBA2D99278F2C6C6 /* Pods-SkooLink.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6AA543A02621679A0057861B = {
+			isa = PBXGroup;
+			children = (
+				6AA543AB2621679A0057861B /* SkooLink */,
+				6AA543AA2621679A0057861B /* Products */,
+				0E42AF31655EA149295A8343 /* Pods */,
+				6C3F1D48178E65C1172A836B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		6AA5438626214B140057861B /* Products */ = {
+		6AA543AA2621679A0057861B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6AA5438526214B140057861B /* SkooLink.app */,
+				6AA543A92621679A0057861B /* SkooLink.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6AA5438726214B140057861B /* SkooLink */ = {
+		6AA543AB2621679A0057861B /* SkooLink */ = {
 			isa = PBXGroup;
 			children = (
-				6AA5438826214B140057861B /* AppDelegate.swift */,
-				6AA5438A26214B140057861B /* SceneDelegate.swift */,
-				6AA5438C26214B140057861B /* ViewController.swift */,
-				6AA5438E26214B140057861B /* Main.storyboard */,
-				6AA5439126214B150057861B /* Assets.xcassets */,
-				6AA5439326214B150057861B /* LaunchScreen.storyboard */,
-				6AA5439626214B150057861B /* Info.plist */,
+				6AA543AC2621679A0057861B /* AppDelegate.swift */,
+				6AA543AE2621679A0057861B /* SceneDelegate.swift */,
+				6AA543B02621679A0057861B /* ViewController.swift */,
+				6AA543B22621679A0057861B /* Main.storyboard */,
+				6AA543B52621679C0057861B /* Assets.xcassets */,
+				6AA543B72621679C0057861B /* LaunchScreen.storyboard */,
+				6AA543BA2621679C0057861B /* Info.plist */,
+				6AA543C126216CDD0057861B /* GoogleService-Info.plist */,
 			);
 			path = SkooLink;
+			sourceTree = "<group>";
+		};
+		6C3F1D48178E65C1172A836B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0773479065DFB976F16264E6 /* Pods_SkooLink.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6AA5438426214B140057861B /* SkooLink */ = {
+		6AA543A82621679A0057861B /* SkooLink */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6AA5439926214B150057861B /* Build configuration list for PBXNativeTarget "SkooLink" */;
+			buildConfigurationList = 6AA543BD2621679C0057861B /* Build configuration list for PBXNativeTarget "SkooLink" */;
 			buildPhases = (
-				6AA5438126214B140057861B /* Sources */,
-				6AA5438226214B140057861B /* Frameworks */,
-				6AA5438326214B140057861B /* Resources */,
+				7196FD968D11CA74A4A587FD /* [CP] Check Pods Manifest.lock */,
+				6AA543A52621679A0057861B /* Sources */,
+				6AA543A62621679A0057861B /* Frameworks */,
+				6AA543A72621679A0057861B /* Resources */,
+				818CD937296EDC66C9B69C60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SkooLink;
-			productName = SkoLink;
-			productReference = 6AA5438526214B140057861B /* SkooLink.app */;
+			productName = SkooLink;
+			productReference = 6AA543A92621679A0057861B /* SkooLink.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6AA5437D26214B130057861B /* Project object */ = {
+		6AA543A12621679A0057861B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					6AA5438426214B140057861B = {
+					6AA543A82621679A0057861B = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 6AA5438026214B130057861B /* Build configuration list for PBXProject "SkooLink" */;
+			buildConfigurationList = 6AA543A42621679A0057861B /* Build configuration list for PBXProject "SkooLink" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -109,55 +139,98 @@
 				en,
 				Base,
 			);
-			mainGroup = 6AA5437C26214B130057861B;
-			productRefGroup = 6AA5438626214B140057861B /* Products */;
+			mainGroup = 6AA543A02621679A0057861B;
+			productRefGroup = 6AA543AA2621679A0057861B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6AA5438426214B140057861B /* SkooLink */,
+				6AA543A82621679A0057861B /* SkooLink */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6AA5438326214B140057861B /* Resources */ = {
+		6AA543A72621679A0057861B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AA5439526214B150057861B /* LaunchScreen.storyboard in Resources */,
-				6AA5439226214B150057861B /* Assets.xcassets in Resources */,
-				6AA5439026214B140057861B /* Main.storyboard in Resources */,
+				6AA543B92621679C0057861B /* LaunchScreen.storyboard in Resources */,
+				6AA543C226216CDE0057861B /* GoogleService-Info.plist in Resources */,
+				6AA543B62621679C0057861B /* Assets.xcassets in Resources */,
+				6AA543B42621679A0057861B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7196FD968D11CA74A4A587FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SkooLink-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		818CD937296EDC66C9B69C60 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SkooLink/Pods-SkooLink-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SkooLink/Pods-SkooLink-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SkooLink/Pods-SkooLink-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6AA5438126214B140057861B /* Sources */ = {
+		6AA543A52621679A0057861B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AA5438D26214B140057861B /* ViewController.swift in Sources */,
-				6AA5438926214B140057861B /* AppDelegate.swift in Sources */,
-				6AA5438B26214B140057861B /* SceneDelegate.swift in Sources */,
+				6AA543B12621679A0057861B /* ViewController.swift in Sources */,
+				6AA543AD2621679A0057861B /* AppDelegate.swift in Sources */,
+				6AA543AF2621679A0057861B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6AA5438E26214B140057861B /* Main.storyboard */ = {
+		6AA543B22621679A0057861B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6AA5438F26214B140057861B /* Base */,
+				6AA543B32621679A0057861B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		6AA5439326214B150057861B /* LaunchScreen.storyboard */ = {
+		6AA543B72621679C0057861B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6AA5439426214B150057861B /* Base */,
+				6AA543B82621679C0057861B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -165,7 +238,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6AA5439726214B150057861B /* Debug */ = {
+		6AA543BB2621679C0057861B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +299,7 @@
 			};
 			name = Debug;
 		};
-		6AA5439826214B150057861B /* Release */ = {
+		6AA543BC2621679C0057861B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,36 +354,38 @@
 			};
 			name = Release;
 		};
-		6AA5439A26214B150057861B /* Debug */ = {
+		6AA543BE2621679C0057861B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E090C37797F2B2F15342D539 /* Pods-SkooLink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkoLink/Info.plist;
+				INFOPLIST_FILE = SkooLink/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.ri.nianny.SkoLink;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.ri.nianny.SkooLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6AA5439B26214B150057861B /* Release */ = {
+		6AA543BF2621679C0057861B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 209844B7BBA2D99278F2C6C6 /* Pods-SkooLink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SkoLink/Info.plist;
+				INFOPLIST_FILE = SkooLink/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sg.ri.nianny.SkoLink;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.ri.nianny.SkooLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,25 +395,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6AA5438026214B130057861B /* Build configuration list for PBXProject "SkooLink" */ = {
+		6AA543A42621679A0057861B /* Build configuration list for PBXProject "SkooLink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6AA5439726214B150057861B /* Debug */,
-				6AA5439826214B150057861B /* Release */,
+				6AA543BB2621679C0057861B /* Debug */,
+				6AA543BC2621679C0057861B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6AA5439926214B150057861B /* Build configuration list for PBXNativeTarget "SkooLink" */ = {
+		6AA543BD2621679C0057861B /* Build configuration list for PBXNativeTarget "SkooLink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6AA5439A26214B150057861B /* Debug */,
-				6AA5439B26214B150057861B /* Release */,
+				6AA543BE2621679C0057861B /* Debug */,
+				6AA543BF2621679C0057861B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6AA5437D26214B130057861B /* Project object */;
+	rootObject = 6AA543A12621679A0057861B /* Project object */;
 }

@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  SkoLink
+//  SkooLink
 //
 //  Created by Xiao Nianhe on 10/4/21.
 //

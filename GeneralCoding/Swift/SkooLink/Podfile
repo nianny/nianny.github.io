@@ -6,9 +6,10 @@ target 'SkooLink' do
   use_frameworks!
 
   # Pods for SkooLink
+  pod 'Firebase/Analytics'
   pod 'Firebase/Core'
-  pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
 
 end

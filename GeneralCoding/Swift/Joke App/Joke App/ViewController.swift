@@ -24,14 +24,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         noIdea.layer.cornerRadius = 10
         tapButton.isEnabled = false
-        answerLabel.isHidden = true
+        answerLabel.alpha = 0
         continueLabel.isHidden = true
         getData()
     }
     @IBAction func answerRequested(_ sender: Any) {
         if choice {
-            answerLabel.isHidden = false
+//            answerLabel.isHidden = false
     //        continueLabel.isHidden = false
+            UIView.animate(withDuration: 0.2) {
+                self.answerLabel.alpha = 1
+            }
+
             noIdea.setTitle("Tap for new", for: .normal)
             choice = false
         }
@@ -50,7 +54,7 @@ class ViewController: UIViewController {
     func setJoke(){
         tapButton.isEnabled = false
         noIdea.isEnabled = true
-        answerLabel.isHidden = true
+        answerLabel.alpha = 0
         continueLabel.isHidden = true
     }
     
@@ -95,7 +99,7 @@ class ViewController: UIViewController {
                         self.answerLabel.text = String(arr[1])
                         self.tapButton.isEnabled = false
                         self.noIdea.isEnabled = true
-                        self.answerLabel.isHidden = true
+                        self.answerLabel.alpha = 0
                         self.noIdea.setTitle("No idea :o", for: .normal)
                         self.choice = true
                     }
@@ -111,7 +115,7 @@ class ViewController: UIViewController {
                         self.questionLabel.text = joky
                         self.noIdea.isEnabled = true
 //                        self.tapButton.isEnabled = true
-                        self.answerLabel.isHidden = true
+                        self.answerLabel.alpha = 0
                         self.noIdea.setTitle("Tap for new", for: .normal)
                         self.choice = false
                     }
