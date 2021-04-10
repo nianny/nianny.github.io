@@ -30,12 +30,12 @@ class ViewController: UITableViewController {
 //
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arr.count
+        return 3
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Chats", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Posts", for: indexPath)
         cell.textLabel?.text = arr[indexPath.row]
         return cell
     }
@@ -85,10 +85,6 @@ class ViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func goBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-//        self.dismiss(animated: true, completion: nil)
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        if let vc = storyboard?.instantiateViewController(identifier: "Profile") as? ProfileViewController {
