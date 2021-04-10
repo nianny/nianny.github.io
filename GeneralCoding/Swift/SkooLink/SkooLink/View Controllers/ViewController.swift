@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var newPost: UIBarButtonItem!
     @IBOutlet var table: UITableView!
+    @IBOutlet weak var profileItem: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         table.register(MyTableViewCell.nib(), forCellReuseIdentifier: MyTableViewCell.identifier)
@@ -21,19 +22,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 3
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let customCell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.identifier, for: indexPath) as! MyTableViewCell
-        customCell.configure(with: "Nianny", imageName: "pencil")
+        customCell.configure(with: "Nianny", imageName: "person.crop.circle")
         return customCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    @IBAction func showProfile(_ sender: Any) {
+//        if Auth.auth().currentUser != nil {
+//          // User is signed in.
+//          // ...
+//        } else {
+        print("hi")
+        
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            if let secondVC = sb.instantiateViewController(identifier: "signUpVC") as? ViewController {
+                self.present(secondVC, animated: true, completion: nil)
+            }
+//        }
     }
 }
 

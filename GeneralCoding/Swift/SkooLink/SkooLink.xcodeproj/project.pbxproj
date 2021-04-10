@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DAB9D371FE4660163318A5F /* Pods_SkooLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0773479065DFB976F16264E6 /* Pods_SkooLink.framework */; };
+		6A9178F32622122C001AFB06 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9178F22622122C001AFB06 /* SignUpViewController.swift */; };
 		6AA543AD2621679A0057861B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543AC2621679A0057861B /* AppDelegate.swift */; };
 		6AA543AF2621679A0057861B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543AE2621679A0057861B /* SceneDelegate.swift */; };
 		6AA543B12621679A0057861B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA543B02621679A0057861B /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0773479065DFB976F16264E6 /* Pods_SkooLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SkooLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		209844B7BBA2D99278F2C6C6 /* Pods-SkooLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SkooLink.release.xcconfig"; path = "Target Support Files/Pods-SkooLink/Pods-SkooLink.release.xcconfig"; sourceTree = "<group>"; };
+		6A9178F22622122C001AFB06 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6AA543A92621679A0057861B /* SkooLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkooLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA543AC2621679A0057861B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AA543AE2621679A0057861B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6A9178F126221207001AFB06 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6AA543B02621679A0057861B /* ViewController.swift */,
+				6A9178F22622122C001AFB06 /* SignUpViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		6AA543A02621679A0057861B = {
 			isa = PBXGroup;
 			children = (
@@ -78,9 +89,9 @@
 		6AA543AB2621679A0057861B /* SkooLink */ = {
 			isa = PBXGroup;
 			children = (
+				6A9178F126221207001AFB06 /* View Controllers */,
 				6AA543AC2621679A0057861B /* AppDelegate.swift */,
 				6AA543AE2621679A0057861B /* SceneDelegate.swift */,
-				6AA543B02621679A0057861B /* ViewController.swift */,
 				6AA543B22621679A0057861B /* Main.storyboard */,
 				6AA543B52621679C0057861B /* Assets.xcassets */,
 				6AA543B72621679C0057861B /* LaunchScreen.storyboard */,
@@ -220,6 +231,7 @@
 				6AA543DD2621AB5D0057861B /* MyTableViewCell.swift in Sources */,
 				6AA543AD2621679A0057861B /* AppDelegate.swift in Sources */,
 				6AA543AF2621679A0057861B /* SceneDelegate.swift in Sources */,
+				6A9178F32622122C001AFB06 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
