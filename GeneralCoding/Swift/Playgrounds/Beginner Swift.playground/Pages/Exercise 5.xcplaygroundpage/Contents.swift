@@ -10,6 +10,7 @@ var str = "Hello, playground"
 var array = [Int]()
 for i in 1...10{
     array.append(Int.random(in: 1...1000))
+    array.rem
 }
 //array.sort()
 
