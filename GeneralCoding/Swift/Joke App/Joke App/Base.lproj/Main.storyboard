@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lvO-Rj-fX5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -57,6 +57,16 @@
                             <outletCollection property="gestureRecognizers" destination="dNp-aO-vV8" appends="YES" id="ACe-xy-1Hl"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="5vq-IK-608">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="arrowshape.turn.up.forward.fill" catalog="system" id="dli-2j-iuC">
+                                <connections>
+                                    <action selector="answerRequested:" destination="BYZ-38-t0r" id="2Rb-zN-96Z"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="arrowshape.turn.up.backward.fill" catalog="system" id="cdd-ss-65l"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="answerLabel" destination="bQH-Di-yJi" id="hv8-Xi-Tpk"/>
                         <outlet property="continueLabel" destination="RmH-2p-RHj" id="z9O-OF-GKE"/>
@@ -72,10 +82,30 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="897.10144927536237" y="55.580357142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jzK-ZB-MUk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lvO-Rj-fX5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y39-Uh-lyO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zAm-bO-DOu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dcC-E1-oxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="-13.043478260869566" y="55.580357142857139"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
+        <image name="arrowshape.turn.up.forward.fill" catalog="system" width="128" height="106"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
