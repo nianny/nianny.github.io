@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         
         else if noIdea.currentTitle == "Tap for new"{
             answerLabel.alpha = 0
-            questionLabel.text = nextJoke;
+            
             if let punch = nextPunch{
                 answerLabel.text = punch
                 noIdea.setTitle("No idea :o", for: .normal)
@@ -56,7 +56,32 @@ class ViewController: UIViewController {
             else {
                 self.noIdea.setTitle("Tap for new", for: .normal)
             }
-            getData(first: false)
+            let alert = UIAlertController(title: "Opinion", message: "Did you like that joke?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("Ok alert chosen.")
+                let alert2 = UIAlertController(title: "Thank you", message: "We appreciate your love for this joke.", preferredStyle: .alert)
+                alert2.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("Continue alert chosen.")
+//                    self.questionLabel.text = self.nextJoke;
+                }))
+                
+                alert2.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("Cancel alert chosen.")
+                    self.questionLabel.text = self.nextJoke;
+                }))
+                
+                self.present(alert, animated: true) {
+                    
+                }
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("Not ok alert chosen.")
+                self.questionLabel.text = self.nextJoke;
+            }))
+            self.present(alert, animated: true) {
+                self.getData(first: false)
+            }
+            
         }
         
         
