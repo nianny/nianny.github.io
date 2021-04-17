@@ -60,12 +60,15 @@
                     <navigationItem key="navigationItem" id="5vq-IK-608">
                         <leftBarButtonItems>
                             <barButtonItem title="Item" image="arrowtriangle.up" catalog="system" id="Uw6-uk-6P4"/>
+                            <barButtonItem title="HALLO" style="done" id="AGH-9T-sMr">
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="arrowtriangle.down" catalog="system" id="O5q-Ig-hha"/>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="arrowshape.turn.up.forward.fill" catalog="system" id="dli-2j-iuC">
                                 <connections>
-                                    <action selector="answerRequested:" destination="BYZ-38-t0r" id="2Rb-zN-96Z"/>
+                                    <action selector="changeJoke:" destination="BYZ-38-t0r" id="J17-KN-5mR"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="arrowshape.turn.up.backward.fill" catalog="system" id="cdd-ss-65l"/>
@@ -73,6 +76,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="answerLabel" destination="bQH-Di-yJi" id="hv8-Xi-Tpk"/>
+                        <outlet property="barDown" destination="O5q-Ig-hha" id="908-2k-FFQ"/>
+                        <outlet property="barLabel" destination="AGH-9T-sMr" id="a7y-Qb-951"/>
+                        <outlet property="barUp" destination="Uw6-uk-6P4" id="RYs-Nm-Oxg"/>
                         <outlet property="continueLabel" destination="RmH-2p-RHj" id="z9O-OF-GKE"/>
                         <outlet property="noIdea" destination="lMe-b5-Dzq" id="gqH-Qj-7R2"/>
                         <outlet property="questionLabel" destination="9zf-8f-BfD" id="hLT-01-Qbi"/>
@@ -120,6 +126,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

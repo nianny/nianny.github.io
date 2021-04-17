@@ -14,8 +14,12 @@ class ViewController: UIViewController {
     var nextJoke: String = ""
     var nextPunch: String? = nil
     var nextVote = 0
+    var currentVote = 0
     var currentId: String = ""
     var nextId: String = ""
+    @IBOutlet weak var barUp: UIBarButtonItem!
+    @IBOutlet weak var barDown: UIBarButtonItem!
+    @IBOutlet weak var barLabel: UIBarButtonItem!
     
     
     
@@ -29,6 +33,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
+        barLabel.tintColor = .systemGreen
+//        barLabel.isEnabled = false
+        
         self.title = ""
         super.viewDidLoad()
         getData(first: true)
@@ -38,6 +45,7 @@ class ViewController: UIViewController {
         continueLabel.isHidden = true
         
     }
+    
     @IBAction func answerRequested(_ sender: Any) {
         if noIdea.currentTitle == "No idea :o" {
             UIView.animate(withDuration: 1) {
@@ -153,7 +161,7 @@ class ViewController: UIViewController {
                 
                 joky = joky.trimmingCharacters(in: .whitespacesAndNewlines)
 //                print(joky)
-                if joky.contains("?"){
+                if joky.contains("? "){
                     var arr = joky.split(separator: "?")
                     arr[0] = arr[0]+"?"
                     arr[1] = Substring(arr[1].trimmingCharacters(in: .whitespaces))
@@ -171,15 +179,16 @@ class ViewController: UIViewController {
 //                        self.noIdea.setTitle("No idea :o", for: .normal)
 //                        self.choice = true
                         if first{
-                            self.questionLabel.text = self.nextJoke;
-                            self.currentId = self.nextId
-                            if let punch = self.nextPunch{
-                                self.answerLabel.text = punch
-                                self.noIdea.setTitle("No idea :o", for: .normal)
-                            }
-                            else {
-                                self.noIdea.setTitle("Tap for new", for: .normal)
-                            }
+//                            self.questionLabel.text = self.nextJoke;
+//                            self.currentId = self.nextId
+//                            if let punch = self.nextPunch{
+//                                self.answerLabel.text = punch
+//                                self.noIdea.setTitle("No idea :o", for: .normal)
+//                            }
+//                            else {
+//                                self.noIdea.setTitle("Tap for new", for: .normal)
+//                            }
+                            self.updateQuestionAnswer()
                         }
                     }
                     
@@ -200,15 +209,7 @@ class ViewController: UIViewController {
 //                        self.noIdea.setTitle("Tap for new", for: .normal)
 //                        self.choice = false
                         if first {
-                            self.questionLabel.text = self.nextJoke;
-                            self.currentId = self.nextId
-                            if let punch = self.nextPunch{
-                                self.answerLabel.text = punch
-                                self.noIdea.setTitle("No idea :o", for: .normal)
-                            }
-                            else {
-                                self.noIdea.setTitle("Tap for new", for: .normal)
-                            }
+                            self.updateQuestionAnswer()
                         }
                     }
                     
@@ -240,8 +241,22 @@ class ViewController: UIViewController {
         }
         questionLabel.text = nextJoke;
         currentId = nextId
+        currentVote = nextVote
+        barLabel.title = "\(self.currentVote)"
+        if currentVote < 0{
+            barLabel.tintColor = .systemRed
+        }
+        else {
+            barLabel.tintColor = .systemGreen
+        }
+        
     }
     
+    @IBAction func changeJoke(_ sender: Any) {
+        updateQuestionAnswer()
+        getData(first: false)
+        
+    }
     func addUpVote(){
         let db = Firestore.firestore()
         let docRef = db.collection("jokes").document(currentId)
