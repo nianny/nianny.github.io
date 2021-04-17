@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     var currentJoke = 0
     var choice = true
     var nextJoke: String = ""
     var nextPunch: String? = nil
+    var nextVote = 0
     
     
 
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
 //        }
         getData(first: false)
         noIdea.layer.cornerRadius = 10
-        tapButton.isEnabled = false
+//        tapButton.isEnabled = false
         answerLabel.alpha = 0
         continueLabel.isHidden = true
         
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
         if noIdea.currentTitle == "No idea :o" {
 //            answerLabel.isHidden = false
     //        continueLabel.isHidden = false
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 1) {
                 self.answerLabel.alpha = 1
             }
             noIdea.setTitle("Tap for new", for: .normal)
@@ -52,10 +54,10 @@ class ViewController: UIViewController {
             
             let alert = UIAlertController(title: "Opinion", message: "Did you like that joke?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("Ok alert chosen.")
+//            NSLog("Ok alert chosen.")
                 let alert2 = UIAlertController(title: "Thank you", message: "We appreciate your love for this joke.", preferredStyle: .alert)
                 alert2.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("Continue alert chosen.")
+//                    NSLog("Continue alert chosen.")
                     self.updateQuestionAnswer()
                 }))
 //
@@ -68,12 +70,12 @@ class ViewController: UIViewController {
                 self.present(alert2, animated: true)
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Default action"), style: .default, handler: { _ in
-                NSLog("Not ok alert chosen.")
+//                NSLog("Not ok alert chosen.")
 //                self.updateQuestionAnswer()
                 
                 let alert2 = UIAlertController(title: "Disgraceful...", message: "Is this not a great joke???", preferredStyle: .alert)
                 alert2.addAction(UIAlertAction(title: NSLocalizedString("Continue", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("Continue alert chosen.")
+//                    NSLog("Continue alert chosen.")
                     self.updateQuestionAnswer()
                 }))
                 
@@ -129,6 +131,20 @@ class ViewController: UIViewController {
             }
             if let joke = result {
                 var joky = joke.joke
+                print(joke.id)
+                let db = Firestore.firestore()
+                let docRef = db.collection("users").document(joke.id)
+
+                docRef.getDocument { [self] (document, error) in
+                    if let document = document, document.exists {
+                        let dataDescription = document.data()!//.map(String.init(describing:)) ?? "nil"
+                        let upvotes = dataDescription["upvotes"] ?? 0
+                        let downvotes = dataDescription["downvotes"] ?? 0
+                        let upvote = upvotes as! Int
+                        let downvote = downvotes as! Int
+                        self.nextVote = (upvote - downvote)
+                    }
+                }
                 if joky.count > 100 {
                     DispatchQueue.main.async {
                         self.getData(first: first)
