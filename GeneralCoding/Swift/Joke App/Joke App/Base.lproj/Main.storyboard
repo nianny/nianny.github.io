@@ -58,6 +58,10 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5vq-IK-608">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="arrowtriangle.up" catalog="system" id="Uw6-uk-6P4"/>
+                            <barButtonItem title="Item" image="arrowtriangle.down" catalog="system" id="O5q-Ig-hha"/>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="arrowshape.turn.up.forward.fill" catalog="system" id="dli-2j-iuC">
                                 <connections>
@@ -106,6 +110,8 @@
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.forward.fill" catalog="system" width="128" height="106"/>
+        <image name="arrowtriangle.down" catalog="system" width="128" height="124"/>
+        <image name="arrowtriangle.up" catalog="system" width="128" height="124"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
