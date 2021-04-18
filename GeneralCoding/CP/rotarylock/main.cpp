@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-int n,q;
-int ft[200005];
+int n,q,k;
+int ft[1000005];
 int ls (int x){ //finds least sig bit
     return (x & (-x));
 }
@@ -18,22 +18,29 @@ int query(int p){
 }
 int32_t main() {
     ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0); 
-    cin>>n>>q;
-    for (int i=1; i<=n; i++){
-        int a;
-        cin>>a;
-        update(i,i,a);
+    int modulo=1;
+    cin>>n>>q>>k;
+    for (int i=0; i<k; i++){
+        modulo *= 2;
     }
+    // for (int i=1; i<=n; i++){
+    //     int a;
+    //     cin>>a;
+    //     update(i,i,a);
+    // }
+    memset(ft,0,sizeof ft);
     for (int i=0; i<q; i++){
-        int a,b,c,d;
+        int a,b,c;
         cin>>a;
-        if (a==1){
-            cin>>b>>c>>d;
-            update(b,c,d);
+        if (a==0){
+            cin>>b>>c;
+            cout<<a<<' '<<b<<' '<<c<<' '<<'\n';
+            update(0,b,c);
         }
         else {
             cin>>b;
-            cout<<query(b)<<'\n';
+            cout<<"HALLO";
+            cout<<query(b) % modulo<<'\n';
         }
     }
     return 0;
