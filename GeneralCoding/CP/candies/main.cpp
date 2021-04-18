@@ -20,5 +20,12 @@ int query(int p){
 int32_t main() {
     ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0); 
     cin>>n;
+    for (int i=0; i<n; i++){
+        int a,b;
+        cin>>a>>b;
+        if (a == 1){
+            
+        }
+    }
     return 0;
 }
