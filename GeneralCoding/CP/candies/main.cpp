@@ -25,8 +25,22 @@ int32_t main() {
         int a,b;
         cin>>a>>b;
         if (a == 1){
+            if (!arr[b]){
+                update(b,1);
+            }
+            arr[b] ++;
 
         }
+        else {
+            if (arr[b] == 1){
+                update(b, 0);
+            }
+            if (!arr[b] == 0){
+                arr[b] --;
+            }
+        }
+
+        query()
     }
     return 0;
 }
