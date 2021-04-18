@@ -9,7 +9,7 @@ int ls (int x){ //finds least sig bit
     return (x & (-x));
 }
 void update(int p, int v){
-    for(; p <= maximum; p+= ls(p)) ft[p] = v;
+    for(; p <= n; p+= ls(p)) ft[p] = v;
 }
 int query(int p){
     int sum = 0;
@@ -21,6 +21,7 @@ int32_t main() {
     cin>>n;
     memset(ft, 0, sizeof ft);
     memset(arr, 0, sizeof arr);
+    // update(0,1);
     for (int i=0; i<n; i++){
         int a,b;
         cin>>a>>b;
@@ -35,12 +36,25 @@ int32_t main() {
             if (arr[b] == 1){
                 update(b, 0);
             }
-            if (!arr[b] == 0){
+            if (!(arr[b] == 0)){
                 arr[b] --;
             }
         }
+        for (int p=1; p<=n; p++){
+            if (query(p) != p){
+                cout<<p-1<<'\n';
+                break;
+            }
+        }
 
-        query()
+        for (int p=0; p<=n; p++){
+            cout<<ft[p]<<' ';
+        }
+        
     }
     return 0;
 }
+
+/*
+5 1 2 1 1 1 3 1 5 2 1
+*/
