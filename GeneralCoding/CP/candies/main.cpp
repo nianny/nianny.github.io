@@ -4,13 +4,12 @@ using namespace std;
 int n;
 int maximum = 1000005;
 int ft[1000005];
+int arr[1000005];
 int ls (int x){ //finds least sig bit
     return (x & (-x));
 }
-void update(int l, int r, int v){
-    r++; //update differences at r+1, not r
-    for(; l <= maximum; l+= ls(l)) ft[l] = (ft[l] + v);
-    for(; r <= maximum; r+= ls(r)) ft[r] = (ft[r] + v);
+void update(int p, int v){
+    for(; p <= maximum; p+= ls(p)) ft[p] = v;
 }
 int query(int p){
     int sum = 0;
@@ -24,7 +23,7 @@ int32_t main() {
         int a,b;
         cin>>a>>b;
         if (a == 1){
-            
+
         }
     }
     return 0;
