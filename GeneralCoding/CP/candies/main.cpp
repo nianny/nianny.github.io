@@ -19,6 +19,8 @@ int query(int p){
 int32_t main() {
     ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0); 
     cin>>n;
+    memset(ft, 0, sizeof ft);
+    memset(arr, 0, sizeof arr);
     for (int i=0; i<n; i++){
         int a,b;
         cin>>a>>b;
