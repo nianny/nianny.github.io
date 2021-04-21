@@ -25,7 +25,10 @@ int32_t main() {
     for (int i=0; i<n; i++){
         int a,b;
         cin>>a>>b;
-        if (a == 1){
+        if (b >= n){
+
+        }
+        else if (a == 1){
             if (!arr[b]){
                 update(b,1);
             }
