@@ -81,6 +81,7 @@
                         <outlet property="barUp" destination="Uw6-uk-6P4" id="RYs-Nm-Oxg"/>
                         <outlet property="continueLabel" destination="RmH-2p-RHj" id="z9O-OF-GKE"/>
                         <outlet property="noIdea" destination="lMe-b5-Dzq" id="gqH-Qj-7R2"/>
+                        <outlet property="previousJoke" destination="cdd-ss-65l" id="4lf-Ho-EFv"/>
                         <outlet property="questionLabel" destination="9zf-8f-BfD" id="hLT-01-Qbi"/>
                         <outlet property="tapButton" destination="dNp-aO-vV8" id="D8c-zz-Z2m"/>
                     </connections>
@@ -92,7 +93,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="897.10144927536237" y="55.580357142857139"/>
+            <point key="canvasLocation" x="713" y="56"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jzK-ZB-MUk">

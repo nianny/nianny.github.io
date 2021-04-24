@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var barUp: UIBarButtonItem!
     @IBOutlet weak var barDown: UIBarButtonItem!
     @IBOutlet weak var barLabel: UIBarButtonItem!
+    @IBOutlet weak var previousJoke: UIBarButtonItem!
     
     
     
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet var tapButton: UITapGestureRecognizer!
     
     override func viewDidLoad() {
+        previousJoke.isEnabled = false
         navigationController?.navigationBar.prefersLargeTitles = true
         barLabel.tintColor = .systemGreen
 //        barLabel.isEnabled = false
