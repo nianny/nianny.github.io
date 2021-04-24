@@ -40,3 +40,7 @@ var superDoggo = Doggo(name: "Hallo", breed: "Rainbow Retriever", age: 101, weig
 superDoggo.doSomething()
 superDoggo.calculateBMI()
 superDoggo.feed()
+
+class YJ{
+    
+}

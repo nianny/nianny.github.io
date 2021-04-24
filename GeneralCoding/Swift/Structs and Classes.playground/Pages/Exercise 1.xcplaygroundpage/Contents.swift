@@ -11,7 +11,7 @@ struct Car {
     var fuelLeft: Double
     
     func honky(){
-        print("BOOOOOONK!")
+        print("BOOOOOON!")
     }
     
     func stillGotFuel() -> Bool {
@@ -30,5 +30,5 @@ struct Car {
     }
 }
 
-var car = Car(colour: "red", make: "Tesla", model: "Model X", topSpeed: 200, maxFuel: 50.0, fuelLeft: 40.0)
-car.describe()
+var mycar = Car(colour: "red", make: "Tesla", model: "Model X", topSpeed: 200, maxFuel: 50.0, fuelLeft: 40.0)
+mycar.describe()
