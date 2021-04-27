@@ -22,7 +22,9 @@
         "string_view": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "type_traits": "cpp",
+        "random": "cpp"
     },
     "python.pythonPath": "/Users/nianny/.pyenv/versions/3.10-dev/bin/python"
 }
