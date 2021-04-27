@@ -25,7 +25,7 @@ int32_t main() {
         cout<<0;
     }
     else{
-        cout<<maximum-minimum+1;
+        cout<<maximum-minimum;
     }
     return 0;
 }
