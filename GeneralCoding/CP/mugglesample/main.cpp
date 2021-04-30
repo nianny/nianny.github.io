@@ -13,7 +13,7 @@ int A[maxn], D[maxn];
 int dp[maxn];
 int ans = 0;
  
- 
+
 //Convex hull
 deque <pi> dq;
  
@@ -22,10 +22,10 @@ int f(pi line, int x) { //return y after we sub in x to the line
 }
  
 int query(int x) {
-    while (!dq.empty() and f(dq[0],x) < f(dq[1],x)) {
+    while (!dq.empty() and f(dq[0],x) < f(dq[1],x)) { //as long as its is not an empty convex hull, and while the value y of the first is lower than the second, pop front
         dq.pop_front();
     }
-    return f(dq[0], x);
+    return f(dq[0], x); //return the value of the first one (highest)
 }
  
 long double intersect(pi a, pi b) {
@@ -33,7 +33,7 @@ long double intersect(pi a, pi b) {
 }
  
 void insert(int m, int c) {
-    int s = dq.size() - 1;
+    int s = dq.size() - 1;  
     pi line = pi(m,c); 
     while (dq.size() >= 2 and intersect(dq[s], line) < intersect(dq[s-1],line)) {
         dq.pop_back();
