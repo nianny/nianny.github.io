@@ -1,59 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
+int n,m;
+int weights[505];
+int value[505];
+int memo[505][505];
+int dp(int i, int w){
+    if (i==0) return 0;
+    if (memo[i][w] != -1) return memo[i][w];
 
-bool compare(pair<int,int> lhs, pair<int,int> rhs){
-    // if (lhs.second == rhs.second){
-    //     return lhs.first < rhs.first;
-    // }
-    // else {
-    //     return lhs.second > rhs.second;
-    // }
-    if (lhs.first == 0 or rhs.second == 0){
-        return true;
-    }
-    else if (lhs.second == 0 or rhs.first == 0){
-        return false;
-    }
-    return (lhs.second/lhs.first) >= (rhs.second/rhs.first);
+    memo[i][w] = dp(i-1, w);
+    if (w >= weights[i]) memo[i][w] = max(memo[i][w], dp(i-1, w-weights[i])+value[i]);
+    if (w > 0) memo[i][w] = max(memo[i][w], dp(i, w-1));
+    return memo[i][w];
 }
+
 int32_t main() {
-    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); 
-
-    int n,m;
+    ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0); 
+    memset(memo, -1, sizeof memo);
     cin>>n>>m;
-    pair<int,int>coins[n];
-    for (int i=0; i<n; i++){
-        int a,b;
-        cin>>a>>b;
-
-        coins[i] = make_pair(a,b);
+    for (int i=1; i<=n; i++){
+        cin>>weights[i];
+        cin>>value[i];
     }
-
-    sort (coins, coins + n, compare);
-
-    // for (int i=0; i<n; i++){
-    //     cout<<coins[i].first<<' '<<coins[i].second<<'\n';
-    // }
-    // cout<<'\n';
-
-    int sum = 0;
-    int ans = 0;
-    for (int i=0; i<n; i++){
-        ans += coins[i].second;
-        sum += coins[i].first;
-
-
-
-        if (sum > m){
-            ans -= coins[i].second;
-            sum -= coins[i].first;
-
-            continue;
-        } 
-    }
-
-    cout<<ans;
-
+    cout<<dp(n,m);
     return 0;
 }
