@@ -16,7 +16,7 @@ int32_t main() {
         int n;
         cin>>n;
 
-        int students[4] = {y1*n,y2*n,y3*n,y4*n};
+        int students[4] = {y1,y2,y3,y4};
 
         int sum = 0;
         int index = 0;
@@ -26,16 +26,11 @@ int32_t main() {
             }
             sum += students[i];
         }
-        for (int i=0; i<4; i++){
-            cout<<students[i]<<' ';
-        }
-        cout<<endl;
+
         students[index] += (n-sum);
-        for (int i=0; i<4; i++){
-            cout<<students[i]<<' ';
-        }
-        cout<<endl;
-        int total = students[0]*12 + students[1]*10 + students[2]*7 + students[3]*5;
+
+
+        int total = students[0]*n*12 + students[2]*n*10 + students[3]*n*7 + students[4]*n*5;
         if (total/2 > cost){
             cout<<"NO"<<endl;
         }
