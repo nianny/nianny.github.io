@@ -49,16 +49,13 @@ int32_t main() {
         pair<int,int> c = pq.top(); pq.pop(); // distance, node
         if (c.first != dist1[c.second]) continue;
         for (auto i: adjlist[c.second]){
-            if (dist1[i.first] == -1 || dist1[i.first] > dist1[i.second] + c.first){
-                dist1[i.first] = dist1[i.second] + c.first;
+            if (dist1[i.first] == -1 || dist1[i.first] > i.second + c.first){
+                dist1[i.first] = i.second + c.first;
                 pq.push({dist1[i.first], i.first});
             }
         }
     }
     
-    for (int i=0; i<n; i++){
-        cout<<dist0[i]<<'n';
-    }
     cout<<'\n';
     int k;
     cin>>k;
