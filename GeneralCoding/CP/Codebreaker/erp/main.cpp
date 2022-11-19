@@ -11,22 +11,8 @@ int32_t main() {
     hallo;
     int n,e;
     cin>>n>>e;
-<<<<<<< HEAD
-    vector<pair<int,int> > adjlist[n]
-    for (int i=0; i<e; i++){
-        int a,b,f;
-        cin>>a>>b>>f;
-        adjlist[a].push_back(make_pair(b,f));
-        adjlist[b].push_back(make_pair(a,f));
-    }
-
-    int dist1[n];
-    int dist2[n];
-    memset()
-=======
-
     vector<pair<int,int> > adjlist[n];
-
+    int dist1[n];
     for (int i=0; i<e; i++){
         int a,b,f;
         cin>>a>>b>>f;
@@ -52,8 +38,6 @@ int32_t main() {
             }
         }
     }
-
-    int dist1[n+5];
     memset(dist1, -1, sizeof(dist1));
     dist1[n-1] = 0;
     pq.push({0, n-1});
@@ -94,6 +78,5 @@ int32_t main() {
         }
     }
     
->>>>>>> 080604ebdddb51f84e9e6bc8711947c3aa0735d7
     return 0;
 }
