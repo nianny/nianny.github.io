@@ -9,15 +9,21 @@ int32_t main() {
     // ifstream cin("addin.txt");
     // ofstream cout("addout.txt");
     hallo;
-    int n,k;
-    cin>>n>>k;
-    int ans = 0;
-    for (int i=0; i<n; i++){
-        int w,p;
-        cin>>w>>p;
-        if ((__int128)w * (__int128)p < (__int128)k) ans++;
+    int r,c;
+    cin>>r>>c;
+
+    r--;
+    c--;
+
+    __int128 ans = 1;
+    for (int i=r; i>r-c; i--) {
+        ans *= i;
     }
-    cout<<ans;
+    for (int i=1; i<=c; i++) {
+        ans /= i;
+    }
+
+    cout<<(int)ans;
     
     return 0;
 }
