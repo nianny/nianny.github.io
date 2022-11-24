@@ -24,10 +24,12 @@ int32_t main() {
     int t;
     cin>>t;
 
-    set<pair<int,int>> s;
+    // set<pair<int,int>> s;
+    bool stuff[n+5][n+5];
+    memset(stuff, false, sizeof stuff);
     for (int i=0; i<t; i++){
         cin>>a>>b;
-        s.insert({a,b});
+        stuff[a][b] = true;
     }
 
     int dist[n+5][n+5];
@@ -45,13 +47,14 @@ int32_t main() {
         pair<int,int> c = q.front();
         q.pop();
 
-        if (s.find(c) != s.end()) continue;
+        
         for (int i=0; i<8; i++){
             int nx = dx[i]+c.first;
             int ny = dy[i]+c.second;
 
             if (nx<=0||nx>n||ny<=0||ny>n) continue;
-            if (dist[ny][ny] != -1) continue;
+            if (dist[nx][ny] != -1) continue;
+            if (stuff[c.first][c.second]) continue;
             // visited[nx][ny] = true;
             dist[nx][ny] = dist[c.first][c.second] + 1;
             q.push({nx,ny});
