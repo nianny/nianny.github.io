@@ -25,12 +25,13 @@ int32_t main() {
         adjlist_sum[v].push_back({u, f+s});
     }
 
-    for (int i=1; i<=n; i++){
-        cout<<i<<'\t';
-        for (auto p: adjlist[i]){
-            cout<<adjlist[i].first<<' '<<adjlist[i].second<<'\t';
-        }
-    }
+    // for (int i=1; i<=n; i++){
+    //     cout<<i<<'\t';
+    //     for (auto p: adjlist[i]){
+    //         cout<<p.first<<' '<<p.second<<'\t';
+    //     }
+    //     cout<<'\n';
+    // }
 
 
     //dijkstra from a and c
@@ -41,13 +42,13 @@ int32_t main() {
     pq.push({0, a});
 
     while (!pq.empty()){
-        auto c = pq.top();
+        auto top = pq.top();
         pq.pop();
 
-        if (dista[c.second] != c.first) continue;
-        for (auto i: adjlist[c.second]){
-            if (dista[i.first] == -1 || dista[i.first] > c.first + dista[c.second]){
-                dista[i.first] = c.first + dista[c.second];
+        if (dista[top.second] != top.first) continue;
+        for (auto i: adjlist[top.second]){
+            if (dista[i.first] == -1 || dista[i.first] > top.first + i.second){
+                dista[i.first] = top.first + i.second;
                 pq.push({dista[i.first], i.first});
             }
         }
@@ -59,12 +60,12 @@ int32_t main() {
     pq.push({0, c});
 
     while (!pq.empty()){
-        auto c = pq.top(); pq.pop();
-        if (c.first != distc[c.second]) continue;
+        auto top = pq.top(); pq.pop();
+        if (top.first != distc[top.second]) continue;
 
-        for (auto i: adjlist[c.second]){
-            if (distc[i.first] == -1 || distc[i.first] > c.first + distc[c.second]){
-                distc[i.first] = c.first + distc[c.second];
+        for (auto i: adjlist[top.second]){
+            if (distc[i.first] == -1 || distc[i.first] > top.first + i.second){
+                distc[i.first] = top.first + i.second;
                 pq.push({distc[i.first], i.first});
             }
         }
@@ -76,34 +77,35 @@ int32_t main() {
     pq.push({0, b});
 
     while (!pq.empty()){
-        auto c = pq.top(); pq.pop();
-        if (c.first != distb[c.second]) continue;
+        auto top = pq.top(); pq.pop();
+        if (top.first != distb[top.second]) continue;
 
-        for (auto i: adjlist_sum[c.second]){
-            if (distb[i.first] == -1 || distb[i.first] > c.first + distc[c.second]){
-                distb[i.first] = c.first + distb[c.second];
+        for (auto i: adjlist_sum[top.second]){
+            if (distb[i.first] == -1 || distb[i.first] > top.first + i.second){
+                distb[i.first] = top.first + i.second;
                 pq.push({distb[i.first], i.first});
             }
         }
     }
 
+    // for (int i=1; i<=n; i++){
+    //     cout<<dista[i]<<' ';
+    // }
+    // cout<<'\n';
+    // for (int i=1; i<=n; i++){
+    //     cout<<distb[i]<<' ';
+    // }
+    // cout<<'\n';
+    // for (int i=1; i<=n; i++){
+    //     cout<<distc[i]<<' ';
+    // }
+    // cout<<'\n';
+    int ans = LLONG_MAX;
     for (int i=1; i<=n; i++){
-        cout<<dista[i]<<' ';
-    }
-    cout<<'\n';
-    for (int i=1; i<=n; i++){
-        cout<<distb[i]<<' ';
-    }
-    cout<<'\n';
-    for (int i=1; i<=n; i++){
-        cout<<distc[i]<<' ';
-    }
-    cout<<'\n';
-    int ans = INT_MAX;
-    for (int i=1; i<=n; i++){
-        if (dista[i] == -1 || distc[i] == -1|| distb[i] == -1) continue;
+        // if (dista[i] == -1 || distc[i] == -1|| distb[i] == -1) continue;
         ans = min(ans, dista[i] + distc[i] + distb[i]);
     }
+    if (ans == LLONG_MAX) return ans;
     cout<<ans;
     
     return 0;
