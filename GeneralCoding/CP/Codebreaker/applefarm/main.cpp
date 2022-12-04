@@ -19,8 +19,17 @@ int32_t main() {
         int u,v,f,s;
         cin>>u>>v>>f>>s;
 
-        adjlist[v].push_back({v, f});
-        adjlist_sum->push_back({v, f+s});
+        adjlist[u].push_back({v, f});
+        adjlist_sum[u].push_back({v, f+s});
+        adjlist[v].push_back({u, f});
+        adjlist_sum[v].push_back({u, f+s});
+    }
+
+    for (int i=1; i<=n; i++){
+        cout<<i<<'\t';
+        for (auto p: adjlist[i]){
+            cout<<adjlist[i].first<<' '<<adjlist[i].second<<'\t';
+        }
     }
 
 
@@ -53,8 +62,49 @@ int32_t main() {
         auto c = pq.top(); pq.pop();
         if (c.first != distc[c.second]) continue;
 
-        for 
+        for (auto i: adjlist[c.second]){
+            if (distc[i.first] == -1 || distc[i.first] > c.first + distc[c.second]){
+                distc[i.first] = c.first + distc[c.second];
+                pq.push({distc[i.first], i.first});
+            }
+        }
     }
+
+    int distb[n+5];
+    memset(distb, -1, sizeof distb);
+    distb[b] = 0;
+    pq.push({0, b});
+
+    while (!pq.empty()){
+        auto c = pq.top(); pq.pop();
+        if (c.first != distb[c.second]) continue;
+
+        for (auto i: adjlist_sum[c.second]){
+            if (distb[i.first] == -1 || distb[i.first] > c.first + distc[c.second]){
+                distb[i.first] = c.first + distb[c.second];
+                pq.push({distb[i.first], i.first});
+            }
+        }
+    }
+
+    for (int i=1; i<=n; i++){
+        cout<<dista[i]<<' ';
+    }
+    cout<<'\n';
+    for (int i=1; i<=n; i++){
+        cout<<distb[i]<<' ';
+    }
+    cout<<'\n';
+    for (int i=1; i<=n; i++){
+        cout<<distc[i]<<' ';
+    }
+    cout<<'\n';
+    int ans = INT_MAX;
+    for (int i=1; i<=n; i++){
+        if (dista[i] == -1 || distc[i] == -1|| distb[i] == -1) continue;
+        ans = min(ans, dista[i] + distc[i] + distb[i]);
+    }
+    cout<<ans;
     
     return 0;
 }
