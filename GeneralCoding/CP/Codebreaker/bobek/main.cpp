@@ -5,6 +5,7 @@ using namespace std;
 #define endl '\n'
 int n,m;
 int arr[45];
+vector<int>arrb;
 int32_t main() {
     // ifstream cin("addin.txt");
     // ofstream cout("addout.txt");
@@ -12,28 +13,51 @@ int32_t main() {
     cin>>n>>m;
     for (int i=0; i<n; i++){
         cin>>arr[i];
-    }
-    int total = 0;
-
-    for (int i=1; i<=n; i++){
-        int l=0, r=0;
-        int sum = 0;
-
-        while (r<=n){
-            if ((r-l) < i){
-                sum += arr[r];
-                r++;
-                continue;
-            }
-
-            if (sum <=m) total++;
-            sum -= arr[l];
-            l++;
+        if (i >= n/2){
+            arrb.push_back(arr[i]);
         }
-
-        cout<<i<<' '<<total<<'\n';
+    }
+    vector<int> front;
+    for (int i=0; i<(1<<(n/2)); i++){
+        int sum = 0;
+        for (int p=0; p<n/2; p++){
+            if (i & (1<<p)){
+                sum += arr[p];
+            }
+        }
+        // cout<<i<<' '<<sum<<'\n';
+        front.push_back(sum);
+    }
+    vector<int>back;
+    for (int i=0; i<(1<<arrb.size()); i++){
+        int sum = 0;
+        for (int p=0; p<arrb.size(); p++){
+            if (i & (1<<p)){
+                sum += arrb[p];
+            }
+        }
+        // cout<<i<<' '<<sum<<'\n';
+        back.push_back(sum);
     }
 
-    cout<<total+1;
+    sort(back.begin(), back.end());
+    // for (auto i:front){
+    //     cout<<i<<' ';
+    // }
+    // cout<<'\n';
+    
+    // cout<<"SIZE: "<<back.size()<<'\n';
+    // for (auto i:back){
+    //     cout<<i<<' ';
+    // }
+    // cout<<'\n';
+
+    int ans = 0;
+    for (auto i: front){
+        // cout<<i<<' '<<upper_bound(back.begin(), back.end(), m-i)-back.begin()<<'\n';
+        ans += upper_bound(back.begin(), back.end(), m-i)-back.begin();
+        // cout<<i<<' '<<ans<<'\n';
+    }
+    cout<<ans;
     return 0;
 }

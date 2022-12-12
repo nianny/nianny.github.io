@@ -8,5 +8,10 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 // }
 
 int32_t main() {
-    cout<<rng();
+    int n = rng()%40+1;
+    int m = rng()%20+1;
+    cout<<n<<' '<<m<<'\n';
+    for (int i=0; i<n; i++){
+        cout<<rng()%30<<' ';
+    }
 }

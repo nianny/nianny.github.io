@@ -5,9 +5,7 @@ using namespace std;
 #define endl '\n'
 int n,m;
 int arr[45];
-unordered_map<int,int> ans[45];
 int dp(int remaining, int index){
-    if (ans[index].find(remaining) != ans[index].end()) return ans[index][remaining];
     // cout<<remaining<<' '<<index<<'\n';
     if (remaining < 0){
         // cout<<remaining<<' '<<index<<' '<<1<<'\n';
@@ -16,7 +14,7 @@ int dp(int remaining, int index){
     if (index >= n) return 1;
     else{
         // cout<<remaining<<' '<<index<<' '<<dp(remaining, index+1) + dp(remaining-arr[index], index+1)<<'\n';
-        return ans[index][remaining] = dp(remaining, index + 1) + dp(remaining-arr[index], index+1);
+        return dp(remaining, index + 1) + dp(remaining-arr[index], index+1);
     }
 }
 int32_t main() {

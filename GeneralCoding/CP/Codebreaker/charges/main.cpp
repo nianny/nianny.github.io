@@ -16,7 +16,7 @@ pair<int,int> find_set(int x){
 void merge_set(int a, int b, int pol){ //attract is 1, repel is 0
     pair<int,int> ap = find_set(a);
     pair<int,int> bp = find_set(b);
-
+    
     
 }
 
