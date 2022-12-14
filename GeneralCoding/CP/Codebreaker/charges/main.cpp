@@ -9,8 +9,8 @@ int dist[100010];
 // vector<int>polarity[100010][2]; //0 is same as parent
 pair<int,int> find_set(int x){
     if (p[x].first == x) return {p[x].first, 0};
-    
-    p[x] = find_set(p[x].first);
+    pair<int,int> hmm = find_set(p[x].first);
+    p[x] = {hmm.first, (hmm.second+p[x].second)%2};
     // dist[x] = dist[p[x]];
     return p[x];
 }
