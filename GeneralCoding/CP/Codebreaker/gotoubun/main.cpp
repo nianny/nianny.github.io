@@ -4,12 +4,12 @@ using namespace std;
 #define hallo ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define endl '\n'
 vector<int>arr, cop;
-int dp[5][100010];
+int dp[6][100010];
 int fen[100010];
 int n;
 int MOD = 998244353;
 void update(int X, int V){
-    while (X <= 5){
+    while (X <= n){
         // cout<<X<<' '<<X % -X<<' '<<V<<'\n';
         fen[X] += V;
         fen[X] %= MOD;
@@ -61,31 +61,38 @@ int32_t main() {
     for (int i=2; i<=5; i++){
         for (int p=0; p<n; p++){
             dp[i][p] = query(arr[p]-1);
-            cout<<i<<' '<<p<<' '<<dp[i][p]<<'\n';
+            // cout<<i<<' '<<p<<' '<<dp[i][p]<<'\n';
             update(arr[p], dp[i-1][p]);
+            // cout<<i<<' '<<p<<' '<<dp[i][p]<<'\n';
         }
-        for (int p=0; p<=n; p++){
-            fen[p] = 0;
-        }  
-        cout<<i<<'\n';
-        for (int p=0; p<n; p++){
-            cout<<dp[i][p]<<' ';
-        }
-        cout<<'\n';
+        // cout<<i<<'\n';
+        // for (int p=0; p<n; p++){
+        //     cout<<dp[i][p]<<' ';
+        // }
+        // cout<<'\n'<<'\n';
+        // for (int p=0; p<=n; p++){
+        //     fen[p] = 0;
+        // } 
+        memset(fen, 0, sizeof fen); 
+        // cout<<i<<'\n';
+        // for (int p=0; p<n; p++){
+        //     cout<<dp[i][p]<<' ';
+        // }
+        // cout<<'\n'<<'\n';
     }
 
-    cout<<'\n'<<'\n';
-    for (int i=0; i<=5; i++){
-        for (int p=0; p<n; p++){
-            cout<<dp[i][p]<<' ';
+    // cout<<'\n'<<'\n';
+    // for (int i=0; i<=5; i++){
+    //     for (int p=0; p<n; p++){
+    //         cout<<dp[i][p]<<' ';
 
-        }
-        cout<<'\n';
-    }
+    //     }
+    //     cout<<'\n';
+    // }
 
     int ans = 0;
     for (int i=0; i<n; i++){
-        cout<<i<<' '<<dp[5][i]<<'\n';
+        // cout<<i<<' '<<dp[5][i]<<'\n';
         ans += dp[5][i];
         ans %= MOD;
     }
