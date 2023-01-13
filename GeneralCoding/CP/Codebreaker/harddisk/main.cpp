@@ -1,90 +1,81 @@
 #include <bits/stdc++.h>
+#define int long long int
+#define pi pair<int, int> 
+#define pb push_back
+#define F first
+#define S second
+#define mp make_pair
 using namespace std;
-#define int long long
-#define hallo ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-#define endl '\n'
 
+
+int N, C;
+pi disks[50];
+vector<pi> a, b;
+
+void bf1(int index, int size, int importance) {
+	if (index == N / 2) {
+		a.pb({ size, importance });
+		return;
+	}
+
+	bf1(index + 1, size, importance);
+	bf1(index + 1, size + disks[index].F, importance + disks[index].S);
+}
+
+void bf2(int index, int size, int importance) {
+	if (index == N) {
+		b.pb({ size, importance });
+		return;
+	}
+
+	bf2(index + 1, size, importance);
+	bf2(index + 1, size + disks[index].F, importance + disks[index].S);
+}
 
 int32_t main() {
-    // ifstream cin("addin.txt");
-    // ofstream cout("addout.txt");
-    hallo;
-    int n,c;
-    cin>>n>>c;
-    vector<pair<int,int>> a;
-    vector<pair<int,int>> b;
 
-    for (int i=0; i<n; i++){
-        int s,v;
-        cin>>s>>v;
+	ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-        if (i >= n/2){
-            b.push_back({s,v});
-        }
-        else{
-            a.push_back({s,v});
-        }
-    }
+	cin >> N >> C;
 
-    vector<pair<int,int>> front,back; //weight, importance
-    for (int i=0; i<(1<<n/2); i++){
-        int sum = 0;
-        int weight = 0;
-        for (int p=0; p<n/2; p++){
-            if (i & (1<<p)){
-                weight += a[p].first;
-                sum += a[p].second;
-            }
-        }
-        front.push_back({weight, sum});
-    }
-    for (int i=0; i<(1<<b.size()); i++){
-        int sum = 0;
-        int weight = 0;
-        for (int p=0; p<b.size(); p++){
-            if (i & (1<<p)){
-                weight += b[p].first;
-                sum += b[p].second;
-            }
-        }
-        back.push_back({weight, sum});
-    }
-    sort(back.begin(), back.end());
-    // for (auto [a,b]: front){
-    //     cout<<a<<' '<<b<<'\n';
-    // }
-    // cout<<'\n';
+	for (int i = 0; i < N; i++) {
+		int s, v; cin >> s >> v;
+		disks[i] = { s, v };
+	}
 
-    // for (auto [a,b]: back){
-    //     cout<<a<<' '<<b<<'\n';
-    // }
-    // cout<<'\n';
-    vector<int>prefixmax;
-    vector<int>bs;
+	bf1(0, 0, 0);
+	bf2(N / 2, 0, 0);
 
-    int maximum = 0;
-    for (auto [x,y]: back){
-        maximum = max(maximum, y);
-        prefixmax.push_back(maximum);
-        bs.push_back(x);
-    }
-    // for (auto i: prefixmax){
-    //     cout<<i<<' ';
-    // }
-    // cout<<'\n';
+	// for (auto el : a) {
+	// 	cout << "(" << el.F << "," << el.S << ") ";
+	// }
+	// cout << endl;
+	// for (auto el : b) {
+	// 	cout << "(" << el.F << "," << el.S << ") ";
+	// }
 
-    int ans = 0;
-    for (auto [x,y]: front){
-        int remaining = c-x;
-        if (remaining < 0) continue;
-        int other = prefixmax[upper_bound(bs.begin(), bs.end(), remaining) - bs.begin()-1];
-        // cout<<x<<' '<<y<<' '<<other<<'\n';
-        ans = max(ans, y + other);
-    }
-    cout<<ans;
+	sort(a.begin(), a.end());
 
-    
-    
-    
-    return 0;
+	for (int i = 1; i < N; i++) {
+		a[i] = { a[i].F, max(a[i - 1].S, a[i].S) };
+	}
+
+	int ans = 0;
+
+	for (auto el : b) {
+		if (el.F > C) continue;
+		int idx = upper_bound(a.begin(), a.end(), mp(C - el.F, LLONG_MAX / 2)) - a.begin();
+		if (idx - 1 >= 0) {
+			ans = max(ans, el.S + a[idx - 1].S);
+		}
+		else ans = max(ans, el.S);
+
+		// S <= C
+		// Sa + Sb <= C
+		// Sa <= C - Sb
+	}
+	cout << ans << "\n";
+
+	return 0;
+
 }
