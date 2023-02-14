@@ -106,9 +106,9 @@ function setup() {
 
     word10.pressed = true;
 
-    setbutton(word10, width/10*9, halloooo_start - letter_height, "10");
-    setbutton(word20, width/10*9, halloooo_start - letter_height+50, "20");
-    setbutton(word50, width/10*9, halloooo_start - letter_height+100, "50");
+    setbutton(word10, width/10*9, halloooo_start, "10");
+    setbutton(word20, width/10*9, halloooo_start+50, "20");
+    setbutton(word50, width/10*9, halloooo_start+100, "50");
     // hallooo_fun_guess_thingi_arr = hallooo_fun_guess_thingi.split(" ");
 }
 
@@ -188,7 +188,7 @@ function draw_graph(){
 }
 function displayText(){
     recalculate_arrays();
-
+    // textAlign(LEFT, TOP);
     if(cur_arr.length > ans_arr.length){
         return;
     }
@@ -211,6 +211,20 @@ function displayText(){
                     text(ans_arr[i][j], halloooo_start+char_num*letter_width, halloooo_start+line_num*letter_height);
                 }
                 char_num++;
+            }
+            if (i == cur_arr.length -1){
+                if(ans_arr[0].length + char_num > halloooo_width){
+                    char_num = 0;
+                    line_num++;
+                }
+                if ((cur_arr.length > 1 || cur_arr[0] != "") || frame%50 >= 25){
+                    push();
+                    noStroke();
+                    fill(colour_theme);
+                    rectMode(CORNER);
+                    rect(halloooo_start+(char_num)*letter_width-2, halloooo_start+line_num*letter_height-2, 2, letter_height);    
+                    pop();
+                }
             }
 
             for (let j=cur_arr[i].length; j<ans_arr[i].length; j++) {
@@ -241,8 +255,9 @@ function displayText(){
         }
         text(" ", halloooo_start+char_num*letter_width, halloooo_start+line_num*letter_height);
         char_num++;
+        
+       
     }
-
     for (let i=cur_arr.length; i<ans_arr.length; i++){
         if(ans_arr[i].length + char_num > halloooo_width){
             char_num = 0;
@@ -258,10 +273,10 @@ function setbutton(button,x,y,text){
     console.log(x, y, text);
     button.locate(x,y);
     button.resize(50,50);
-
-    button.color = "#383838";
+    button.cornerRadius = 0;
+    button.color = color(0,0,0,0);
     if (button.pressed){
-        button.textColor = colour_same;
+        button.textColor = colour_theme;
     }
     else{
         button.textColor = colour_untyped;
@@ -272,12 +287,12 @@ function setbutton(button,x,y,text){
     button.textFont = 'Ubuntu Mono';
     button.stroke = color(0,0,0,0);
     button.onHover = function(){
-        button.textColor = colour_theme;
+        button.textColor = colour_same;
     }
 
     button.onOutside = function(){
         if (button.pressed){
-            button.textColor = colour_same;
+            button.textColor = colour_theme;
         }
         else{
             button.textColor = colour_untyped;
@@ -299,6 +314,8 @@ function draw() {
     background(56);
     textFont('Ubuntu Mono', 20);
     fill(255);
+    noStroke();
+    push();
     if (mouseX >= width/2-50 && mouseX <= width/2+50 && mouseY >=height-halloooo_width-40 && mouseY <= height-halloooo_width+40){
         fill(200);
         noStroke();
@@ -308,6 +325,7 @@ function draw() {
     else{
         image(no_hover_img, width/2, height-halloooo_width, 20, 20);
     }
+    pop();
     
     if(game_over){
         noStroke();
@@ -337,14 +355,21 @@ function draw() {
         deleteInput();
         // onInputChange();
     }
-
+    push();
     displayText();
+    pop();
     
     // image(no_hover_img, 0, 0);
     // console.log(counter);
 
     // circle(halloooo_start, halloooo_start, 10);
 
+    push();
+    rectMode(CORNER);
+    noStroke();
+    fill(30);
+    rect(width/10*9, halloooo_start, 50, 150, 10);
+    pop();
     word10.draw(); word20.draw(); word50.draw();
   
 }
@@ -421,8 +446,4 @@ function restart_game(){
     max_wpm = 0;
     max_height = 0;
     hallooo_fun_guess_thingi = generate_string(ans_length);
-}
-
-function get_ans_string(){
-
 }
