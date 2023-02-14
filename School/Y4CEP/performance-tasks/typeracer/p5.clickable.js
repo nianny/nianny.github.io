@@ -78,6 +78,8 @@ function Clickable(x,y) {
 	this.noTint = true; // default to disable tinting
 	this.filter = null; // filter effect
 
+	this.pressed = false;
+
 	this.updateTextSize = function () {
 		if (this.textScaled) {
 			for (let i = this.height; i > 0; i--) {

@@ -44,6 +44,9 @@ function preload(){
     word_list = loadJSON("words/english.json");
     colour_same = color(230);
     colour_untyped = color(150);
+    colour_theme = color(131, 211, 255);
+    halloooo_start = windowWidth/10;
+    
     
     // console.log(word_list[0]);
     // fs.readFile(words.txt, (err, data)  => {
@@ -51,7 +54,7 @@ function preload(){
 
     //     console.log(data);
     // })
-    // console.log(word_list.);
+    // console.log(word_list.);v
     // console.log(word_list.name);
 }   
 function to_one_dp(x){
@@ -101,7 +104,11 @@ function setup() {
     word20 = new Clickable();
     word50 = new Clickable();
 
+    word10.pressed = true;
+
     setbutton(word10, width/10*9, halloooo_start - letter_height, "10");
+    setbutton(word20, width/10*9, halloooo_start - letter_height+50, "20");
+    setbutton(word50, width/10*9, halloooo_start - letter_height+100, "50");
     // hallooo_fun_guess_thingi_arr = hallooo_fun_guess_thingi.split(" ");
 }
 
@@ -174,7 +181,7 @@ function draw_graph(){
     }
     for (let i=0; i<cords.length-1; i++){
         strokeWeight(3);
-        stroke(131, 211, 255);
+        stroke(colour_theme);
         line(cords[i][0], cords[i][1], cords[i+1][0], cords[i+1][1]);
     }
     textAlign(LEFT, TOP);
@@ -253,10 +260,38 @@ function setbutton(button,x,y,text){
     button.resize(50,50);
 
     button.color = "#383838";
-    button.textColor = colour_untyped;
+    if (button.pressed){
+        button.textColor = colour_same;
+    }
+    else{
+        button.textColor = colour_untyped;
+    }
+    
     button.text = text;
     button.textSize = 15;
     button.textFont = 'Ubuntu Mono';
+    button.stroke = color(0,0,0,0);
+    button.onHover = function(){
+        button.textColor = colour_theme;
+    }
+
+    button.onOutside = function(){
+        if (button.pressed){
+            button.textColor = colour_same;
+        }
+        else{
+            button.textColor = colour_untyped;
+        }
+    }
+    button.onPress = function(){
+        word10.pressed = false;
+        word20.pressed = false;
+        word50.pressed = false;
+
+        button.pressed = true;
+        ans_length = Number(button.text);
+        restart_game();
+    }
 }
 
 function draw() {
