@@ -367,7 +367,7 @@ function draw() {
     push();
     rectMode(CORNER);
     noStroke();
-    fill(30);
+    fill(40);
     rect(width/10*9, halloooo_start, 50, 150, 10);
     pop();
     word10.draw(); word20.draw(); word50.draw();
