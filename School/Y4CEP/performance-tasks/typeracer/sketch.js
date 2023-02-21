@@ -1,7 +1,7 @@
 // const fs = require('fs')
 
 
-let halloooo_width = 50;
+let halloooo_width = 40;
 let halloooo_start = 150;
 let letter_width = 10;
 let letter_height = 25;
