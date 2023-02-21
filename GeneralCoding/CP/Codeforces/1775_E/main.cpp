@@ -15,48 +15,16 @@ int32_t main() {
     for (int i=0; i<t; i++){
         int n;
         cin>>n;
-        int arr[n];
-        int sum = 0;
-        for (int x=0; x<n; x++){
-            cin>>arr[x];
-            sum += abs(arr[x]);
-        }   
 
-        int ans = 0;
-        int pos = 0;
-        while (sum > 0){
-            if (arr[pos] == 0){
-                pos++;
-                continue;
-            }
-            bool greater = true; //what are we looking for
-            if (arr[pos] > 0){
-                greater = false;
-                arr[pos] -=1;
-                sum -= 1;
-            }
-            else{
-                greater = true; 
-                arr[pos] += 1;
-                sum -= 1;
-            } 
-
-            for (int x=pos; x<n; x++){
-                if (greater && arr[x] > 0){
-                    arr[x]-= 1;
-                    sum -=1;
-                    greater = !greater;
-                }
-                else if (!greater && arr[x] < 0){
-                    arr[x] += 1;
-                    sum -= 1;
-                    greater = !greater;
-                }
-            }
-
-            ans++;
+        int ss[n+5];
+        ss[0] = 0;
+        for (int x=1; x<=n; x++){
+            int a;
+            cin>>a;
+            ss[x] = ss[x-1] + a;
         }
-        cout<<ans<<'\n';
+
+        cout<<*max_element(ss, ss+n+1)-*min_element(ss, ss+n+1)<<'\n';
     }
     /*
     雪花飘飘北风萧萧
