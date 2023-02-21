@@ -9,7 +9,7 @@ let vectors = [];
 let colours = [];
 let points = [];
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(windowWidth, windowHeight);
     size = width/resolution;
 
     for (let i=0; i<dotnum; i++){
