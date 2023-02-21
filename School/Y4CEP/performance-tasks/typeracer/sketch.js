@@ -194,7 +194,9 @@ function displayText(){
     }
     let char_num = 0;
     let line_num = 0;
+    // console.log(wot_people_guessed, cur_arr);
     for (let i=0; i<cur_arr.length; i++){
+        // console.log(wot_people_guessed, cur_arr);
         if (max(cur_arr[i].length, ans_arr[i].length) + char_num > halloooo_width){
             char_num = 0;
             line_num++;
@@ -212,7 +214,8 @@ function displayText(){
                 }
                 char_num++;
             }
-            if (i == cur_arr.length -1){
+            
+            if (i == cur_arr.length-1){
                 if(ans_arr[0].length + char_num > halloooo_width){
                     char_num = 0;
                     line_num++;
@@ -251,6 +254,20 @@ function displayText(){
                 fill(160, 30, 30);
                 text(cur_arr[i][j], halloooo_start+char_num*letter_width, halloooo_start+line_num*letter_height);
                 char_num++;
+            }
+            if (i == cur_arr.length-1){
+                if(ans_arr[0].length + char_num > halloooo_width){
+                    char_num = 0;
+                    line_num++;
+                }
+                if ((cur_arr.length > 1 || cur_arr[0] != "") || frame%50 >= 25){
+                    push();
+                    noStroke();
+                    fill(colour_theme);
+                    rectMode(CORNER);
+                    rect(halloooo_start+(char_num)*letter_width-2, halloooo_start+line_num*letter_height-2, 2, letter_height);    
+                    pop();
+                }
             }
         }
         text(" ", halloooo_start+char_num*letter_width, halloooo_start+line_num*letter_height);
