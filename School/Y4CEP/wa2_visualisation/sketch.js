@@ -2,7 +2,7 @@ let iterations = 30;
 let scope;
 let hue;
 let scale = 100;
-let resolution = 20;
+let resolution = 5;
 let points = [];
 let size;
 let recalculating = true;
@@ -197,7 +197,6 @@ function mousePressed(){
     
     arr.sort(comp);
     if (arr[0].dist < 10){
-        console.log(arr);
         hover_key = arr[0].key;  
     }
 }
