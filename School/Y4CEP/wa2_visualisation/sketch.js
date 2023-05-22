@@ -2,7 +2,7 @@ let iterations = 30;
 let scope;
 let hue;
 let scale = 100;
-let resolution = 5;
+let resolution = 10;
 let points = [];
 let size;
 let recalculating = true;
