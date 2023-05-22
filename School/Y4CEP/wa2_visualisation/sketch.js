@@ -3,7 +3,6 @@ let scope;
 let hue;
 let scale = 100;
 let resolution = 20;
-let hmm = 1;
 let points = [];
 let size;
 let recalculating = true;
@@ -112,9 +111,9 @@ function recalculate(){
     calcs = 0;
     let start = performance.now();
     points = [];
-    for (let real = -width/2*hmm; real < width/2*hmm; real += resolution){
+    for (let real = -width/2; real < width/2; real += resolution){
         console.log(real);
-        for (let imaginary = -height/2*hmm; imaginary < height/2*hmm; imaginary += resolution){
+        for (let imaginary = -height/2; imaginary < height/2; imaginary += resolution){
             let a = math.complex(real/scale, -imaginary/scale);
         
             for (let i = 0; i < iterations; i++) {
@@ -130,11 +129,11 @@ function recalculate(){
                 arr.push({dist: dist, colour: hue[key]});
             }
             arr.sort(comp);
-            points.push({x: real+width/2*hmm, y: imaginary+height/2*hmm, colour: arr[0].colour});
+            points.push({x: real+width/2, y: imaginary+height/2, colour: arr[0].colour});
         }
     }
 
-    img = createImage(width*hmm, height*hmm);
+    img = createImage(width, height);
     img.loadPixels();
     let s = new Set();
     for (const point of points){
@@ -142,7 +141,7 @@ function recalculate(){
         // console.log(point);
         for (let offx = 0; offx < resolution; offx++){
             for (let offy = 0; offy < resolution; offy++){
-                if (point.x+offx >= width*hmm || point.y + offy >= height*hmm) continue;
+                if (point.x+offx >= width || point.y + offy >= height) continue;
                 img.set(point.x+offx, point.y+offy, point.colour);
             }
         }
