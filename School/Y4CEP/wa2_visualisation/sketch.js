@@ -112,7 +112,6 @@ function recalculate(){
     let start = performance.now();
     points = [];
     for (let real = -width/2; real < width/2; real += resolution){
-        console.log(real);
         for (let imaginary = -height/2; imaginary < height/2; imaginary += resolution){
             let a = math.complex(real/scale, -imaginary/scale);
         
@@ -138,7 +137,6 @@ function recalculate(){
     let s = new Set();
     for (const point of points){
         //due to the setting of resolution, each calculated "pixel" is actually a sqaure of resulution*resolution
-        // console.log(point);
         for (let offx = 0; offx < resolution; offx++){
             for (let offy = 0; offy < resolution; offy++){
                 if (point.x+offx >= width || point.y + offy >= height) continue;
