@@ -1,4 +1,7 @@
 let mode = "draw";
+let buffer_width = 100;
+
+let background_circles = [];
 // let points = [
 //     [2, 16.1],
 //     [5, 18],
@@ -9,12 +12,12 @@ let mode = "draw";
 // ]
 let distances = [];
 let points = [
-    [50, 50],
-    [100, 100],
+    // [50, 50],
+    // [100, 100],
     [150, 50],
-    // [200, 100],
-    // [250, 50],
-    // [300, 100],
+    [200, 100],
+    [250, 50],
+    [300, 100],
 ]
 let c_matrix = [];
 
@@ -26,26 +29,50 @@ let controls = [];
 let beziers = [];
 let current_hover = null;
 
+
+//buttons
+let button_addpoint;
+let button_removepoint;
+
+
+
 function preload(){
-    inverse_of_141 = loadJSON('inverse.json');
+    inverse_of_141 = loadJSON('inverse.json'); //loads precomputed matrix inverse
     console.log(inverse_of_141);
 }
 
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(windowWidth, windowHeight);
+    generateBackground();
+
+    button_addpoint = new Clickable();
+    button_removepoint = new Clickable();
+
+    init_buttons();
 }
 
 function draw() {
     background(220);
+    drawBackground();
+
+    textFont("Pangolin", 15);
+    stroke(0);
+    text("Hallooo", 100, 100)
     noStroke();
     calc();
-    
+    fill(100);
+    rect(0,0, buffer_width, height);
     for (let point of points){
         fill(0);
         circle(point[0], point[1], 10);
         fill(0,0,0,50);
         circle(point[0], point[1], 20);
     }
+    
+    // for (let i=0; i<b_matrix.length; i++){
+    //     fill("red");
+    //     circle(b_matrix[i][0], b_matrix[i][1], 10);
+    // }
 
     noFill();
     stroke("black");
@@ -53,6 +80,10 @@ function draw() {
     for (let i=0; i<beziers.length; i++){
         bezier(beziers[i][0][0], beziers[i][0][1], beziers[i][1][0], beziers[i][1][1], beziers[i][2][0], beziers[i][2][1], beziers[i][3][0], beziers[i][3][1]);
     }
+
+    button_addpoint.draw();
+    button_removepoint.draw();
+    // noLoop();
 }
 
 function calc(){
@@ -60,7 +91,7 @@ function calc(){
     b_matrix = [];
     beziers = [];
     distances = [];
-    for (let i=1; i<points.length-1; i++){
+    for (let i=1; i<=points.length-2; i++){
         if (i==1){  
             c_matrix.push([points[i][0]*6-points[i-1][0], points[i][1]*6-points[i-1][1]]);
         }
@@ -71,14 +102,15 @@ function calc(){
             c_matrix.push([6*points[i][0], 6*points[i][1]]);
         }
     }
-    b_matrix.push([points[0][0], points[0][1]]);
+    // console.log(c_matrix);
+    b_matrix.push(points[0]);
     let b_part = math.multiply(inverse_of_141[points.length-2], c_matrix)
+    // console.log(b_part);
     for (let i=0; i<b_part.length; i++){
         b_matrix.push(b_part[i]);
     }
-    b_matrix.push([points[points.length-1][0], points[points.length-1][1]]);
+    b_matrix.push(points[points.length-1]);
 
-   
 
     for (let i=0; i<points.length-1; i++){
         beziers.push([points[i], [1/3*b_matrix[i+1][0]+2/3*b_matrix[i][0], 1/3*b_matrix[i+1][1]+2/3*b_matrix[i][1]], [2/3*b_matrix[i+1][0]+1/3*b_matrix[i][0], 2/3*b_matrix[i+1][1]+1/3*b_matrix[i][1]], points[i+1]]);
@@ -108,8 +140,46 @@ function getPointByDistance(dist){
     return distances[distances.length-1];
 }
 
+function generateBackground(){
+    for (let i=0; i<300; i++){
+        background_circles.push([map(Math.random(), 0, 1, buffer_width, width), map(Math.random(), 0, 1, 0, height), map(Math.random(), 0, 1, 1, 5)])
+    }
+}
+function drawBackground(){//as the name of the function suggests
+    push();
+    fill(180);
+    noStroke();
+    for (let circles of background_circles){
+        // console.log(map(Math.random(), 0, 1, buffer_width, width), map(Math.random(), 0, 1, 0, height), map(Math.random()), 0, 1, 1, 5);
+        circle(circles[0], circles[1], circles[2]);
+    }
+    pop();
+}
+
+function init_buttons(){
+    addpoint_button(button_addpoint);
+}
+
+function addpoint_button(x){
+    x.locate(20, 100);
+    x.resize(60, 30);
+    x.cornerRadius = 5;
+    x.color = color(0,0,0,0);
+    x.textColor = color(0);
+    x.text = "Add";
+    x.textSize = 15;
+    x.textFont = "Pangolin";
+    x.stroke = color(0,0,0,150);
+
+    x.onPress = function(){
+        points.push([mouseX, mouseY]);
+        current_hover = points.length-1;
+    }
+}
+
 //dragging functionality
 function mousePressed(){
+    current_hover = null;
     let arr = [];
     for (let i=0; i<points.length; i++){
         let dist = math.sqrt((points[i][0]-mouseX)**2+(points[i][1]-mouseY)**2);
@@ -117,19 +187,17 @@ function mousePressed(){
     }
     arr.sort((a, b) => a.dist-b.dist); //finds the closest point to the mouse
     if (arr[0].dist<20){
-        current_hover = arr[0].index;
-    }
-
-    
+        current_hover = arr[0].index; //sets it as the point being dragged (i.e. follows mouse position)
+    }  
 }
 
 function mouseDragged(){
     if (current_hover != null){ //if a point is currently being dragged
-        points[current_hover] = [mouseX, mouseY];
+        points[current_hover] = [constrain(mouseX, buffer_width, width), constrain(mouseY, 0, height)]; //ensures that the point remains within the frame
     }
     console.log(current_hover);
 }
 
 function mouseReleased(){
-    current_hover = null;
+    current_hover = null; //point no longer being dragged
 }

@@ -5,7 +5,7 @@ import json
 
 with open('inverse.json', 'w') as f:
     data = {};
-    for i in range(1,10):
+    for i in range(1,50):
         arr = []
         for x in range(i):
             row = [];
