@@ -27,7 +27,7 @@ class Player{
         for (let i=blocks.length-1; i>=0; i--){
             let block = blocks[i];
 
-            if (abs(this.position.x - block.position.x) <= (this.radius/2 + 50) && block.position.y - this.position.y >= 0 && block.position.y - this.position.y <= (this.radius/2+10)&&this.velocity.y > 0){
+            if (abs(this.position.x - block.position.x) <= (this.radius/2 + 50) && block.position.y - this.position.y >= 0 && abs(block.position.y - this.position.y) <= (this.radius/2+10)&&this.velocity.y > 0){
                 console.log(block);
                 this.velocity = createVector(0, -10);
                 return block.position.y;

@@ -1,4 +1,4 @@
-let iterations = 30;
+let iterations = 10;
 let scope;
 let hue;
 let scale = 100;
@@ -9,6 +9,9 @@ let recalculating = true;
 let button_recalculate;
 let button_reset;
 
+let slider_iterations;
+let slider_scale;
+let slider_resolution;
 
 
 let canvas;
@@ -31,12 +34,20 @@ function setup() {
     textFont("Pangolin", 15);
     textAlign(LEFT, TOP);
 
+    //intialise sliders
+    slider_iterations = createSlider(5, 50, iterations, 1);
+    slider_scale = createSlider(50, 200, scale, 10);
+    slider_resolution = createSlider(1, 20, resolution, 1);
+    sliders(slider_iterations, 100, 90);
+    sliders(slider_scale, 100, 120);
+    sliders(slider_resolution, 100, 150);
+
     //initialise buttons
     button_recalculate = new Clickable();
     button_reset = new Clickable();
 
-    recalculate_button(button_recalculate, 10, 90);
-    reset_button(button_reset, 10,120);
+    recalculate_button(button_recalculate, 10, 180);
+    reset_button(button_reset, 10,210);
 }
 
 
@@ -44,6 +55,11 @@ function setup() {
 function draw(){
     background(220);
 
+    iterations = slider_iterations.value();
+    scale = slider_scale.value();
+    resolution = slider_resolution.value();
+
+    //calculates entire image
     if (recalculating){
         recalculate();
     }
@@ -68,10 +84,17 @@ function draw(){
         text(root.re.toFixed(2) + " + " + root.im.toFixed(2) + "i", 10, 30 + 20*Object.values(scope).indexOf(root));
     }
 
+    //draws text around sliders
+    text("Iterations: " + iterations, 10, 95);
+    text("Scale: " + scale, 10, 125);
+    text("Resolution: " + resolution, 10, 155);
+
+    //draws buttons
     button_recalculate.draw();
     button_reset.draw();
 }
 
+//conversion between complex values on the graph and positions values on the canvas
 function gridtopixel(x_co,y_co){
     return {x: x_co*scale+width/2, y: -(y_co*scale)+height/2};
 }
@@ -79,6 +102,8 @@ function gridtopixel(x_co,y_co){
 function pixeltogrid(x,y){
     return math.complex((x-width/2)/scale, -(y-height/2)/scale);
 }
+
+//comparator to sort by smallest distance
 function comp(a,b){
     if (a.dist < b.dist) {
         return -1;
@@ -88,6 +113,7 @@ function comp(a,b){
     }
 }
 
+//(x-a)(x-b)(x-c), cubic eqn for 3 roots
 function val(x){
     return math.multiply(math.multiply(math.subtract(x, scope.a), math.subtract(x, scope.b)), math.subtract(x, scope.c));
 }
@@ -111,6 +137,7 @@ function recalculate(){
     calcs = 0;
     let start = performance.now();
     points = [];
+    //loops through every pixel and finds point after x interations
     for (let real = -width/2; real < width/2; real += resolution){
         for (let imaginary = -height/2; imaginary < height/2; imaginary += resolution){
             let a = math.complex(real/scale, -imaginary/scale);
@@ -120,7 +147,7 @@ function recalculate(){
             }
 
             
-            
+            //finds closest root and assigns colour
             let arr = [];
             for (const key of Object.keys(scope)) {
                 let diff = math.subtract(scope[key], a);
@@ -132,6 +159,8 @@ function recalculate(){
         }
     }
 
+
+    //draws otno image
     img = createImage(width, height);
     img.loadPixels();
     let s = new Set();
@@ -152,6 +181,7 @@ function recalculate(){
     recalculating = false;
 }
 
+//settings for buttons
 function reset_button(button,x,y){
     button.locate(x,y);
     button.resize(50,25);
@@ -163,7 +193,11 @@ function reset_button(button,x,y){
     button.textFont = "Pangolin";
     button.stroke = color(0,0,0,150);
     button.onPress = function(){
+        //reset roots and slider values
         scope = {a: math.complex(1, 0), b: math.complex(-1/2, math.sqrt(3)/2), c: math.complex(-1/2, -math.sqrt(3)/2)}
+        slider_iterations.value(20); //ty yunze :D
+        slider_scale.value(100);
+        slider_resolution.value(10);
         recalculating = true;
     }
 }
@@ -184,7 +218,13 @@ function recalculate_button(button,x,y){
     }
 }
 
+//set settings for sliders
+function sliders(slider, x, y){
+    slider.position(x, y);
+    slider.style('width', '50px');
+}
 
+//handles the moving and changing of roots
 function mousePressed(){
     let arr = [];
     for (const key of Object.keys(scope)){
@@ -202,7 +242,6 @@ function mousePressed(){
 function mouseDragged(){
     if (hover_key){
         scope[hover_key] = pixeltogrid(mouseX, mouseY);
-        console.log(scope);
     }
 }
 

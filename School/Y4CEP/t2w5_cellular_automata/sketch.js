@@ -1,18 +1,15 @@
-let gridSize = 50;
-let cellSize = 10;
+let gridSize = 200;
+let cellSize = 5;
 let grid;
 let rule = 90; // Rule in decimal
 let c;
-let currentRow = 0;
-let translate_y=0;
-let fpm = 5; // frames per movement
-let fps = 100; // frames per second
 
 function setup() {
-    frameRate(fps);
+    // frameRate(1)
     noStroke();
     c = createCanvas(gridSize * cellSize, gridSize * cellSize);
-    restart();
+    grid = new Array(gridSize).fill(0);
+    grid[Math.floor(gridSize / 2)] = 1; // Set the center cell to alive
 }
 
 function applyRule(currentState, leftNeighbor, rightNeighbor) {
@@ -27,48 +24,34 @@ function updateGrid() {
     let newGrid = new Array(gridSize).fill(0);
 
     for (let i = 0; i < gridSize; i++) {
-        let left = grid[grid.length-1][(i - 1 + gridSize) % gridSize];
-        let center = grid[grid.length-1][i];
-        let right = grid[grid.length-1][(i + 1) % gridSize];
+        let left=0, center, right=0;
+        if (i!=0){
+            left = grid[(i - 1 + gridSize) % gridSize];
+        }
+        if (i != gridSize-1){
+            right = grid[(i + 1) % gridSize];
+        }
+        center = grid[i];
         newGrid[i] = applyRule(center, left, right);
     }
 
-    grid.push(newGrid);
-    if (grid.length > gridSize){
-        grid=grid.slice(1);
-    }
+    grid = newGrid;
 }
 
 function draw() {
     background(255);
-
-    
-    if (currentRow > gridSize){
-        translate(0, -(translate_y-1)%fpm/fpm*cellSize);
-    }
   
-    for (let row = 0; row < grid.length; row++) {
+    for (let row = 0; row < gridSize; row++) {
         for (let col = 0; col < gridSize; col++) {
-            if (grid[row][col] === 1) {
+            if (grid[col] === 1) {
                 fill(0);
             } else {
                 fill(255);
             }
                 rect(col * cellSize, row * cellSize, cellSize, cellSize);
         }
-    }
-
-    if (translate_y%fpm == 0){
         updateGrid();
-
-        currentRow++;
     }
-    
-    translate_y++;
-    console.log(grid);
-}
-
-function restart(){
-    grid = [new Array(gridSize).fill(0)];
-    grid[0][Math.floor(gridSize / 2)] = 1; // Set the center cell to alive
+    // saveCanvas(c, str(rule), 'jpg')
+    noLoop(); // Remove this line if you want to animate the automaton continuously
 }
