@@ -1,5 +1,6 @@
 let mode = "draw";
 let buffer_width = 100;
+let new_point_mode = false;
 
 let background_circles = [];
 // let points = [
@@ -29,6 +30,7 @@ let controls = [];
 let beziers = [];
 let current_hover = null;
 
+let alert_list = []; //custom alerts???
 
 //buttons
 let button_addpoint;
@@ -45,23 +47,33 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     generateBackground();
 
+    textFont("Pangolin", 15);
     button_addpoint = new Clickable();
     button_removepoint = new Clickable();
-
     init_buttons();
+
+    console.log(button_addpoint.textFont)
+    alert_list.push(new PopUp("This is a test", 100));
+    
 }
 
 function draw() {
     background(220);
     drawBackground();
 
-    textFont("Pangolin", 15);
-    stroke(0);
-    text("Hallooo", 100, 100)
     noStroke();
     calc();
-    fill(100);
+    fill("#AFBED1");
     rect(0,0, buffer_width, height);
+
+    push();
+    stroke(0);
+    fill(0);
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Controls", 50, 50);
+    pop();
+
     for (let point of points){
         fill(0);
         circle(point[0], point[1], 10);
@@ -81,8 +93,19 @@ function draw() {
         bezier(beziers[i][0][0], beziers[i][0][1], beziers[i][1][0], beziers[i][1][1], beziers[i][2][0], beziers[i][2][1], beziers[i][3][0], beziers[i][3][1]);
     }
 
+
+    if (new_point_mode && mouseX > buffer_width){//allows for the fancy ish adding point sequence
+        points.push([mouseX, mouseY]);
+        current_hover = points.length-1;
+        new_point_mode = false;
+    }
+
     button_addpoint.draw();
     button_removepoint.draw();
+
+    for (let i=0; i<alert_list.length; i++){
+        alert_list[i].show(width-210, 10+60*i);
+    }
     // noLoop();
 }
 
@@ -158,6 +181,7 @@ function drawBackground(){//as the name of the function suggests
 
 function init_buttons(){
     addpoint_button(button_addpoint);
+    removepoint_button(button_removepoint);
 }
 
 function addpoint_button(x){
@@ -166,14 +190,34 @@ function addpoint_button(x){
     x.cornerRadius = 5;
     x.color = color(0,0,0,0);
     x.textColor = color(0);
-    x.text = "Add";
-    x.textSize = 15;
+    x.text = "Add :D";
+    x.textSize = 15;    
     x.textFont = "Pangolin";
     x.stroke = color(0,0,0,150);
+    x.strokeWeight = 3; 
 
     x.onPress = function(){
-        points.push([mouseX, mouseY]);
-        current_hover = points.length-1;
+        new_point_mode = true;
+    }
+}
+
+function removepoint_button(x){
+    x.locate(20, 150);
+    x.resize(60, 30);
+    x.cornerRadius = 5;
+    x.color = color(0,0,0,0);
+    x.textColor = color(0);
+    x.text = "Remove";
+    x.textSize = 15;    
+    x.textFont = "Pangolin";
+    x.stroke = color(0,0,0,150);
+    x.strokeWeight = 3; 
+
+    x.onPress = function(){
+        if (points.length >= 5){
+            points.pop();
+        }
+
     }
 }
 
@@ -191,6 +235,13 @@ function mousePressed(){
     }  
 }
 
+function mouseMoved(){ //used when a new point is being added
+    if (current_hover != null){
+        points[current_hover] = [constrain(mouseX, buffer_width, width), constrain(mouseY, 0, height)]; //ensures that the point remains within the frame
+    }
+    console.log(current_hover);
+}
+
 function mouseDragged(){
     if (current_hover != null){ //if a point is currently being dragged
         points[current_hover] = [constrain(mouseX, buffer_width, width), constrain(mouseY, 0, height)]; //ensures that the point remains within the frame
@@ -200,4 +251,5 @@ function mouseDragged(){
 
 function mouseReleased(){
     current_hover = null; //point no longer being dragged
+    console.log(current_hover);
 }
