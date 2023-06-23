@@ -1,19 +1,24 @@
 class PopUp{
     constructor(msg, duration){
         this.msg = msg;
-        this.duration = duration;
+        this.duration = duration; //time in miliseconds
+        this.start = millis();
+        console.log(this.start);
     }
 
     show(x, y){
         push();
         noStroke();
-        fill("#EAC5D8");
-        rect(x,y, 200, 50, 10);
+        fill(234, 197, 216, 80);
+        rect(x,y, 250, 50, 10);
         textAlign(CENTER, CENTER);
-        textFont("Pangolin", 15);
-        stroke(0);
-        text(this.msg, x+100, y+25);
-        this.duration -= 1;
+        textFont(font, 15);
+        fill(0);
+        text(this.msg, x+125, y+25);
         pop();
+    }
+
+    check(){
+        return (millis() - this.start) > this.duration; //if duration to display alert is over
     }
 }
