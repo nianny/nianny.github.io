@@ -1,0 +1,52 @@
+
+								<p>
+Potato wants to burn Po The Sloth's orchard (because Po owes him money and hasn't returned it to him for 2 weeks).
+</p>
+<p>
+Po the Sloth's orchard contains a row of <i>N</i> trees, labelled from 1 to <i>N</i> from left to right. Potato has a flamethrower. This flamethrower can destroy a consecutive sequence of at most <i>K</i> trees. He can choose to destroy no trees at all. 
+</p>
+<p>
+Potato wants to cause as much damage as possible. He knows the cost of planting each tree. This can be negative because some of these trees have CCTVs on them, which means Potato will get sued and will have to pay money to Po The Sloth! Potato wants to aim his flamethrower in such a way that the sum of costs of trees he destroys is as high as possible. He wonders what this cost is.</p>
+
+<h2>Note</h2>
+<p>
+As this problem deals with large outputs, you are strongly advised to insert these 2 lines of code at the start of your <code>main()</code> function:
+</p>
+<p><code>ios_base::sync_with_stdio(false);</code></p>
+<p><code>cin.tie(NULL);</code></p>
+
+<h2>Input</h2>
+<p>The first line contains two integers, <i>N</i> and <i>K</i>.</p>
+<p>The following line contains <b>N</b> integers. The <i>i<sup>th</sup></i> integer denotes the cost of the tree with label <i>i</i>.
+</p>
+<h2>Output</h2>
+<p>Output the maximum cost of the trees Potato can damage.</p>
+<h2>Constraints:</h2>
+<p>1 ≤ <i>K</i> ≤ <i>N</i> ≤ 5 × 10<sup>6</sup>
+</p><p>-10<sup>9</sup> ≤ <i>C<sub>i</sub></i> ≤ 10<sup>9</sup>, where <i>C<sub>i</sub></i> denotes the cost of the <i>i<sup>th</sup></i> tree.</p>
+<h2>Subtasks</h2>
+<p>Subtask 1 (23%): <i>1 ≤ K ≤ N ≤ 1000</i>, <i>C<sub>i</sub></i> is guaranteed to be positive.</p>
+<p>Subtask 2 (30%): <i>1 ≤ K ≤ N ≤ 1000</i></p>
+<p>Subtask 3 (34%): <i>C<sub>i</sub></i> is guaranteed to be positive.</p>
+<p>Subtask 4 (13%): No additional constraints</p>
+<p>Subtask 5 (0%): Sample Testcases</p>
+
+<h2>Sample Input 1:</h2>
+<pre>6 3
+5 8 9 2 4 1
+</pre>
+<h2>Sample Output 1:</h2>
+<pre>22
+</pre>
+<h2>Sample Explanation</h2>
+<p>Potato can destroy Trees 1 to 3 to obtain a total cost of 22. It can be proven that there exists no contiguous subarray with length ≤ 3 that has a sum of more than 22.</p>
+<p></p><h2>Sample Input 2:</h2>
+<pre>5 2
+10 -4 -5 3 0
+</pre>
+<h2>Sample Output 2:</h2>
+<pre>10
+</pre>
+<h2>Sample Explanation</h2>
+<p>Potato can destroy Tree 1 to obtain a total cost of 10. Note that Potato does not need to destroy 2 trees, he just needs to destroy up to 2 trees.</p>
+							

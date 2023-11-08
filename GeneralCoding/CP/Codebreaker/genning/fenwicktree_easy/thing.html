@@ -1,0 +1,61 @@
+<p>
+    Potato has <var>N</var> blåhajar (plural of blåhaj). Initially, the <var>i<sup>th</sup></var> blåhaj has an age of
+    <var>A<sub>i</sub></var>.
+</p>
+<p>
+    Sometimes, due to magic, some blåhajar can change their age! As such, Potato wants you to answer queries and updates
+    about the ages of the blåhajar. In total, there will be <var>M</var> queries and updates. All updates are guaranteed
+    to be before all the queries.
+</p>
+<p>
+    For each query, Potato will provide you with two integers <i>x</i> and <i>y</i> where 0 &lt; <i>x</i> ≤ <i>y</i> ≤
+    <i>N</i>. You are to respond with the sum of the ages of the blåhajar between the <i>x<sup>th</sup></i> blåhaj and
+    the <i>y<sup>th</sup></i> blåhaj inclusive.
+</p>
+<p>For each update, Potato will provide you with two integers, <i>a</i>, <i>b</i>. This means that the
+    <i>a<sup>th</sup></i> blåhaj has changed its age to <i>b</i>.
+</p>
+<h2>Note</h2>
+<p>
+    As this problem deals with large inputs and outputs, you are strongly advised to insert these 2 lines of code at the
+    start of your <code>main()</code> function:
+</p>
+<p><code>ios_base::sync_with_stdio(false);</code></p>
+<p><code>cin.tie(NULL);</code></p>
+<h2>Limits</h2>
+<p>For all testcases, -10<sup>6</sup> ≤ A<sub>i</sub> ≤ 10<sup>6</sup>, 0 &lt; x ≤ y ≤ N, 0 &lt; a ≤ N, -10<sup>6</sup>
+    ≤ b ≤ 10<sup>6</sup></p>
+<p>Subtask 1 (42%): 1 ≤ N ≤ 100, 0 ≤ M ≤ 200.</p>
+<p>Subtask 2 (58%): 1 ≤ N ≤ 500000, 0 ≤ M ≤ 500000.</p>
+<p>Subtask 3 (0%): Sample Testcases.</p>
+
+<h2>Input</h2>
+<p>The first line of input will contain one integer, <i>N</i>.</p>
+<p>The second line of input will contain <i>N</i> integers, representing the respective ages of the <i>N</i> blåhajar.
+</p>
+<p>The next line will contain a single integer, <i>M</i>.</p>
+<p><i>M</i> lines will follow. The first character of each line will be <i>T</i>.</p>
+<p>If <i>T</i> is 0, then it represents a query. 2 integers will then follow, <i>x</i> and <i>y</i>.</p>
+<p>If <i>T</i> is 1, then it represents an update. 2 integers will then follow, <i>a</i> and <i>b</i>.</p>
+
+<h2>Output</h2>
+<p>For each line of query, you are to output the sum of the ages of the blåhajar between the <i>x<sup>th</sup></i>
+    blåhaj and the <i>y<sup>th</sup></i> blåhaj inclusive, on a single line.</p>
+
+<h2>Sample Testcase 1</h2>
+<h3>Input</h3>
+<pre>10
+1 2 9 5 7 6 3 4 2 2
+5
+1 1 8
+0 1 2
+0 6 10
+0 1 9
+0 5 7
+</pre>
+<h3>Output</h3>
+<pre>10
+17
+46
+16
+</pre>

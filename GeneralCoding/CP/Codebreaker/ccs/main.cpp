@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define int unsigned long long
-#define hallo ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-#define endl '\n'
+#define int long long
+#define hallo ios_base::sync_with_stdio(); cin.tie(0); cout.tie(0);
 
 
 int32_t main() {
@@ -11,28 +10,32 @@ int32_t main() {
     hallo;
     int n,q;
     cin>>n>>q;
-    set<int> s;
+
+    set<int>s;
+
     for (int i=0; i<q; i++){
-        string a;
-        cin>>a;
-        if (a == "WAKE"){
-            int b;
-            cin>>b;
-            s.erase(b);
+        string com;
+        cin>>com;
+
+        if (com=="WAKE"){
+            int x;
+            cin>>x;
+            s.erase(x);
         }
-        else if (a == "SLEEP"){
-            int b;
-            cin>>b;
-            s.insert(b);
+        else if (com=="SLEEP"){
+            int x;
+            cin>>x;
+            s.insert(x);
         }
         else{
-            int b,c;
-            cin>>b>>c;
-            auto value = s.lower_bound(b);
-            if (value==s.end() || *value>c) cout<<"YES"<<'\n';
-            else cout<<"NO"<<'\n';
+            int a,b;
+            cin>>a>>b;
+            (s.lower_bound(a) != s.end() && *s.lower_bound(a) <= b) ? cout<<"NO"<<'\n' : cout<<"YES"<<'\n';
+
         }
     }
     
     return 0;
+    
 }
+
