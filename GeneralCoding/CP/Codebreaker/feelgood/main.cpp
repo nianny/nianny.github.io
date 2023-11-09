@@ -9,14 +9,15 @@ string a,b;
 string s;
 int high_ans[10];
 int low_ans[10];
-vector<int> memo[18][2][2];
+vector<int> memo[20][2][2];
+vector<int> empty_v;
 
 int parse_string(string s, int x){
     string sx = s.substr(x+1, s.size()-x-1);
     if (sx==""){
         return 0;
     }
-    return stoi(sx);
+    return stoll(sx)%MOD;
 }
 
 int expo (int x){
@@ -37,13 +38,67 @@ vector<int> add_nums (vector<int> a, vector<int> b){
 }
 
 vector<int> dp(int no_of_digits, bool has_been_0, bool is_bounded){
+    if(no_of_digits >= 20){
+        vector<int> zero_vector;
+        for (int i=0; i<10; i++){
+            zero_vector.push_back(0);
+        }
+        return zero_vector;
+    }
     if (memo[no_of_digits][has_been_0][is_bounded].size() != 0){
         return memo[no_of_digits][has_been_0][is_bounded];
     }
+    for (int i=0; i<10; i++){
+        memo[no_of_digits][has_been_0][is_bounded].push_back(0);
+    }
+    if (is_bounded){
+        if (has_been_0){
+            if (s[no_of_digits] != '0'){
+                memo[no_of_digits][has_been_0][is_bounded]=add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, true, false));
+                for (int i=1; i<s[no_of_digits]-'0'; i++){
+                    memo[no_of_digits][has_been_0][is_bounded][i] += expo(19-no_of_digits);
+                    memo[no_of_digits][has_been_0][is_bounded][i] %= MOD; 
+                    memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, false));
+                }
+                memo[no_of_digits][has_been_0][is_bounded][s[no_of_digits]-'0'] += (parse_string(s, no_of_digits)+1)%MOD;
+                memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, true));
+            }
+            else{
+                memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, true, true));
+            }
+        }
+        else {
+            for (int i=0; i<s[no_of_digits]-'0'; i++){
+                memo[no_of_digits][has_been_0][is_bounded][i] += expo(19-no_of_digits);
+                memo[no_of_digits][has_been_0][is_bounded][i] %= MOD; 
+                memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, false));
+            }
+            memo[no_of_digits][has_been_0][is_bounded][s[no_of_digits]-'0'] += (parse_string(s, no_of_digits)+1)%MOD;
+            memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, true));
+        }
+    }
+    else{
+        if (has_been_0){
+            memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, true, false));
+            for (int i=1; i<10; i++){
+                memo[no_of_digits][has_been_0][is_bounded][i] += expo(19-no_of_digits);
+                memo[no_of_digits][has_been_0][is_bounded][i] %= MOD;
+                memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, false));
+            }
+        }
+        else{
+            for (int i=0; i<10; i++){
+                memo[no_of_digits][has_been_0][is_bounded][i] += expo(19-no_of_digits);
+                memo[no_of_digits][has_been_0][is_bounded][i] %= MOD;
+                memo[no_of_digits][has_been_0][is_bounded] = add_nums(memo[no_of_digits][has_been_0][is_bounded], dp(no_of_digits+1, false, false));
+            }
+        }
+    }
+    return memo[no_of_digits][has_been_0][is_bounded];
 }
 
 void high(int no_of_digits, bool has_been_0, bool is_bounded){
-    if (no_of_digits >= 18){
+    if (no_of_digits >= 20){
         return;
     }
     if (is_bounded){
@@ -52,7 +107,7 @@ void high(int no_of_digits, bool has_been_0, bool is_bounded){
                 high(no_of_digits+1, true, false);
                 
                 for (int i=1; i<b[no_of_digits]-'0'; i++){
-                    high_ans[i] += expo(17-no_of_digits);
+                    high_ans[i] += expo(19-no_of_digits);
                     high_ans[i] %= MOD; 
                     high(no_of_digits+1, false, false);
                 }
@@ -66,7 +121,7 @@ void high(int no_of_digits, bool has_been_0, bool is_bounded){
         else{
             
             for (int i=0; i<b[no_of_digits]-'0'; i++){
-                high_ans[i] += expo(17-no_of_digits);
+                high_ans[i] += expo(19-no_of_digits);
                 high_ans[i] %= MOD; 
                 high(no_of_digits+1, false, false);
             }
@@ -79,14 +134,14 @@ void high(int no_of_digits, bool has_been_0, bool is_bounded){
             high(no_of_digits+1, true, false);
 
             for (int i=1; i<10; i++){
-                high_ans[i] += expo(17-no_of_digits);
+                high_ans[i] += expo(19-no_of_digits);
                 high_ans[i] %= MOD;
                 high(no_of_digits+1, false, false);
             }
         }
         else {
             for (int i=0; i<10; i++){
-                high_ans[i] += expo(17-no_of_digits);
+                high_ans[i] += expo(19-no_of_digits);
                 high_ans[i] %= MOD;
                 high(no_of_digits+1, false, false);
             }
@@ -96,7 +151,7 @@ void high(int no_of_digits, bool has_been_0, bool is_bounded){
 }
 
 void low(int no_of_digits, bool has_been_0, bool is_bounded){
-    if (no_of_digits >= 18){
+    if (no_of_digits >= 20){
         return;
     }
     if (is_bounded){
@@ -105,7 +160,7 @@ void low(int no_of_digits, bool has_been_0, bool is_bounded){
                 low(no_of_digits+1, true, false);
                 
                 for (int i=1; i<a[no_of_digits]-'0'; i++){
-                    low_ans[i] += expo(17-no_of_digits);
+                    low_ans[i] += expo(19-no_of_digits);
                     low_ans[i] %= MOD; 
                     low(no_of_digits+1, false, false);
                 }
@@ -119,7 +174,7 @@ void low(int no_of_digits, bool has_been_0, bool is_bounded){
         else{
             
             for (int i=0; i<a[no_of_digits]-'0'; i++){
-                low_ans[i] += expo(17-no_of_digits);
+                low_ans[i] += expo(19-no_of_digits);
                 low_ans[i] %= MOD; 
                 low(no_of_digits+1, false, false);
             }
@@ -132,14 +187,14 @@ void low(int no_of_digits, bool has_been_0, bool is_bounded){
             low(no_of_digits+1, true, false);
 
             for (int i=1; i<10; i++){
-                low_ans[i] += expo(17-no_of_digits);
+                low_ans[i] += expo(19-no_of_digits);
                 low_ans[i] %= MOD;
                 low(no_of_digits+1, false, false);
             }
         }
         else {
             for (int i=0; i<10; i++){
-                low_ans[i] += expo(17-no_of_digits);
+                low_ans[i] += expo(19-no_of_digits);
                 low_ans[i] %= MOD;
                 low(no_of_digits+1, false, false);
             }
@@ -154,20 +209,43 @@ int32_t main() {
     cin>>A>>b;
     A -= 1;
     a = to_string(A);
-    a = string(18-a.length(), '0')+a;
-    b = string(18-b.length(), '0')+b;
-    vector<int> empty;
-    for (int i=0; i<18; i++){
+    a = string(20-a.length(), '0')+a;
+    b = string(20-b.length(), '0')+b;
+    for (int i=0; i<20; i++){
         for (int j=0; j<4; j++){
-            memo[i][j%2][(j/2)%2] = empty;
+            memo[i][j%2][(j/2)%2] = empty_v;
         }
     }
-    // cout<<b<<'\n';
-    high(0, true, true);
-    low(0, true, true);
-    for (int i=0; i<10; i++){
-        cout<<high_ans[i]-low_ans[i]<<"\n";
+    s = a;
+    vector<int> a_ans = dp(0, true, true);
+
+
+    for (int i=0; i<20; i++){
+        for (int j=0; j<4; j++){
+            memo[i][j%2][(j/2)%2] = empty_v;
+        }
     }
+    s = b;
+    vector<int> b_ans = dp(0, true, true);
+    for (int i=0; i<10; i++){
+        cout<<(b_ans[i] - a_ans[i]+MOD)%MOD<<"\n";
+    }
+    // cout<<'\n';
+    // for (int i=0; i<10; i++){
+    //     cout<<a_ans[i]<<' ';
+    // }
+    // cout<<'\n';
+    // for (int i=0; i<10; i++){
+    //     cout<<b_ans[i]<<' ';
+    // }
+    // cout<<'\n';
+
+    // cout<<b<<'\n';
+    // high(0, true, true);
+    // low(0, true, true);
+    // for (int i=0; i<10; i++){
+    //     cout<<high_ans[i]-low_ans[i]<<"\n";
+    // }
     // cout<<'\n';
     // for (int i=0; i<10; i++){
     //     cout<<high_ans[i]<<" ";
